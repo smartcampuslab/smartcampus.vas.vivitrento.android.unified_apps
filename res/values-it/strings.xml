@@ -55,4 +55,5 @@
     <string name="update_dev">Apps Version</string>
     <string name="update_dev_sum">Check for test updates</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
+	<string name="update_application_notification">ViviTrento. Una nuova versione è disponibile</string>
 </resources>

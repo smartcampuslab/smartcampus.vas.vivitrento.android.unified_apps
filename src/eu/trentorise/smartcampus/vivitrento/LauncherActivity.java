@@ -27,6 +27,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -37,6 +38,8 @@ import com.actionbarsherlock.view.MenuItem;
 import eu.trentorise.smartcampus.ac.Constants;
 import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
+import eu.trentorise.smartcampus.dt.DiscoverTrentoActivity;
+import eu.trentorise.smartcampus.jp.HomeActivity;
 import eu.trentorise.smartcampus.vivitrento.apps.ApkInstaller.ApkDownloaderTask;
 import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
 
@@ -108,6 +111,13 @@ public class LauncherActivity extends SherlockFragmentActivity {
 			}
 	    }
 		
+	}
+	
+	public void launchDT(View v){
+		startActivity(new Intent(this,HomeActivity.class));
+	}
+	public void launchJP(View v){
+		startActivity(new Intent(this,DiscoverTrentoActivity.class));
 	}
 	
 	@Override

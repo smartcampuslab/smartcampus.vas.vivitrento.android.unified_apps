@@ -140,7 +140,6 @@ public class AppFragment extends SherlockFragment {
 			Bundle args) {
 		View v = inflater.inflate(R.layout.frag_apps, null);
 
-
 		return v;
 	}
 
@@ -173,24 +172,25 @@ public class AppFragment extends SherlockFragment {
 		// Starting new task
 		startNewAppTask();
 		launchJP= (ImageView) getSherlockActivity().findViewById(R.id.dt_launcher);
-		launchJP.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(getSherlockActivity(),HomeActivity.class));
-			}
-		});
+//		launchJP.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				startActivity(new Intent(getSherlockActivity(),HomeActivity.class));
+//			}
+//		});
 		
 		launchDT= (ImageView) getSherlockActivity().findViewById(R.id.jp_launcher);
-		launchDT.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(getSherlockActivity(),DiscoverTrentoActivity.class));
-			}
-		});
+//		launchDT.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				startActivity(new Intent(getSherlockActivity(),DiscoverTrentoActivity.class));
+//			}
+//		});
 		startNewAppTask();
 	}
+
 
 	@Override
 	public void onStop() {
@@ -213,6 +213,7 @@ public class AppFragment extends SherlockFragment {
 			mAppTask.cancel(true);
 		}
 	}
+	
 
 	private int[] readUpdateVersions(String[] packageNames,
 			int[] defaultVersions) {
@@ -448,15 +449,15 @@ public class AppFragment extends SherlockFragment {
 
 			Context context = getSherlockActivity();          
 			NotificationManager manager = (NotificationManager)getSherlockActivity().getSystemService(getSherlockActivity().NOTIFICATION_SERVICE);
-			Notification notification = new Notification( R.drawable.launcher, getString(R.string.update_application_question), System.currentTimeMillis());  
+			Notification notification = new Notification( R.drawable.launcher, getString(R.string.update_application_notification), System.currentTimeMillis());  
 			Intent notificationIntent = new Intent( context,  LauncherActivity.class); 
 			notificationIntent.putExtra(PARAM_NAME, launcher.app.name);
 			notificationIntent.putExtra(PARAM_URL, launcher.app.url);
 			PendingIntent pendingIntent = PendingIntent.getActivity( context , 0, notificationIntent, 0);               
-			notification.flags =  Notification.FLAG_ONGOING_EVENT | Intent.FLAG_ACTIVITY_CLEAR_TOP;
+			notification.flags =  Intent.FLAG_ACTIVITY_CLEAR_TOP | Notification.FLAG_SHOW_LIGHTS ;
 			notification.contentView = new RemoteViews(getSherlockActivity().getPackageName(), R.layout.update_notification);
 			notification.contentIntent = pendingIntent;
-			notification.contentView.setTextViewText(R.id.notification_title, getString(R.string.update_application_question));
+			notification.contentView.setTextViewText(R.id.notification_title, getString(R.string.update_application_notification));
 			manager.notify(1, notification);
 
 		}
@@ -466,11 +467,7 @@ public class AppFragment extends SherlockFragment {
 	}
 
 
-@Override
-public void onPause() {
-	super.onPause();
-}
-	
+
 	public void downloadApplication(String url, String name) {
 		if (ConnectionUtil.isConnected(mConnectivityManager)) {
 			// Checking url

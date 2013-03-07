@@ -9,15 +9,14 @@
 
         <ImageView
             android:id="@+id/notifiation_image"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_app_update" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/launcher" />
 
         <TextView
             android:id="@+id/notification_title"
             style="@style/Theme.ViviTrento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/update_application_question" />
+            android:text="@string/update_application_notification" />
     </LinearLayout>
