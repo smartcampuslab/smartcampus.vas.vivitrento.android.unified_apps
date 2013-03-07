@@ -23,7 +23,7 @@
 
 <!--     <string name="smartcampus_auth_url">https://ac.smartcampuslab.it/ac-service-provider-web/ac/</string> -->
 <!--     <string name="smartcampus_app_url">https://vas.smartcampuslab.it</string>     -->
-    <string name="smartcampus_auth_url">https://ac.smartcampuslab.it/ac-service-provider-web-dev/ac/</string>
+    <string name="smartcampus_auth_url"> https://ac.smartcampuslab.it/accesstoken-provider-dev/ac</string>
     <string name="smartcampus_app_url">https://vas-dev.smartcampuslab.it</string>
 
     

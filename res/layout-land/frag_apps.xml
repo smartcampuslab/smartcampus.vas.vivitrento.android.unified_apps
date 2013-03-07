@@ -51,6 +51,7 @@
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:clickable="true"
+                android:onClick="launchJP"                             
                 android:src="@drawable/jp_launcher" />
 
             <ImageView
@@ -62,6 +63,7 @@
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:clickable="true"
+                android:onClick="launchDT"             
                 android:src="@drawable/dt_launcher" />
 
             <ImageView

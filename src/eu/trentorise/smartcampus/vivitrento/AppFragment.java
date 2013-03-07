@@ -41,9 +41,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -57,8 +55,6 @@ import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.common.AppInspector;
 import eu.trentorise.smartcampus.common.LauncherException;
 import eu.trentorise.smartcampus.common.Status;
-import eu.trentorise.smartcampus.dt.DiscoverTrentoActivity;
-import eu.trentorise.smartcampus.jp.HomeActivity;
 import eu.trentorise.smartcampus.protocolcarrier.ProtocolCarrier;
 import eu.trentorise.smartcampus.protocolcarrier.common.Constants.Method;
 import eu.trentorise.smartcampus.protocolcarrier.custom.MessageRequest;
@@ -100,8 +96,6 @@ public class AppFragment extends SherlockFragment {
 	private int[] version;
 	private boolean toUpdate = true;
 	private ProgressDialog progress = null;
-	private ImageView launchJP;
-	private ImageView launchDT;
 	private boolean to_be_updated=false;
 	private AppItem launcher;
 	 // force the update pressing the menu button
@@ -154,6 +148,10 @@ public class AppFragment extends SherlockFragment {
 	public void onSaveInstanceState(Bundle arg0) {
 		super.onSaveInstanceState(arg0);
 	}
+	public void check_version(){
+		// Starting new task
+		startNewAppTask();
+	}
 	@Override
 	public void onStart() {
 		super.onStart();
@@ -169,26 +167,7 @@ public class AppFragment extends SherlockFragment {
 			getSherlockActivity().getSupportActionBar().setNavigationMode(
 					ActionBar.NAVIGATION_MODE_STANDARD);
 		}
-		// Starting new task
-		startNewAppTask();
-		launchJP= (ImageView) getSherlockActivity().findViewById(R.id.dt_launcher);
-//		launchJP.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				startActivity(new Intent(getSherlockActivity(),HomeActivity.class));
-//			}
-//		});
-		
-		launchDT= (ImageView) getSherlockActivity().findViewById(R.id.jp_launcher);
-//		launchDT.setOnClickListener(new OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				startActivity(new Intent(getSherlockActivity(),DiscoverTrentoActivity.class));
-//			}
-//		});
-		startNewAppTask();
+
 	}
 
 
@@ -213,7 +192,7 @@ public class AppFragment extends SherlockFragment {
 			mAppTask.cancel(true);
 		}
 	}
-	
+
 
 	private int[] readUpdateVersions(String[] packageNames,
 			int[] defaultVersions) {
@@ -506,7 +485,8 @@ public class AppFragment extends SherlockFragment {
 				R.string.check_updates);// force the update check
 
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
-																					// page
+																				// page
+		
 		}
 
 
@@ -598,6 +578,7 @@ public class AppFragment extends SherlockFragment {
 			// update
 			AlertDialog.Builder builder = new AlertDialog.Builder(
 					getSherlockActivity());
+			builder.setCancelable(false);
 			builder.setMessage(
 					getString(R.string.update_application_question))
 					.setPositiveButton("Yes", updateDialogClickListener)

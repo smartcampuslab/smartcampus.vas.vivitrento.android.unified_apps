@@ -17,7 +17,10 @@ package eu.trentorise.smartcampus.vivitrento;
 
 import android.accounts.AccountManager;
 import android.accounts.OperationCanceledException;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
@@ -56,12 +59,63 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		try {
+			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			initGlobalConstants();
-			new AMSCAccessProvider().getAuthToken(this, null);
-		} catch (OperationCanceledException e) {
-			Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
-			finish();
-		} catch (Exception e) {
+			//
+			if (accessprovider.readToken(this, null)==null){
+				//dialogbox for registration
+				DialogInterface.OnClickListener updateDialogClickListener;
+
+				updateDialogClickListener = new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						
+						try {
+							SharedPreferences settings = LauncherActivity.this.getSharedPreferences(AppFragment.PREFS_NAME, 0);
+							 SharedPreferences.Editor editor = settings.edit();
+							switch (which) {
+							case DialogInterface.BUTTON_POSITIVE:
+								
+								//yes -> accessprovider.getAuthToken(this, null);-> shared preferences "registred" true
+								
+								 accessprovider.getAuthToken(LauncherActivity.this, null);								 
+								 editor.putBoolean(getString(R.string.registered_pref), true);
+								break;
+
+							case DialogInterface.BUTTON_NEGATIVE:
+								//no -> accessprovider.getAuthToken(this, "anonymous"); ->  shared preferences "registred" true
+
+								 accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
+								 editor.putBoolean(getString(R.string.registered_pref), false);
+
+								break;
+							}
+							editor.commit();
+
+						} catch (OperationCanceledException e) {
+							Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
+							finish();
+						} catch (Exception e) {
+							Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+							finish();
+						}
+					}
+				};
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setCancelable(false);
+				builder.setMessage(
+						getString(R.string.auth_required))
+						.setPositiveButton(android.R.string.yes, updateDialogClickListener)
+						.setNegativeButton(android.R.string.no, updateDialogClickListener)
+						.show();
+			}
+			else { 
+				appFragmentCheckVersion();
+			}
+
+		}
+			
+			catch (Exception e) {
 			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 			finish();
 		}
@@ -80,14 +134,20 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
 	}
 	
+	private void appFragmentCheckVersion(){
+		AppFragment appfragment =  (AppFragment) LauncherActivity.this.getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+		appfragment.check_version();
+	}
+	
 	//getting the notification intent update the launcher
 	@Override
 	public void onNewIntent(Intent arg0) {
 		super.onNewIntent(arg0);
 		Bundle extras = arg0.getExtras();
-		ApkDownloaderTask mDownloaderTask=new ApkDownloaderTask(this, extras.getString("url"));
 
 	    if(extras != null){
+			ApkDownloaderTask mDownloaderTask=new ApkDownloaderTask(this, extras.getString("url"));
+
 	        if (ConnectionUtil.isConnected( ConnectionUtil.getConnectivityManager(this))) {
 				// Checking url
 				if (!TextUtils.isEmpty(extras.getString("url"))) {
@@ -132,12 +192,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		  FragmentManager fragmentManager = getSupportFragmentManager();
-		  try{
-		  AppFragment appfragment =  (AppFragment) fragmentManager.findFragmentById(R.id.fragment_container);	
-		  } catch (ClassCastException e){
-			  
-		  }
+		 
 		  }
 
 	@Override
@@ -146,9 +201,15 @@ public class LauncherActivity extends SherlockFragmentActivity {
 			String token = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
 			if (token == null) {
 				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+				//clean shared preferences
 			}
+			else {
+				appFragmentCheckVersion();
+			}
+
 		} else {
 			Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
+			//clean shared preferences
 			finish();
 		}
 		super.onActivityResult(requestCode, resultCode, data);
