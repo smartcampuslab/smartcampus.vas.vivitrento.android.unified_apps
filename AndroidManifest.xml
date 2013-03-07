@@ -1,8 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.vivitrento"
     android:installLocation="internalOnly"
-    android:sharedUserId="eu.trentorise.smartcampus.shared"
-    android:sharedUserLabel="@string/app_uid_label"
  	android:versionCode="1"
     android:versionName="1.0">
 
@@ -37,13 +35,15 @@
         android:launchMode="singleTask"
         android:logo="@drawable/launcher"
         android:theme="@style/Theme.ViviTrento" >
+        <meta-data android:name="SHARED_PACKAGE" android:value="eu.trentorise.smartcampus.vivitrento"/>
+        <meta-data android:name="ACCOUNT_TYPE" android:value="eu.trentorise.smartcampus.vivitrento"/>
+        <meta-data android:name="ACCOUNT_NAME" android:value="Vivi Trento"/>
         
-
         <activity
             android:name="eu.trentorise.smartcampus.vivitrento.LauncherActivity"
             android:theme="@style/Theme.ViviTrento" 
             android:label="@string/launcher_name"            
-            android:configChanges="screenSize"
+            android:configChanges="screenSize|orientation"
             android:launchMode="singleTask">
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -229,7 +229,7 @@
         android:exported="false"
     	android:authorities="eu.trentorise.smartcampus.vivitrento"
     	android:syncable="true"
-    	android:label="@string/app_name" />  
+    	android:label="@string/launcher_name" />  
     	
   		 <receiver android:name=".UpdateNotificationReceiver">
           <intent-filter>
