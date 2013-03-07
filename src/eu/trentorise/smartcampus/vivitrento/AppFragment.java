@@ -486,6 +486,13 @@ public class AppFragment extends SherlockFragment {
 
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
 																				// page
+		SharedPreferences settings = getActivity()
+				.getSharedPreferences(PREFS_NAME, 0);
+		
+		if (!settings.getBoolean(getString(R.string.registered_pref), false))
+			{
+			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
+			}
 		
 		}
 

@@ -58,5 +58,6 @@
 	<string name="update_application_notification">ViviTrento. A new version is available</string>
 	<string name="auth_required">Would you authenticate yourself?</string>
 	<string name="registered_pref">registered</string>
+	<string name="upgrade_user_menu">Register user</string>
 	
 </resources>

@@ -52,7 +52,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 	
 	
 	public static final String UPDATE = "update";
-
+	private boolean token_present = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 			initGlobalConstants();
 			//
 			if (accessprovider.readToken(this, null)==null){
+				token_present=false;
 				//dialogbox for registration
 				DialogInterface.OnClickListener updateDialogClickListener;
 
@@ -110,7 +111,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 						.show();
 			}
 			else { 
-				appFragmentCheckVersion();
+				token_present=true;
 			}
 
 		}
@@ -126,6 +127,8 @@ public class LauncherActivity extends SherlockFragmentActivity {
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			Fragment frag = new AppFragment();
 			ft.add(R.id.fragment_container, frag).commit();
+			if (token_present)
+				appFragmentCheckVersion();
 		}
 	}
 
