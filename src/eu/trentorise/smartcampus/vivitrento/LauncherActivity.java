@@ -21,14 +21,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
-import android.net.nsd.NsdManager.DiscoveryListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
@@ -39,14 +37,17 @@ import com.actionbarsherlock.view.MenuItem;
 import eu.trentorise.smartcampus.ac.Constants;
 import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
-import eu.trentorise.smartcampus.dt.DiscoverTrentoActivity;
-import eu.trentorise.smartcampus.jp.HomeActivity;
+import eu.trentorise.smartcampus.vivitrento.apps.ApkInstaller.ApkDownloaderTask;
+import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
 
 
 
 public class LauncherActivity extends SherlockFragmentActivity {
 	
 	
+	public static final String UPDATE = "update";
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		
     	// Getting saved instance
 		if (savedInstanceState == null) {
-//			 Loading first fragment that works as home for application.
+			//			 Loading first fragment that works as home for application.
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			Fragment frag = new AppFragment();
 			ft.add(R.id.fragment_container, frag).commit();
@@ -75,14 +76,55 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
 	}
+	
+	//getting the notification intent update the launcher
+	@Override
+	public void onNewIntent(Intent arg0) {
+		super.onNewIntent(arg0);
+		Bundle extras = arg0.getExtras();
+		ApkDownloaderTask mDownloaderTask=new ApkDownloaderTask(this, extras.getString("url"));
 
+	    if(extras != null){
+	        if (ConnectionUtil.isConnected( ConnectionUtil.getConnectivityManager(this))) {
+				// Checking url
+				if (!TextUtils.isEmpty(extras.getString("url"))) {
+					if (mDownloaderTask != null
+							&& !mDownloaderTask.isCancelled()) {
+						mDownloaderTask.cancel(true);
+					}
+					mDownloaderTask = new ApkDownloaderTask(this, extras.getString(AppFragment.PARAM_URL));
+					mDownloaderTask.execute();
+				} else {
+					Log.d(AppFragment.class.getName(),
+							"Empty url for download: " + extras.getString(AppFragment.PARAM_NAME));
+					Toast.makeText(this, R.string.error_occurs,
+							Toast.LENGTH_SHORT).show();
+				}
+			} else {
+				Toast.makeText(this, R.string.enable_connection,
+						Toast.LENGTH_SHORT).show();
+				Intent intent = ConnectionUtil.getWifiSettingsIntent();
+				startActivity(intent);
+			}
+	    }
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+		Fragment frag = new AppFragment();
+		ft.add(R.id.fragment_container, frag).commit();
+
+	}
+	
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		  FragmentManager fragmentManager = getSupportFragmentManager();
 		  try{
 		  AppFragment appfragment =  (AppFragment) fragmentManager.findFragmentById(R.id.fragment_container);	
-//		  appfragment.flip();
 		  } catch (ClassCastException e){
 			  
 		  }
@@ -110,7 +152,10 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		return true;
 	}
 	
-	
+	@Override
+	protected void onSaveInstanceState(Bundle arg0) {
+		super.onSaveInstanceState(arg0);
+	}
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection

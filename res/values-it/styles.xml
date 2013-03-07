@@ -1,0 +1,28 @@
+<resources>
+
+ <style name="Theme.ViviTrento" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+<!--         <item name="actionBarItemBackground">@drawable/selectable_background_journeyplanner</item> -->
+<!--         <item name="popupMenuStyle">@style/journeyplanner_PopupMenu</item> -->
+<!--         <item name="dropDownListViewStyle">@style/journeyplanner_DropDownListView</item> -->
+<!--         <item name="actionBarTabStyle">@style/journeyplanner_ActionBarTabStyle</item> -->
+<!--         <item name="actionDropDownStyle">@style/journeyplanner_DropDownNav</item> -->
+<!--         <item name="actionBarStyle">@style/journeyplanner_solid_ActionBar</item> -->
+
+<!--         <item name="android:homeAsUpIndicator">@drawable/ic_action_bar_back</item> -->
+<!--         <item name="homeAsUpIndicator">@drawable/ic_action_bar_back</item> -->
+        
+<!--         <item name="android:actionBarItemBackground">@drawable/selectable_background_journeyplanner</item> -->
+<!--         <item name="android:popupMenuStyle">@style/journeyplanner_PopupMenu</item> -->
+<!--         <item name="android:dropDownListViewStyle">@style/journeyplanner_DropDownListView</item> -->
+<!--         <item name="android:actionBarTabStyle">@style/journeyplanner_ActionBarTabStyle</item> -->
+<!--         <item name="android:actionDropDownStyle">@style/journeyplanner_DropDownNav</item> -->
+<!--         <item name="android:actionBarStyle">@style/journeyplanner_solid_ActionBar</item> -->
+<!--         <item name="android:panelBackground">@drawable/menu_hardkey_panel_journeyplanner</item> -->
+        
+<!--                 Light.DarkActionBar specific -->
+<!--         <item name="actionBarWidgetTheme">@style/Theme.journeyplanner.widget</item> -->
+<!--         <item name="android:actionBarWidgetTheme">@style/Theme.journeyplanner.widget</item> -->
+
+
+    </style>
+</resources>
