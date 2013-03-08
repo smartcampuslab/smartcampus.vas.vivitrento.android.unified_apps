@@ -46,11 +46,8 @@ import eu.trentorise.smartcampus.jp.HomeActivity;
 import eu.trentorise.smartcampus.vivitrento.apps.ApkInstaller.ApkDownloaderTask;
 import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
 
-
-
 public class LauncherActivity extends SherlockFragmentActivity {
-	
-	
+
 	public static final String UPDATE = "update";
 	private boolean token_present = false;
 
@@ -62,36 +59,39 @@ public class LauncherActivity extends SherlockFragmentActivity {
 			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			initGlobalConstants();
 			//
-			if (accessprovider.readToken(this, null)==null){
-				token_present=false;
-				//dialogbox for registration
+			if (accessprovider.readToken(this, null) == null) {
+				token_present = false;
+				// dialogbox for registration
 				DialogInterface.OnClickListener updateDialogClickListener;
 
 				updateDialogClickListener = new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						
+
 						try {
 							SharedPreferences settings = LauncherActivity.this.getSharedPreferences(AppFragment.PREFS_NAME, 0);
-							 SharedPreferences.Editor editor = settings.edit();
+							SharedPreferences.Editor editor = settings.edit();
 							switch (which) {
 							case DialogInterface.BUTTON_POSITIVE:
-								
-								//yes -> accessprovider.getAuthToken(this, null);-> shared preferences "registred" true
-								
-								 accessprovider.getAuthToken(LauncherActivity.this, null);								 
-								 editor.putBoolean(getString(R.string.registered_pref), true);
+
+								// yes -> accessprovider.getAuthToken(this,
+								// null);-> shared preferences "registred" true
+
+								accessprovider.getAuthToken(LauncherActivity.this, null);
 								break;
 
 							case DialogInterface.BUTTON_NEGATIVE:
-								//no -> accessprovider.getAuthToken(this, "anonymous"); ->  shared preferences "registred" true
+								// no -> accessprovider.getAuthToken(this,
+								// "anonymous"); -> shared preferences
+								// "registred" true
 
-								 accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
-								 editor.putBoolean(getString(R.string.registered_pref), false);
+								accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
 
 								break;
 							}
 							editor.commit();
+							appFragmentCheckVersion();
+							invalidateOptionsMenu();
 
 						} catch (OperationCanceledException e) {
 							Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
@@ -104,31 +104,27 @@ public class LauncherActivity extends SherlockFragmentActivity {
 				};
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setCancelable(false);
-				builder.setMessage(
-						getString(R.string.auth_required))
+				builder.setMessage(getString(R.string.auth_required))
 						.setPositiveButton(android.R.string.yes, updateDialogClickListener)
-						.setNegativeButton(android.R.string.no, updateDialogClickListener)
-						.show();
-			}
-			else { 
-				token_present=true;
+						.setNegativeButton(android.R.string.no, updateDialogClickListener).show();
+			} else {
+				token_present = true;
 			}
 
 		}
-			
-			catch (Exception e) {
+
+		catch (Exception e) {
 			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 			finish();
 		}
-		
-    	// Getting saved instance
+
+		// Getting saved instance
 		if (savedInstanceState == null) {
-			//			 Loading first fragment that works as home for application.
+			// Loading first fragment that works as home for application.
 			FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 			Fragment frag = new AppFragment();
 			ft.add(R.id.fragment_container, frag).commit();
-			if (token_present)
-				appFragmentCheckVersion();
+
 		}
 	}
 
@@ -136,53 +132,51 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
 	}
-	
-	private void appFragmentCheckVersion(){
-		AppFragment appfragment =  (AppFragment) LauncherActivity.this.getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+	private void appFragmentCheckVersion() {
+		AppFragment appfragment = (AppFragment) LauncherActivity.this.getSupportFragmentManager().findFragmentById(
+				R.id.fragment_container);
 		appfragment.check_version();
 	}
-	
-	//getting the notification intent update the launcher
+
+	// getting the notification intent update the launcher
 	@Override
 	public void onNewIntent(Intent arg0) {
 		super.onNewIntent(arg0);
 		Bundle extras = arg0.getExtras();
 
-	    if(extras != null){
-			ApkDownloaderTask mDownloaderTask=new ApkDownloaderTask(this, extras.getString("url"));
+		if (extras != null) {
+			ApkDownloaderTask mDownloaderTask = new ApkDownloaderTask(this, extras.getString("url"));
 
-	        if (ConnectionUtil.isConnected( ConnectionUtil.getConnectivityManager(this))) {
+			if (ConnectionUtil.isConnected(ConnectionUtil.getConnectivityManager(this))) {
 				// Checking url
 				if (!TextUtils.isEmpty(extras.getString("url"))) {
-					if (mDownloaderTask != null
-							&& !mDownloaderTask.isCancelled()) {
+					if (mDownloaderTask != null && !mDownloaderTask.isCancelled()) {
 						mDownloaderTask.cancel(true);
 					}
 					mDownloaderTask = new ApkDownloaderTask(this, extras.getString(AppFragment.PARAM_URL));
 					mDownloaderTask.execute();
 				} else {
-					Log.d(AppFragment.class.getName(),
-							"Empty url for download: " + extras.getString(AppFragment.PARAM_NAME));
-					Toast.makeText(this, R.string.error_occurs,
-							Toast.LENGTH_SHORT).show();
+					Log.d(AppFragment.class.getName(), "Empty url for download: " + extras.getString(AppFragment.PARAM_NAME));
+					Toast.makeText(this, R.string.error_occurs, Toast.LENGTH_SHORT).show();
 				}
 			} else {
-				Toast.makeText(this, R.string.enable_connection,
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.enable_connection, Toast.LENGTH_SHORT).show();
 				Intent intent = ConnectionUtil.getWifiSettingsIntent();
 				startActivity(intent);
 			}
-	    }
-		
+		}
+
 	}
-	
-	public void launchDT(View v){
-		startActivity(new Intent(this,HomeActivity.class));
+
+	public void launchDT(View v) {
+		startActivity(new Intent(this, HomeActivity.class));
 	}
-	public void launchJP(View v){
-		startActivity(new Intent(this,DiscoverTrentoActivity.class));
+
+	public void launchJP(View v) {
+		startActivity(new Intent(this, DiscoverTrentoActivity.class));
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -191,12 +185,12 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		ft.add(R.id.fragment_container, frag).commit();
 
 	}
-	
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		 
-		  }
+
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -204,20 +198,20 @@ public class LauncherActivity extends SherlockFragmentActivity {
 			String token = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
 			if (token == null) {
 				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
-				//clean shared preferences
-			}
-			else {
+				// clean shared preferences
+			} else {
 				appFragmentCheckVersion();
+				invalidateOptionsMenu();
 			}
 
 		} else {
 			Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
-			//clean shared preferences
+			// clean shared preferences
 			finish();
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.clear();
@@ -225,20 +219,20 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		inflater.inflate(R.menu.emptymenu, menu);
 		return true;
 	}
-	
+
 	@Override
 	protected void onSaveInstanceState(Bundle arg0) {
 		super.onSaveInstanceState(arg0);
 	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	        case android.R.id.home:
-	        	onBackPressed();
-	    }
+		// Handle item selection
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			onBackPressed();
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
-	
 }

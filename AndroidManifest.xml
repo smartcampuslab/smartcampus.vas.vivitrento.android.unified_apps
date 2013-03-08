@@ -43,7 +43,7 @@
             android:name="eu.trentorise.smartcampus.vivitrento.LauncherActivity"
             android:theme="@style/Theme.ViviTrento" 
             android:label="@string/launcher_name"            
-            android:configChanges="screenSize|orientation"
+            android:configChanges="screenSize"
             android:launchMode="singleTask">
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
