@@ -29,10 +29,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -117,8 +119,21 @@ public class AppFragment extends SherlockFragment {
 		// SharedPreferences.Editor editor = settings.edit(); editor.clear();
 		// editor.commit();
 
-		settings = getActivity().getSharedPreferences(PREFS_NAME, 0);
+		settings = getSherlockActivity().getSharedPreferences(PREFS_NAME, 0);
+	}
 
+	private void initSharedPref() {
+		if (launcher != null)
+			if (!settings.contains(launcher.app.name + "-last")) {
+				try {
+					settings.edit()
+							.putInt(launcher.app.name + "-last",
+									getSherlockActivity().getPackageManager().getPackageInfo(
+											getSherlockActivity().getPackageName(), 0).versionCode).commit();
+				} catch (NameNotFoundException e) {
+					settings.edit().putInt(launcher.app.name + "-last", 1).commit();
+				}
+			}
 	}
 
 	@Override
@@ -141,7 +156,8 @@ public class AppFragment extends SherlockFragment {
 
 	public void check_version() {
 		// Starting new task
-		startNewAppTask();
+		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
+			startNewAppTask();
 	}
 
 	@Override
@@ -208,6 +224,7 @@ public class AppFragment extends SherlockFragment {
 			try {
 				MessageResponse mres = pc.invokeSync(req, LAUNCHER, new AMSCAccessProvider().readToken(getActivity(), null));
 				if (mres != null && mres.getBody() != null) {
+
 					// Update from variable sec
 					Calendar dateCal = Calendar.getInstance();
 					dateCal.setTime(new Date());
@@ -219,7 +236,9 @@ public class AppFragment extends SherlockFragment {
 						Integer version = update.getVersion(packageNames[i]);
 						res[i] = version == null ? 0 : version;
 						settings.edit().putInt(packageNames[i] + "-version", version).commit();
+
 					}
+
 					version = res;
 				}
 			} catch (Exception e) {
@@ -347,6 +366,8 @@ public class AppFragment extends SherlockFragment {
 				/* update menu button on */
 				settings.edit().putBoolean("to_be_updated", true).commit();
 				/* create notification if it is a new version */
+				initSharedPref();
+
 				if (newversion(launcher)) {
 					shownotificationupdate();
 				}
@@ -365,12 +386,13 @@ public class AppFragment extends SherlockFragment {
 			/* check if the version is new respect to the last checked */
 			SharedPreferences settings = getSherlockActivity().getSharedPreferences(PREFS_NAME, 0);
 			SharedPreferences.Editor editor = settings.edit();
-			if (!settings.contains(launcher.app.name + "-last")) {
-				editor.putInt(launcher.app.name + "-last", launcher.app.version);
-				editor.commit();
-				return false;
-			}
-			if (settings.getInt(launcher.app.name + "-last", 0) < launcher.app.version) {
+			// if (!settings.contains(launcher.app.name + "-last")) {
+			// editor.putInt(launcher.app.name + "-last", launcher.app.version);
+			// editor.commit();
+			// return false;
+			// }
+
+			if (settings.getInt(launcher.app.name + "-last", 1) < launcher.app.version) {
 				editor.putInt(launcher.app.name + "-last", launcher.app.version);
 				editor.commit();
 				return true;
