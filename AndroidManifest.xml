@@ -139,6 +139,11 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsActivityJP"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner" />
+        <activity
             android:name="eu.trentorise.smartcampus.jp.ProfileActivity"
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/jp"
@@ -209,8 +214,13 @@
         <activity 
             android:name="eu.trentorise.smartcampus.dt.fragments.stories.MyMapActivity"
             android:logo="@drawable/dt"
-            android:theme="@style/Theme.discovertrento"/>
-        
+            android:theme="@style/Theme.discovertrento" />
+            
+        <activity
+            android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsActivityDT"
+            android:logo="@drawable/dt"
+            android:theme="@style/Theme.discovertrento" />
+
         <service
             android:name="eu.trentorise.smartcampus.dt.syncadapter.DTSyncService"
             android:exported="false" >
@@ -223,6 +233,18 @@
                 android:resource="@xml/syncadapter" />
         </service>
         
+        <service
+            android:name="eu.trentorise.smartcampus.vivitrento.syncadapter.NotificationsSyncService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/notificationssyncadapter" />
+        </service>
+        
 
       <provider
         android:name="eu.trentorise.smartcampus.dt.DTDummyProvider"
@@ -231,7 +253,14 @@
     	android:syncable="true"
     	android:label="@string/launcher_name" />  
     	
-  		 <receiver android:name=".UpdateNotificationReceiver">
+       <provider
+        android:name="eu.trentorise.smartcampus.notifications.DummyProvider"
+        android:exported="false"
+        android:authorities="eu.trentorise.smartcampus.notifications"
+        android:syncable="true"
+        android:label="@string/notifications_name" /> 
+    	
+        <receiver android:name=".UpdateNotificationReceiver">
           <intent-filter>
             <action android:name="eu.trentorise.smartcampus.UpdateNotification"/>
           </intent-filter>

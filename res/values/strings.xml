@@ -19,6 +19,7 @@
     <string name="launcher_name">ViviTrento</string>
     <string name="jp_name">ViaggiaTrento</string>
     <string name="dt_name">ViviTrento</string>
+    <string name="notifications_name">Notifications</string>
         
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -59,5 +60,10 @@
 	<string name="auth_required">Would you authenticate yourself?</string>
 	<string name="registered_pref">registered</string>
 	<string name="upgrade_user_menu">Register</string>
+	
+	<string name="notification_title">New notification: </string>
+    <string name="notification_text">New notification: </string>
+    <string name="notification_title_multi"> new notifications.</string>
+    <string name="notification_text_multi"> new notifications.</string>
 	
 </resources>
