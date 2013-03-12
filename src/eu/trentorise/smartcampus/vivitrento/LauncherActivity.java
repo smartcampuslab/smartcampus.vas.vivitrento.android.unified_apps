@@ -26,7 +26,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
@@ -41,6 +40,7 @@ import com.actionbarsherlock.view.MenuItem;
 import eu.trentorise.smartcampus.ac.Constants;
 import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
+import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.dt.DiscoverTrentoActivity;
 import eu.trentorise.smartcampus.jp.HomeActivity;
 import eu.trentorise.smartcampus.vivitrento.apps.ApkInstaller.ApkDownloaderTask;
@@ -52,10 +52,12 @@ public class LauncherActivity extends SherlockFragmentActivity {
 	private boolean token_present = false;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		try {
+			ViviTrentoHelper.init(getApplicationContext());
+			
 			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			initGlobalConstants();
 			//
