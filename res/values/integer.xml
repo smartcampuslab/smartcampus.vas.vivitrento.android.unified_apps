@@ -15,7 +15,7 @@
   limitations under the License.
 -->
 <resources>
-<!--     <integer name="check_interval">7200</integer> in seconds -->
-    <integer name="check_interval">5</integer> 
+    <integer name="check_interval">7200</integer> 
+<!--     <integer name="check_interval">5</integer>  -->
 
 </resources>

@@ -156,8 +156,8 @@ public class AppFragment extends SherlockFragment {
 
 	public void check_version() {
 		// Starting new task
-		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
-			startNewAppTask();
+//		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
+//			startNewAppTask();
 	}
 
 	@Override
@@ -171,8 +171,8 @@ public class AppFragment extends SherlockFragment {
 		if (getSherlockActivity().getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD) {
 			getSherlockActivity().getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		}
-		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
-			startNewAppTask();
+//		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
+//			startNewAppTask();
 	}
 
 	@Override
@@ -267,7 +267,7 @@ public class AppFragment extends SherlockFragment {
 				editor.remove(KEY_UPDATE_REFRESH).commit();
 			}
 			if (((toUpdate) && (progress == null)) || forced)
-				progress = ProgressDialog.show(getSherlockActivity(), "", "Checking applications version", true);
+				progress = ProgressDialog.show(getSherlockActivity(), "", getString(R.string.checking_version), true);
 
 		};
 
@@ -453,11 +453,11 @@ public class AppFragment extends SherlockFragment {
 		SubMenu submenu = menu.getItem(1).getSubMenu();
 		submenu.clear();
 		submenu.setIcon(R.drawable.ic_action_overflow);
-
-		submenu.add(Menu.CATEGORY_SYSTEM, R.id.check_updates, Menu.NONE, R.string.check_updates);// force
-																									// the
-																									// update
-																									// check
+//
+//		submenu.add(Menu.CATEGORY_SYSTEM, R.id.check_updates, Menu.NONE, R.string.check_updates);// force
+//																									// the
+//																									// update
+//																									// check
 
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
 																					// page
