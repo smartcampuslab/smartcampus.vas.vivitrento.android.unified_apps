@@ -1,14 +1,277 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.vivitrento"
-    android:versionCode="1"
+    android:installLocation="internalOnly"
+ 	android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="15" />
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    
+	<permission android:name="eu.trentorise.smartcampus.ac.AUTHENTICATE" android:protectionLevel="signature"/>
+    
+    <uses-permission
+        android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission
+        android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission
+        android:name="android.permission.WRITE_SYNC_SETTINGS" /> 
+    
+    <application 
+        android:icon="@drawable/launcher"
+        android:label="@string/launcher_name"
+        android:launchMode="singleTask"
+        android:logo="@drawable/launcher"
+        android:theme="@style/Theme.ViviTrento" >
+        <meta-data android:name="SHARED_PACKAGE" android:value="eu.trentorise.smartcampus.vivitrento"/>
+        <meta-data android:name="ACCOUNT_TYPE" android:value="eu.trentorise.smartcampus.vivitrento"/>
+        <meta-data android:name="ACCOUNT_NAME" android:value="Vivi Trento"/>
+        
+        <!-- Uses feedback metadata -->
+        <meta-data android:name="use-feedback" android:value="true" />
+        
+        <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
+        
+        <activity
+            android:name="eu.trentorise.smartcampus.vivitrento.LauncherActivity"
+            android:theme="@style/Theme.ViviTrento" 
+            android:label="@string/launcher_name"            
+            android:configChanges="screenSize"
+            android:launchMode="singleTask">
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-    <application android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme">
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> 
+        </activity>
 
+         <service android:name="eu.trentorise.smartcampus.ac.authenticator.AuthenticationService" 
+             android:exported="true" 
+             android:permission="eu.trentorise.smartcampus.ac.AUTHENTICATE">
+            <intent-filter>
+                <action
+                    android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+        
+        <activity
+            android:name="eu.trentorise.smartcampus.ac.authenticator.AuthenticatorActivity"
+            android:theme="@style/Theme.ViviTrento"
+            android:configChanges="orientation|screenSize"/>
+         <activity
+            android:name=".settings.SettingsActivity"
+            android:theme="@style/Theme.ViviTrento"            
+            android:configChanges="orientation|screenSize"
+            />
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.HomeActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/jp_name"
+            android:logo="@drawable/jp"                      
+            android:theme="@style/Theme.journeyplanner"
+            android:launchMode="singleTask" >
+
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.AddressSelectActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"           
+            android:theme="@style/Theme.journeyplanner" />
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.StopSelectActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"                       
+            android:theme="@style/Theme.journeyplanner" />
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.LegMapActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner" />
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.PlanJourneyActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.jp.NAVIGATE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.PlanRecurJourneyActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.SavedJourneyActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.ViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="eu.trentorise.smartcampus.journey" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsActivityJP"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner" />
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.ProfileActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner" />
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner" />
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.SmartCheckActivity"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner"
+            android:label="@string/title_activity_smart_check" >
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.Launcher"
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/jp"
+            android:theme="@style/Theme.journeyplanner"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+       <activity
+            android:name="eu.trentorise.smartcampus.dt.DiscoverTrentoActivity"
+            android:label="@string/dt_name"
+            android:theme="@style/Theme.discovertrento"            
+            android:configChanges="orientation|screenSize"
+            android:logo="@drawable/dt"
+            android:launchMode="singleTop" >
+
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.START" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="eu.trentorise.smartcampus.event" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="eu.trentorise.smartcampus.location" />
+            </intent-filter>
+          <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="eu.trentorise.smartcampus.narrative" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="eu.trentorise.smartcampus.dt.fragments.pois.AddressSelectActivity"
+			android:logo="@drawable/dt"
+            android:theme="@style/Theme.discovertrento"/>
+        <activity
+            android:name="eu.trentorise.smartcampus.dt.fragments.events.POISelectActivity"
+            android:logo="@drawable/dt"
+            android:theme="@style/Theme.discovertrento"/>
+        
+        <activity 
+            android:name="eu.trentorise.smartcampus.dt.fragments.stories.MyMapActivity"
+            android:logo="@drawable/dt"
+            android:theme="@style/Theme.discovertrento" />
+            
+        <activity
+            android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsActivityDT"
+            android:logo="@drawable/dt"
+            android:theme="@style/Theme.discovertrento" />
+
+        <service
+            android:name="eu.trentorise.smartcampus.dt.syncadapter.DTSyncService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/syncadapter" />
+        </service>
+        
+        <service
+            android:name="eu.trentorise.smartcampus.vivitrento.syncadapter.NotificationsSyncService"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/notificationssyncadapter" />
+        </service>
+        
+
+      <provider
+        android:name="eu.trentorise.smartcampus.dt.DTDummyProvider"
+        android:exported="false"
+    	android:authorities="eu.trentorise.smartcampus.vivitrento"
+    	android:syncable="true"
+    	android:label="@string/launcher_name" />  
+    	
+       <provider
+        android:name="eu.trentorise.smartcampus.notifications.DummyProvider"
+        android:exported="false"
+        android:authorities="eu.trentorise.smartcampus.notifications"
+        android:syncable="true"
+        android:label="@string/notifications_name" /> 
+    	
+        <receiver android:name=".UpdateNotificationReceiver">
+          <intent-filter>
+            <action android:name="eu.trentorise.smartcampus.UpdateNotification"/>
+          </intent-filter>
+        </receiver>
+   <uses-library android:name="com.google.android.maps" />
+   <activity android:name="eu.trentorise.smartcampus.dt.notifications.NotificationFragmentActivityDT"></activity>
+        
     </application>
 
 </manifest>

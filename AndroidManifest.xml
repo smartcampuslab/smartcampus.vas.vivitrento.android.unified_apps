@@ -39,6 +39,9 @@
         <meta-data android:name="ACCOUNT_TYPE" android:value="eu.trentorise.smartcampus.vivitrento"/>
         <meta-data android:name="ACCOUNT_NAME" android:value="Vivi Trento"/>
         
+        <!-- Uses feedback metadata -->
+        <meta-data android:name="use-feedback" android:value="true" />
+        
         <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
         
         <activity
@@ -267,6 +270,7 @@
           </intent-filter>
         </receiver>
    <uses-library android:name="com.google.android.maps" />
+   <activity android:name="eu.trentorise.smartcampus.dt.notifications.NotificationFragmentActivityDT"></activity>
         
     </application>
 
