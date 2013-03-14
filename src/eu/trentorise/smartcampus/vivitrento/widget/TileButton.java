@@ -15,15 +15,14 @@
  ******************************************************************************/
 package eu.trentorise.smartcampus.vivitrento.widget;
 
-import eu.trentorise.smartcampus.common.Status;
-import eu.trentorise.smartcampus.vivitrento.R;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.opengl.Visibility;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import eu.trentorise.smartcampus.vivitrento.R;
+
 
 /**
  * Class that works as a button with a top Drawable but allows to have a better
