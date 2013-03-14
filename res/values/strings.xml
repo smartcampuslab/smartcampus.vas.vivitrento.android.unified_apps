@@ -56,8 +56,8 @@
     <string name="update_dev">Apps Version</string>
     <string name="update_dev_sum">Check for test updates</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
-	<string name="update_application_notification">ViviTrento. A new version is available</string>
-	<string name="auth_required">Would you authenticate yourself?</string>
+	<string name="update_application_notification">A new version of ViviTrento is available.</string>
+	<string name="auth_required">Would you like to authenticate yourself?</string>
 	<string name="registered_pref">registered</string>
 	<string name="upgrade_user_menu">Register</string>
 	
