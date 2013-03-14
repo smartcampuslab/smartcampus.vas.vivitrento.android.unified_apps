@@ -156,8 +156,8 @@ public class AppFragment extends SherlockFragment {
 
 	public void check_version() {
 		// Starting new task
-//		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
-//			startNewAppTask();
+		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
+			startNewAppTask();
 	}
 
 	@Override
@@ -171,8 +171,8 @@ public class AppFragment extends SherlockFragment {
 		if (getSherlockActivity().getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD) {
 			getSherlockActivity().getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		}
-//		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
-//			startNewAppTask();
+		if (new AMSCAccessProvider().readToken(getActivity(), null) != null)
+			startNewAppTask();
 	}
 
 	@Override
