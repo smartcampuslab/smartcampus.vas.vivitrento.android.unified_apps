@@ -34,7 +34,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -16,6 +16,8 @@
 
 package eu.trentorise.smartcampus.vivitrento.syncadapter;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import android.accounts.Account;
@@ -31,6 +33,8 @@ import android.util.Log;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.communicator.model.Notification;
+import eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT;
+import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
 import eu.trentorise.smartcampus.storage.sync.SyncData;
@@ -45,6 +49,9 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	private static final String TAG = "NotificationsSyncAdapter";
 
 	private final Context mContext;
+
+	private static String NOTIFICATION_TYPE_DISCOVERTRENTO = "social";
+	private static String NOTIFICATION_TYPE_JOURNEYPLANNER = "journeyplanner";
 
 	public NotificationsSyncAdapter(Context context, boolean autoInitialize) {
 		super(context, autoInitialize);
@@ -97,25 +104,55 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 		mNotificationManager.notify(eu.trentorise.smartcampus.ac.Constants.ACCOUNT_NOTIFICATION_ID, notification);
 	}
 
-	private void onDBUpdate(List<Object> list) {
-		Intent i = new Intent("eu.trentorise.smartcampus.START");
-		i.setPackage(mContext.getPackageName());
+	private void onDBUpdate(List<Object> objsList) {
 
-		NotificationManager mNotificationManager = (NotificationManager) mContext
-				.getSystemService(Context.NOTIFICATION_SERVICE);
+		List<Object> dtList = new ArrayList<Object>();
+		List<Object> jpList = new ArrayList<Object>();
 
-		int icon = R.drawable.launcher;
+		for (Object obj : objsList) {
+			LinkedHashMap<String, Object> notification = (LinkedHashMap<String, Object>) obj;
+			String type = (String) notification.get("type");
+			if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
+				dtList.add(notification);
+			} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
+				jpList.add(notification);
+			}
+		}
 
-		CharSequence tickerText = extractTitle(list);
-		long when = System.currentTimeMillis();
-		CharSequence contentText = extractText(list);
-		PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, i, 0);
+		List<List<Object>> notificationsLists = new ArrayList<List<Object>>();
+		notificationsLists.add(dtList);
+		notificationsLists.add(jpList);
 
-		android.app.Notification notification = new android.app.Notification(icon, tickerText, when);
-		notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
-		notification.setLatestEventInfo(mContext, tickerText, contentText, contentIntent);
+		for (List<Object> list : notificationsLists) {
+			if (!list.isEmpty()) {
+				int icon = 0;
+				Intent intent = null;
 
-		mNotificationManager.notify(eu.trentorise.smartcampus.ac.Constants.ACCOUNT_NOTIFICATION_ID, notification);
+				LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) list.get(0);
+				String type = (String) map.get("type");
+				if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
+					icon = R.drawable.discover;
+					intent = new Intent(mContext, NotificationsFragmentActivityDT.class);
+				} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
+					icon = R.drawable.journey;
+					intent = new Intent(mContext, NotificationsFragmentActivityJP.class);
+				}
+
+				NotificationManager mNotificationManager = (NotificationManager) mContext
+						.getSystemService(Context.NOTIFICATION_SERVICE);
+
+				CharSequence tickerText = extractTitle(list);
+				long when = System.currentTimeMillis();
+				CharSequence contentText = extractText(list);
+				PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
+
+				android.app.Notification notification = new android.app.Notification(icon, tickerText, when);
+				notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
+				notification.setLatestEventInfo(mContext, tickerText, contentText, contentIntent);
+
+				mNotificationManager.notify(eu.trentorise.smartcampus.ac.Constants.ACCOUNT_NOTIFICATION_ID, notification);
+			}
+		}
 	}
 
 	private CharSequence extractTitle(List<Object> list) {
@@ -129,9 +166,11 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	}
 
 	private CharSequence format(List<Object> list, int res, int resMulti) {
+
 		String txt = "";
 		if (list.size() == 1) {
-			String title = ((Notification) list.get(0)).getTitle();
+			LinkedHashMap<String, Object> notificationMap = (LinkedHashMap<String, Object>) list.get(0);
+			String title = (String) notificationMap.get("type");
 			txt = mContext.getString(eu.trentorise.smartcampus.vivitrento.R.string.notification_title) + " " + title;
 		} else
 			txt = list.size() + " "

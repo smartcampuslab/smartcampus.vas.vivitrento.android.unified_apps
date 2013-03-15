@@ -143,7 +143,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsActivityJP"
+            android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP"
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/jp"
             android:theme="@style/Theme.journeyplanner" />
@@ -221,7 +221,7 @@
             android:theme="@style/Theme.discovertrento" />
             
         <activity
-            android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsActivityDT"
+            android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT"
             android:logo="@drawable/dt"
             android:theme="@style/Theme.discovertrento" />
 
@@ -270,10 +270,6 @@
           </intent-filter>
         </receiver>
    <uses-library android:name="com.google.android.maps" />
-   <activity android:name="eu.trentorise.smartcampus.dt.notifications.NotificationFragmentActivityDT"
-       android:theme="@style/Theme.discovertrento"></activity>
-   <activity android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP"
-        android:theme="@style/Theme.journeyplanner"></activity>
         
     </application>
 
