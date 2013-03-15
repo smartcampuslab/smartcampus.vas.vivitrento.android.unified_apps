@@ -32,7 +32,7 @@
     <string name="enable_connection">Connessione non disponibile. Verifica le impostazioni dello smartphone e riprova.</string>
 
     <string name="token_required">Si prega di effettuare il login prima di proseguire con l\'utilizzo delle app.</string>
-    <string name="auth_failed">Errore nell\'inizializzazione dell\'app.</string>
+    <string name="auth_failed">Errore nell\'inizializzazione dell\'app. Riprova a breve.</string>
     <string name="update_application_question">E\' disponibile una nuova versione. Desideri aggiornare l\'applicazione adesso?</string>
     <string name="update_application_manual_list">App aggiunta tra gli aggiornamenti manuali.</string>
     <string name="update_option_list">Aggiornamenti manuali</string>
@@ -57,9 +57,12 @@
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
 	<string name="update_application_notification">ViviTrento. Una nuova versione è disponibile</string>
     <string name="upgrade_user_menu">Registrati</string>
-	
+	<string name="auth_required">Registrati con il tuo account Google e potrai accedere a tutte le funzionalitá offerte dall\'app</string>
+    
 	<string name="notification_title">Nuova notifica: </string>
     <string name="notification_text">Nuova notifica: </string>
     <string name="notification_title_multi"> nuove notifiche.</string>
     <string name="notification_text_multi"> nuove notifiche.</string>
+    <string name="not_now">Non adesso</string>
+    
 </resources>

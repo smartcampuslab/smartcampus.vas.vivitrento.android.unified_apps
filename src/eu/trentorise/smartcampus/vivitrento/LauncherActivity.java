@@ -108,7 +108,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 				builder.setCancelable(false);
 				builder.setMessage(getString(R.string.auth_required))
 						.setPositiveButton(android.R.string.yes, updateDialogClickListener)
-						.setNegativeButton(android.R.string.no, updateDialogClickListener).show();
+						.setNegativeButton(R.string.not_now, updateDialogClickListener).show();
 			} else {
 				token_present = true;
 			}
@@ -206,8 +206,13 @@ public class LauncherActivity extends SherlockFragmentActivity {
 				invalidateOptionsMenu();
 			}
 
-		} else {
+		} else if (resultCode == RESULT_CANCELED ) {
 			Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
+			// clean shared preferences
+			finish();
+
+		}else {
+			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
 			// clean shared preferences
 			finish();
 		}
