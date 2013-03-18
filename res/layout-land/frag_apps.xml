@@ -25,14 +25,16 @@
 <!--     android:listSelector="@null" -->
 <!--     android:gravity="fill_vertical" -->
 <!-- /> -->
+
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frag"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:clickable="true"
             android:background="@drawable/background_launcher_hor"
             android:orientation="vertical"
+            android:clickable="true"      
+            android:weightSum="1" 
             >
-
 
             <ImageView
                 android:id="@+id/empty_view1"
