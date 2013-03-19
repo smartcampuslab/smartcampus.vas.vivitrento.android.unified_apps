@@ -55,9 +55,9 @@
     <string name="update_dev">Versione delle app</string>
     <string name="update_dev_sum">Verifica la presenza di aggiornamenti di test</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
-	<string name="update_application_notification">ViviTrento. Una nuova versione è disponibile</string>
+	<string name="update_application_notification">E\' disponibile una nuova versione di ViviTrento.</string>
     <string name="upgrade_user_menu">Registrati</string>
-	<string name="auth_required">Registrati con il tuo account Google e potrai accedere a tutte le funzionalitá offerte dall\'app</string>
+	<string name="auth_required">Registrati con il tuo account Google e potrai accedere a tutte le funzionalità offerte dall\'app.</string>
     
 	<string name="notification_title">Nuova notifica: </string>
     <string name="notification_text">Nuova notifica: </string>

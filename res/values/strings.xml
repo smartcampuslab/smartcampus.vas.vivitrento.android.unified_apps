@@ -58,7 +58,7 @@
     <string name="update_dev_sum">Check for test updates</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
 	<string name="update_application_notification">A new version of ViviTrento is available.</string>
-	<string name="auth_required">Authenticate yourself with your Google account to exploit all offered functionalities</string>
+	<string name="auth_required">Authenticate yourself with your Google account to get all the offered functionalities</string>
 	<string name="registered_pref">registered</string>
 	<string name="upgrade_user_menu">Register</string>
 	
