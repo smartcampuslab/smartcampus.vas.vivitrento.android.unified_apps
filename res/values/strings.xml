@@ -63,10 +63,12 @@
 	<string name="registered_pref">registered</string>
 	<string name="upgrade_user_menu">Register</string>
 	
-	<string name="notification_title">New notification: </string>
-    <string name="notification_text">New notification: </string>
-    <string name="notification_title_multi"> new notifications.</string>
-    <string name="notification_text_multi"> new notifications.</string>
+    <string name="notification_text">%s new notification</string>
+    <string name="notification_text_multi">%s new notifications</string>
 	<string name="checking_version">Checking applications version</string>
 	<string name="not_now">Not now</string>
+	
+	<string name="notification_type_discovertrento">ViviTrento</string>
+	<string name="notification_type_journeyplanner">ViaggiaTrento</string>
+	
 </resources>

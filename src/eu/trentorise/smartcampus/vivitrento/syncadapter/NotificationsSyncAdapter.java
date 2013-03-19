@@ -156,25 +156,29 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	}
 
 	private CharSequence extractTitle(List<Object> list) {
-		return format(list, eu.trentorise.smartcampus.vivitrento.R.string.notification_title,
-				eu.trentorise.smartcampus.vivitrento.R.string.notification_title_multi);
+		String txt = "";
+
+		LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) list.get(0);
+		String type = (String) map.get("type");
+		if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
+			txt = mContext.getString(R.string.notification_type_discovertrento);
+		} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
+			txt = mContext.getString(R.string.notification_type_journeyplanner);
+		}
+
+		return txt;
 	}
 
 	private CharSequence extractText(List<Object> list) {
-		return format(list, eu.trentorise.smartcampus.vivitrento.R.string.notification_text,
-				eu.trentorise.smartcampus.vivitrento.R.string.notification_text_multi);
-	}
-
-	private CharSequence format(List<Object> list, int res, int resMulti) {
-
 		String txt = "";
+
 		if (list.size() == 1) {
-			LinkedHashMap<String, Object> notificationMap = (LinkedHashMap<String, Object>) list.get(0);
-			String title = (String) notificationMap.get("type");
-			txt = mContext.getString(eu.trentorise.smartcampus.vivitrento.R.string.notification_title) + " " + title;
-		} else
-			txt = list.size() + " "
-					+ mContext.getString(eu.trentorise.smartcampus.vivitrento.R.string.notification_title_multi);
+			txt = mContext.getString(eu.trentorise.smartcampus.vivitrento.R.string.notification_text,
+					Integer.toString(list.size()));
+		} else {
+			txt = mContext.getString(eu.trentorise.smartcampus.vivitrento.R.string.notification_text_multi,
+					Integer.toString(list.size()));
+		}
 		return txt;
 	}
 }

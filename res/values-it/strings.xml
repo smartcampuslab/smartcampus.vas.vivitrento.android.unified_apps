@@ -59,11 +59,8 @@
     <string name="upgrade_user_menu">Registrati</string>
 	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate di ViviTrento.</string>
 
-    
-	<string name="notification_title">Nuova notifica: </string>
-    <string name="notification_text">Nuova notifica: </string>
-    <string name="notification_title_multi"> nuove notifiche.</string>
-    <string name="notification_text_multi"> nuove notifiche.</string>
+    <string name="notification_text">%s nuova notifica</string>
+    <string name="notification_text_multi">%s nuove notifiche</string>
     <string name="not_now">Non adesso</string>
     
 </resources>
