@@ -147,6 +147,7 @@
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP"
+            android:label="@string/jp_name"
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/jp"
             android:theme="@style/Theme.journeyplanner" />
@@ -225,6 +226,8 @@
             
         <activity
             android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT"
+            android:label="@string/dt_name"
+
             android:logo="@drawable/dt"
             android:theme="@style/Theme.discovertrento" />
 
