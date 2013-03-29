@@ -1,0 +1,66 @@
+<!--
+  Copyright 2012-2013 Trento RISE
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+         http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either   express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<resources>
+
+<!--     <string name="app_name">ViviTrento</string> -->
+    <string name="launcher_name">ViviTrento</string>
+    <string name="jp_name">ViaggiaTrento</string>
+    <string name="dt_name">EsploraTrento</string>
+        
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Impostazioni</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="app_uid_label">ViviTrento</string>
+    <string name="label_portfolio_apk">Portfolio</string>
+    <string name="downloaded_app">tmp</string>
+    <string name="getting_apk">Sto scaricando l\'app&#8230;</string>
+    <string name="error_occurs">OOPS! Questa app non è ancora disponibile.</string>
+    <string name="not_secure_app">Not secure app!</string> <!-- ?! -->
+    <string name="enable_connection">Connessione non disponibile. Verifica le impostazioni dello smartphone e riprova.</string>
+
+    <string name="token_required">Si prega di effettuare il login prima di proseguire con l\'utilizzo delle app.</string>
+    <string name="auth_failed">Errore nell\'inizializzazione dell\'app. Riprova a breve.</string>
+    <string name="update_application_question">E\' disponibile una nuova versione. Desideri aggiornare l\'applicazione adesso?</string>
+    <string name="update_application_manual_list">App aggiunta tra gli aggiornamenti manuali.</string>
+    <string name="update_option_list">Aggiornamenti manuali</string>
+    <string name="manual_update">Aggiornamenti</string>
+    <string name="list_of_applications">Lista delle app</string>
+    <string name="list_empty">Nessun aggiornamento disponibile.</string>
+    <string name="empty" />
+    <!-- string name="update_address">/download/VAS/update.conf</string-->
+    <!-- string name="update_address">/download/VAS-dev/update-dev.conf</string-->
+<!--     <string name="update_address">/download/VAS-test/update-test.conf</string>
+ --><string name="update_address">/download/VAS/update-vivitrento.conf</string>
+<!--     <string name="update_address_develop">/download/VAS/update-test.conf</string> -->
+   
+    <string name="update_host">www.smartcampuslab.it</string>
+    <string name="check_updates">Verifica aggiornamenti</string>
+    <string name="settings">Impostazioni</string>
+    <string name="about">Info</string>
+    <string name="to_be_updated">Da aggiornare</string> <!--  ?! -->
+    
+    <string name="update_dev">Versione delle app</string>
+    <string name="update_dev_sum">Verifica la presenza di aggiornamenti di test</string>
+	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
+	<string name="update_application_notification">E\' disponibile una nuova versione di ViviTrento.</string>
+    <string name="upgrade_user_menu">Registrati</string>
+	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate di ViviTrento.</string>
+
+    <string name="notification_text">%s nuova notifica</string>
+    <string name="notification_text_multi">%s nuove notifiche</string>
+    <string name="not_now">Non adesso</string>
+    
+</resources>
