@@ -39,6 +39,7 @@
         <meta-data android:name="SHARED_PACKAGE" android:value="eu.trentorise.smartcampus.vivitrento"/>
         <meta-data android:name="ACCOUNT_TYPE" android:value="eu.trentorise.smartcampus.vivitrento"/>
         <meta-data android:name="ACCOUNT_NAME" android:value="Vivi Trento"/>
+        <meta-data android:name="dt-sync-authority" android:value="eu.trentorise.smartcampus.vivitrento" />
         
         <!-- Uses feedback metadata -->
         <meta-data android:name="use-feedback" android:value="true" />
