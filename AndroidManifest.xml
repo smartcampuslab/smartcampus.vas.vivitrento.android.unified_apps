@@ -151,7 +151,8 @@
             android:label="@string/jp_name"
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/jp"
-            android:theme="@style/Theme.journeyplanner" />
+            android:theme="@style/Theme.journeyplanner"
+            android:launchMode="singleTask" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.ProfileActivity"
             android:configChanges="orientation|screenSize"
