@@ -19,6 +19,6 @@
 
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
     android:contentAuthority="eu.trentorise.smartcampus.notifications"
-    android:accountType="eu.trentorise.smartcampus.vivirovereto"
+    android:accountType="eu.trentorise.smartcampus.viaggiarovereto"
     android:supportsUploading="false"
 />

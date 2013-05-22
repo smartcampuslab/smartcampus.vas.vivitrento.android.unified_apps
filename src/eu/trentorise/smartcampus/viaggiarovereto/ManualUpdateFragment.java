@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package eu.trentorise.smartcampus.vivirovereto;
+package eu.trentorise.smartcampus.viaggiarovereto;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -53,13 +53,13 @@ import eu.trentorise.smartcampus.protocolcarrier.ProtocolCarrier;
 import eu.trentorise.smartcampus.protocolcarrier.common.Constants.Method;
 import eu.trentorise.smartcampus.protocolcarrier.custom.MessageRequest;
 import eu.trentorise.smartcampus.protocolcarrier.custom.MessageResponse;
-import eu.trentorise.smartcampus.vivirovereto.R;
-import eu.trentorise.smartcampus.vivirovereto.AppFragment.AppItem;
-import eu.trentorise.smartcampus.vivirovereto.apps.ApkInstaller.ApkDownloaderTask;
-import eu.trentorise.smartcampus.vivirovereto.models.SmartApp;
-import eu.trentorise.smartcampus.vivirovereto.models.UpdateModel;
-import eu.trentorise.smartcampus.vivirovereto.util.ConnectionUtil;
-import eu.trentorise.smartcampus.vivirovereto.widget.TileButton;
+import eu.trentorise.smartcampus.viaggiarovereto.AppFragment.AppItem;
+import eu.trentorise.smartcampus.viaggiarovereto.apps.ApkInstaller.ApkDownloaderTask;
+import eu.trentorise.smartcampus.viaggiarovereto.models.SmartApp;
+import eu.trentorise.smartcampus.viaggiarovereto.models.UpdateModel;
+import eu.trentorise.smartcampus.viaggiarovereto.util.ConnectionUtil;
+import eu.trentorise.smartcampus.viaggiarovereto.widget.TileButton;
+import eu.trentorise.smartcampus.viaggiarovereto.R;
 
 
 public class ManualUpdateFragment extends SherlockFragment {

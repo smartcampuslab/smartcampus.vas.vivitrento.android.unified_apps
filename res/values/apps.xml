@@ -32,22 +32,22 @@
     <string name="smartcampus_url_apk">https://www.smartcampuslab.it/download/VAS/apk/</string>
     
     <string-array name="apk_filename">
-        <item>vivirovereto.apk</item>        
+        <item>viaggiarovereto.apk</item>        
     </string-array>
     
     <string-array name="app_labels">
-        <item>ViviRovereto</item>
+        <item>ViaggiaRovereto</item>
         
     </string-array>
     
     <string-array name="app_packages">
-        <item>eu.trentorise.smartcampus.vivirovereto</item>
+        <item>eu.trentorise.smartcampus.viaggiarovereto</item>
     </string-array>
     
     
     
     <string-array name="app_urls">
-        <item>http://www.smartcampuslab.it/download/VAS-test/apk/smartcampus.vas.vivirovereto.apk</item>        
+        <item>http://www.smartcampuslab.it/download/VAS-test/apk/smartcampus.vas.viaggiarovereto.apk</item>        
     </string-array>
     
     <integer-array name="app_version">

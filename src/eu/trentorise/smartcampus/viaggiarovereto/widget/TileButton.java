@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package eu.trentorise.smartcampus.vivirovereto.widget;
+package eu.trentorise.smartcampus.viaggiarovereto.widget;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -21,7 +21,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import eu.trentorise.smartcampus.vivirovereto.R;
+import eu.trentorise.smartcampus.viaggiarovereto.R;
 
 
 /**

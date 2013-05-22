@@ -14,7 +14,7 @@
   limitations under the License.
 -->
 <account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accountType="eu.trentorise.smartcampus.vivirovereto"
+    android:accountType="eu.trentorise.smartcampus.viaggiarovereto"
     android:icon="@drawable/ic_launcher_sm"
     android:smallIcon="@drawable/ic_launcher_sm"
     android:label="@string/launcher_name"

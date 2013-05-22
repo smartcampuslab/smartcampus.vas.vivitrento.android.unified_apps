@@ -1,4 +1,4 @@
-package eu.trentorise.smartcampus.vivirovereto;
+package eu.trentorise.smartcampus.viaggiarovereto;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.GridView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 
-import eu.trentorise.smartcampus.vivirovereto.R;
+import eu.trentorise.smartcampus.viaggiarovereto.R;
 
 public class AboutFragment extends SherlockFragment {
 

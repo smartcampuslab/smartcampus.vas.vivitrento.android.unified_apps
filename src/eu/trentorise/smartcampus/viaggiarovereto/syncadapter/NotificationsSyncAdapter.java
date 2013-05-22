@@ -14,7 +14,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-package eu.trentorise.smartcampus.vivirovereto.syncadapter;
+package eu.trentorise.smartcampus.viaggiarovereto.syncadapter;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -39,7 +39,7 @@ import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
 import eu.trentorise.smartcampus.storage.sync.SyncData;
 import eu.trentorise.smartcampus.storage.sync.SyncStorage;
-import eu.trentorise.smartcampus.vivirovereto.R;
+import eu.trentorise.smartcampus.viaggiarovereto.R;
 
 /**
  * SyncAdapter implementation for syncing sample SyncAdapter contacts to the
@@ -173,10 +173,10 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 		String txt = "";
 
 		if (list.size() == 1) {
-			txt = mContext.getString(eu.trentorise.smartcampus.vivirovereto.R.string.notification_text,
+			txt = mContext.getString(eu.trentorise.smartcampus.viaggiarovereto.R.string.notification_text,
 					Integer.toString(list.size()));
 		} else {
-			txt = mContext.getString(eu.trentorise.smartcampus.vivirovereto.R.string.notification_text_multi,
+			txt = mContext.getString(eu.trentorise.smartcampus.viaggiarovereto.R.string.notification_text_multi,
 					Integer.toString(list.size()));
 		}
 		return txt;

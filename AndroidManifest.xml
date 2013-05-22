@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="eu.trentorise.smartcampus.vivirovereto"
+    package="eu.trentorise.smartcampus.viaggiarovereto"
     android:installLocation="internalOnly"
  	android:versionCode="8"
     android:versionName="1.2.1">
@@ -35,11 +35,11 @@
         android:label="@string/launcher_name"
         android:launchMode="singleTask"
         android:logo="@drawable/launcher"
-        android:theme="@style/Theme.ViviTrento" >
-        <meta-data android:name="SHARED_PACKAGE" android:value="eu.trentorise.smartcampus.vivirovereto"/>
-        <meta-data android:name="ACCOUNT_TYPE" android:value="eu.trentorise.smartcampus.vivirovereto"/>
+        android:theme="@style/Theme.journeyplanner" >
+        <meta-data android:name="SHARED_PACKAGE" android:value="eu.trentorise.smartcampus.viaggiarovereto"/>
+        <meta-data android:name="ACCOUNT_TYPE" android:value="eu.trentorise.smartcampus.viaggiarovereto"/>
         <meta-data android:name="ACCOUNT_NAME" android:value="Vivi Rovereto"/>
-        <meta-data android:name="dt-sync-authority" android:value="eu.trentorise.smartcampus.vivirovereto" />
+        <meta-data android:name="dt-sync-authority" android:value="eu.trentorise.smartcampus.viaggiarovereto" />
         
         <!-- Uses feedback metadata -->
         <meta-data android:name="use-feedback" android:value="true" />
@@ -49,8 +49,8 @@
         <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
         
         <activity
-            android:name="eu.trentorise.smartcampus.vivirovereto.LauncherActivity"
-            android:theme="@style/Theme.ViviTrento" 
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.LauncherActivity"
+            android:theme="@style/Theme.journeyplanner" 
             android:label="@string/launcher_name"            
             android:configChanges="screenSize"
             android:launchMode="singleTask">
@@ -78,7 +78,7 @@
             android:theme="@style/Theme.ViviTrento"
             android:configChanges="orientation|screenSize"/>
          <activity
-            android:name=".settings.SettingsActivity"
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.settings.SettingsActivityity"
             android:theme="@style/Theme.ViviTrento"            
             android:configChanges="orientation|screenSize"
             />
@@ -250,9 +250,8 @@
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
-        
         <service
-            android:name="eu.trentorise.smartcampus.vivirovereto.syncadapter.NotificationsSyncService"
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.syncadapter.NotificationsSyncService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />
@@ -278,7 +277,7 @@
         android:syncable="true"
         android:label="@string/notifications_name" /> 
     	
-        <receiver android:name="eu.trentorise.smartcampus.vivirovereto.UpdateNotificationReceiver">
+        <receiver android:name="eu.trentorise.smartcampus.viaggiarovereto.UpdateNotificationReceiver">
           <intent-filter>
             <action android:name="eu.trentorise.smartcampus.UpdateNotification"/>
           </intent-filter>

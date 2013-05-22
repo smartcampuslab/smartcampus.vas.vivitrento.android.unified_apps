@@ -15,8 +15,8 @@
 -->
 <resources>
 
-<!--     <string name="app_name">ViviRovereto</string> -->
-    <string name="launcher_name">ViviRovereto</string>
+<!--     <string name="app_name">ViaggiaRovereto</string> -->
+    <string name="launcher_name">ViaggiaRovereto</string>
     <string name="jp_name">ViaggiaRovereto</string>
     <string name="dt_name">EsploraRovereto</string>
     <string name="notifications_name">Notifications</string>
@@ -45,7 +45,7 @@
     <!-- string name="update_address">/download/VAS/update.conf</string-->
     <!-- string name="update_address">/download/VAS-dev/update-dev.conf</string-->
 <!--     <string name="update_address">/download/VAS-test/update-test.conf</string>
- --><string name="update_address">/download/VAS/update-vivirovereto.conf</string>
+ --><string name="update_address">/download/VAS/update-viaggiarovereto.conf</string>
 <!--     <string name="update_address_develop">/download/VAS/update-test.conf</string> -->
    
     <string name="update_host">www.smartcampuslab.it</string>
@@ -57,8 +57,8 @@
     <string name="update_dev">Apps Version</string>
     <string name="update_dev_sum">Check for test updates</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
-	<string name="update_application_notification">A new version of ViviRovereto is available.</string>
-	<string name="auth_required">Authenticate yourself with your Google account. This step is optional but enables ViviRovereto advanced functionalities. </string>
+	<string name="update_application_notification">A new version of ViaggiaRovereto is available.</string>
+	<string name="auth_required">Authenticate yourself with your Google account. This step is optional but enables ViaggiaRovereto advanced functionalities. </string>
 
 	<string name="registered_pref">registered</string>
 	<string name="upgrade_user_menu">Register</string>

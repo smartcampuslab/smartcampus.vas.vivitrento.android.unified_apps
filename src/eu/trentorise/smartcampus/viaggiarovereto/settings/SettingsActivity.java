@@ -1,6 +1,5 @@
-package eu.trentorise.smartcampus.vivirovereto.settings;
+package eu.trentorise.smartcampus.viaggiarovereto.settings;
 
-import eu.trentorise.smartcampus.vivirovereto.R;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
@@ -8,6 +7,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import eu.trentorise.smartcampus.viaggiarovereto.R;
 
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {

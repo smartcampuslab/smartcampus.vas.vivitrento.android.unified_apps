@@ -14,7 +14,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-package eu.trentorise.smartcampus.vivirovereto.syncadapter;
+package eu.trentorise.smartcampus.viaggiarovereto.syncadapter;
 
 import android.app.Service;
 import android.content.Intent;

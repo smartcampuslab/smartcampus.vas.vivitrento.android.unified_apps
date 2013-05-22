@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package eu.trentorise.smartcampus.vivirovereto.models;
+package eu.trentorise.smartcampus.viaggiarovereto.models;
 
 import android.graphics.drawable.Drawable;
 
