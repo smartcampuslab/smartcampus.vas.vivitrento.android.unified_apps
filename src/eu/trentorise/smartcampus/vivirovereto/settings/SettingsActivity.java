@@ -1,6 +1,6 @@
-package eu.trentorise.smartcampus.vivitrento.settings;
+package eu.trentorise.smartcampus.vivirovereto.settings;
 
-import eu.trentorise.smartcampus.vivitrento.R;
+import eu.trentorise.smartcampus.vivirovereto.R;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;

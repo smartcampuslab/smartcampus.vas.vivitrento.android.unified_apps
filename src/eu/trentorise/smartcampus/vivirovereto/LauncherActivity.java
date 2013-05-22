@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package eu.trentorise.smartcampus.vivitrento;
+package eu.trentorise.smartcampus.vivirovereto;
 
 import android.accounts.AccountManager;
 import android.accounts.OperationCanceledException;
@@ -43,8 +43,9 @@ import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.dt.DiscoverTrentoActivity;
 import eu.trentorise.smartcampus.jp.HomeActivity;
-import eu.trentorise.smartcampus.vivitrento.apps.ApkInstaller.ApkDownloaderTask;
-import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
+import eu.trentorise.smartcampus.vivirovereto.R;
+import eu.trentorise.smartcampus.vivirovereto.apps.ApkInstaller.ApkDownloaderTask;
+import eu.trentorise.smartcampus.vivirovereto.util.ConnectionUtil;
 
 public class LauncherActivity extends SherlockFragmentActivity {
 

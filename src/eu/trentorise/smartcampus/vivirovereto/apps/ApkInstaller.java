@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package eu.trentorise.smartcampus.vivitrento.apps;
+package eu.trentorise.smartcampus.vivirovereto.apps;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import eu.trentorise.smartcampus.vivitrento.R;
+import eu.trentorise.smartcampus.vivirovereto.R;
 
 
 import android.app.ProgressDialog;

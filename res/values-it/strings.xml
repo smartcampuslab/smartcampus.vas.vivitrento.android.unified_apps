@@ -15,10 +15,10 @@
 -->
 <resources>
 
-<!--     <string name="app_name">ViviTrento</string> -->
-    <string name="launcher_name">ViviTrento</string>
-    <string name="jp_name">ViaggiaTrento</string>
-    <string name="dt_name">EsploraTrento</string>
+<!--     <string name="app_name">ViviRovereto</string> -->
+    <string name="launcher_name">ViviRovereto</string>
+    <string name="jp_name">ViaggiaRovereto</string>
+    <string name="dt_name">EsploraRovereto</string>
         
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Impostazioni</string>
@@ -43,7 +43,7 @@
     <!-- string name="update_address">/download/VAS/update.conf</string-->
     <!-- string name="update_address">/download/VAS-dev/update-dev.conf</string-->
 <!--     <string name="update_address">/download/VAS-test/update-test.conf</string>
- --><string name="update_address">/download/VAS/update-vivitrento.conf</string>
+ --><string name="update_address">/download/VAS/update-vivirovereto.conf</string>
 <!--     <string name="update_address_develop">/download/VAS/update-test.conf</string> -->
    
     <string name="update_host">www.smartcampuslab.it</string>
@@ -55,9 +55,9 @@
     <string name="update_dev">Versione delle app</string>
     <string name="update_dev_sum">Verifica la presenza di aggiornamenti di test</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
-	<string name="update_application_notification">E\' disponibile una nuova versione di ViviTrento.</string>
+	<string name="update_application_notification">E\' disponibile una nuova versione di ViviRovereto.</string>
     <string name="upgrade_user_menu">Registrati</string>
-	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate di ViviTrento.</string>
+	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate di ViviRovereto.</string>
 
     <string name="notification_text">%s nuova notifica</string>
     <string name="notification_text_multi">%s nuove notifiche</string>

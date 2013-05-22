@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package eu.trentorise.smartcampus.vivitrento;
+package eu.trentorise.smartcampus.vivirovereto;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -60,11 +60,12 @@ import eu.trentorise.smartcampus.protocolcarrier.ProtocolCarrier;
 import eu.trentorise.smartcampus.protocolcarrier.common.Constants.Method;
 import eu.trentorise.smartcampus.protocolcarrier.custom.MessageRequest;
 import eu.trentorise.smartcampus.protocolcarrier.custom.MessageResponse;
-import eu.trentorise.smartcampus.vivitrento.apps.ApkInstaller.ApkDownloaderTask;
-import eu.trentorise.smartcampus.vivitrento.models.SmartApp;
-import eu.trentorise.smartcampus.vivitrento.models.UpdateModel;
-import eu.trentorise.smartcampus.vivitrento.settings.SettingsActivity;
-import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
+import eu.trentorise.smartcampus.vivirovereto.R;
+import eu.trentorise.smartcampus.vivirovereto.apps.ApkInstaller.ApkDownloaderTask;
+import eu.trentorise.smartcampus.vivirovereto.models.SmartApp;
+import eu.trentorise.smartcampus.vivirovereto.models.UpdateModel;
+import eu.trentorise.smartcampus.vivirovereto.settings.SettingsActivity;
+import eu.trentorise.smartcampus.vivirovereto.util.ConnectionUtil;
 
 public class AppFragment extends SherlockFragment {
 
@@ -348,8 +349,9 @@ public class AppFragment extends SherlockFragment {
 				}
 			}
 			int i = 0;
+			try{
 			for (AppItem app : result) {
-				if (app.app.name.compareTo("ViviTrento") == 0)
+				if (app.app.name.compareTo(getString(R.string.launcher_name)) == 0)
 					break;
 				i++;
 			}
@@ -379,6 +381,9 @@ public class AppFragment extends SherlockFragment {
 
 			if (forced)
 				forced = false;
+			} catch (Exception e) {
+				Toast.makeText(getSherlockActivity(), R.string.error_occurs, Toast.LENGTH_SHORT).show();
+			}
 		}
 
 		private boolean newversion(AppItem launcher) {

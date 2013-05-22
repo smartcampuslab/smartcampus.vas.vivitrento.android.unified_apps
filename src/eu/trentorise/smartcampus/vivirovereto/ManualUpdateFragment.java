@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package eu.trentorise.smartcampus.vivitrento;
+package eu.trentorise.smartcampus.vivirovereto;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -53,12 +53,13 @@ import eu.trentorise.smartcampus.protocolcarrier.ProtocolCarrier;
 import eu.trentorise.smartcampus.protocolcarrier.common.Constants.Method;
 import eu.trentorise.smartcampus.protocolcarrier.custom.MessageRequest;
 import eu.trentorise.smartcampus.protocolcarrier.custom.MessageResponse;
-import eu.trentorise.smartcampus.vivitrento.AppFragment.AppItem;
-import eu.trentorise.smartcampus.vivitrento.apps.ApkInstaller.ApkDownloaderTask;
-import eu.trentorise.smartcampus.vivitrento.models.SmartApp;
-import eu.trentorise.smartcampus.vivitrento.models.UpdateModel;
-import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
-import eu.trentorise.smartcampus.vivitrento.widget.TileButton;
+import eu.trentorise.smartcampus.vivirovereto.R;
+import eu.trentorise.smartcampus.vivirovereto.AppFragment.AppItem;
+import eu.trentorise.smartcampus.vivirovereto.apps.ApkInstaller.ApkDownloaderTask;
+import eu.trentorise.smartcampus.vivirovereto.models.SmartApp;
+import eu.trentorise.smartcampus.vivirovereto.models.UpdateModel;
+import eu.trentorise.smartcampus.vivirovereto.util.ConnectionUtil;
+import eu.trentorise.smartcampus.vivirovereto.widget.TileButton;
 
 
 public class ManualUpdateFragment extends SherlockFragment {
