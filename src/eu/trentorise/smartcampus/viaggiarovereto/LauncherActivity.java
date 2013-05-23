@@ -187,6 +187,10 @@ public class LauncherActivity extends SherlockFragmentActivity {
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
 		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
+		SharedPreferences settings = LauncherActivity.this.getSharedPreferences(AppFragment.PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		settings.edit().putBoolean(AppFragment.FIRSTTIME, true).commit();	
+
 	}
 
 	private void appFragmentCheckVersion() {

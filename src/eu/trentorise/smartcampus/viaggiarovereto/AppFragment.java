@@ -91,6 +91,7 @@ public class AppFragment extends SherlockFragment {
 	private ApkDownloaderTask mDownloaderTask;
 	public static final String PREFS_NAME = "LauncherPreferences";
 	private static final String UPDATE = "_updateModel";
+	public static final String FIRSTTIME = "load_first_time";
 	private String UPDATE_ADDRESS = null;
 	private String UPDATE_ADDRESS_DEV = null;
 	private String UPDATE_HOST = null;
@@ -126,6 +127,7 @@ public class AppFragment extends SherlockFragment {
 		// editor.commit();
 
 		settings = getSherlockActivity().getSharedPreferences(PREFS_NAME, 0);
+
 	}
 
 	private void initSharedPref() {
@@ -189,12 +191,16 @@ public class AppFragment extends SherlockFragment {
 	}
 
 	private void startNewAppTask() {
+		if (settings!=null){
+			if (settings.getBoolean(FIRSTTIME, true)){
+				settings.edit().putBoolean(FIRSTTIME, false).commit();			
 		// Stopping task
 		stopAnyActiveAppTask();
 		// Starting new one
 		mAppTask = new AppTask();
 		mAppTask.execute();
-
+			}
+		}
 	}
 
 	private void stopAnyActiveAppTask() {

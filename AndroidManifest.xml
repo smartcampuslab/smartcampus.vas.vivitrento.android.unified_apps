@@ -47,6 +47,11 @@
         
         <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
         
+        <meta-data android:name="@string/real_time_suburban_trento" android:value="false" />
+        <meta-data android:name="@string/real_time_urban_trento" android:value="true" />
+
+        <meta-data android:name="option1" android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" />
+        
         <activity
             android:name="eu.trentorise.smartcampus.viaggiarovereto.LauncherActivity"
             android:theme="@style/Theme.journeyplanner" 
