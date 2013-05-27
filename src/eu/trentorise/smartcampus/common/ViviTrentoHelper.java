@@ -3,6 +3,8 @@ package eu.trentorise.smartcampus.common;
 import android.content.Context;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
+import eu.trentorise.smartcampus.jp.helper.JPHelper;
+import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 
 public class ViviTrentoHelper {
@@ -14,7 +16,7 @@ public class ViviTrentoHelper {
 
 	private static Context mContext;
 	private static ViviTrentoHelper helper;
-	
+
 	private static SCAccessProvider accessProvider;
 
 	public ViviTrentoHelper(Context ctx) {
@@ -25,6 +27,7 @@ public class ViviTrentoHelper {
 		if (helper == null) {
 			helper = new ViviTrentoHelper(ctx);
 		}
+		
 		NotificationsHelper.init(ctx, APP_TOKEN, SYNC_DB_NAME, SYNC_SERVICE, AUTHORITY);
 	}
 
@@ -32,7 +35,7 @@ public class ViviTrentoHelper {
 		if (accessProvider == null) {
 			accessProvider = new AMSCAccessProvider();
 		}
-		
+
 		return accessProvider;
 	}
 }
