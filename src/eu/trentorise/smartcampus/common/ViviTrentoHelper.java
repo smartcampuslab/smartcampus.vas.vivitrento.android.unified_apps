@@ -9,10 +9,10 @@ import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 
 public class ViviTrentoHelper {
 
-	public static String APP_TOKEN = "vivitrento";
-	public static String SYNC_DB_NAME = "vivitrento_notifications";
-	public static String SYNC_SERVICE = "/communicator/sync";
-	public static String AUTHORITY = "eu.trentorise.smartcampus.notifications";
+	public static final String APP_TOKEN = "vivitrento";
+	public static final String SYNC_DB_NAME = "vivitrento_notifications";
+	public static final String SYNC_SERVICE = "/communicator/sync";
+	public static final String AUTHORITY = "eu.trentorise.smartcampus.notifications";
 
 	private static Context mContext;
 	private static ViviTrentoHelper helper;

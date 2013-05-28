@@ -125,10 +125,6 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 
 		for (List<Object> list : notificationsLists) {
 			if (!list.isEmpty()) {
-				if (!ViviTrentoHelper.isInstantiated()) {
-					ViviTrentoHelper.init(mContext);
-				}
-
 				int icon = 0;
 				Intent intent = null;
 
@@ -140,6 +136,13 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 				} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
 					icon = R.drawable.journey;
 					intent = new Intent(mContext, NotificationsFragmentActivityJP.class);
+				}
+
+				if (intent != null) {
+					intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN, ViviTrentoHelper.APP_TOKEN);
+					intent.putExtra(NotificationsHelper.PARAM_SYNC_DB_NAME, ViviTrentoHelper.SYNC_DB_NAME);
+					intent.putExtra(NotificationsHelper.PARAM_SYNC_SERVICE, ViviTrentoHelper.SYNC_SERVICE);
+					intent.putExtra(NotificationsHelper.PARAM_AUTHORITY, ViviTrentoHelper.AUTHORITY);
 				}
 
 				NotificationManager mNotificationManager = (NotificationManager) mContext
