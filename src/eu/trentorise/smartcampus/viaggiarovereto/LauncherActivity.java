@@ -237,10 +237,16 @@ public class LauncherActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+		JPHelper.getLocationHelper().start();
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		Fragment frag = new AppFragment();
 		ft.add(R.id.fragment_container, frag).commit();
-
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		JPHelper.getLocationHelper().stop();
 	}
 
 	@Override

@@ -30,6 +30,10 @@ public class ViviTrentoHelper {
 		
 		NotificationsHelper.init(ctx, APP_TOKEN, SYNC_DB_NAME, SYNC_SERVICE, AUTHORITY);
 	}
+	
+	public static boolean isInstantiated() {
+		return (helper != null);
+	}
 
 	public static SCAccessProvider getAccessProvider() {
 		if (accessProvider == null) {

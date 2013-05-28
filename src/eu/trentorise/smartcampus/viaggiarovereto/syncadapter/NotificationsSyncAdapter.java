@@ -125,6 +125,10 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 
 		for (List<Object> list : notificationsLists) {
 			if (!list.isEmpty()) {
+				if (!ViviTrentoHelper.isInstantiated()) {
+					ViviTrentoHelper.init(mContext);
+				}
+
 				int icon = 0;
 				Intent intent = null;
 
