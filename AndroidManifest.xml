@@ -39,7 +39,7 @@
         <meta-data android:name="SHARED_PACKAGE" android:value="eu.trentorise.smartcampus.vivitrento"/>
         <meta-data android:name="ACCOUNT_TYPE" android:value="eu.trentorise.smartcampus.vivitrento"/>
         <meta-data android:name="ACCOUNT_NAME" android:value="Vivi Trento"/>
-        <meta-data android:name="dt-sync-authority" android:value="eu.trentorise.smartcampus.vivitrento" />
+        <meta-data android:name="dt-sync-authority" android:value="@string/dtprovider_authority" />
         
         <!-- Uses feedback metadata -->
         <meta-data android:name="use-feedback" android:value="true" />
@@ -152,7 +152,13 @@
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/jp"
             android:theme="@style/Theme.journeyplanner"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <data android:mimeType="@string/notificationsprovider_mimetype_jp" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.ProfileActivity"
             android:configChanges="orientation|screenSize"
@@ -235,10 +241,14 @@
         <activity
             android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT"
             android:label="@string/dt_name"
-
             android:logo="@drawable/dt"
-            android:theme="@style/Theme.discovertrento" />
-
+            android:theme="@style/Theme.discovertrento">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <data android:mimeType="@string/notificationsprovider_mimetype_dt" />
+            </intent-filter>
+        </activity>
         <service
             android:name="eu.trentorise.smartcampus.dt.syncadapter.DTSyncService"
             android:exported="false" >
@@ -267,14 +277,14 @@
       <provider
         android:name="eu.trentorise.smartcampus.dt.DTDummyProvider"
         android:exported="false"
-    	android:authorities="eu.trentorise.smartcampus.vivitrento"
+    	android:authorities="@string/dtprovider_authority"
     	android:syncable="true"
     	android:label="@string/launcher_name" />  
     	
        <provider
         android:name="eu.trentorise.smartcampus.notifications.DummyProvider"
         android:exported="false"
-        android:authorities="eu.trentorise.smartcampus.notifications"
+        android:authorities="@string/notificationsprovider_authority"
         android:syncable="true"
         android:label="@string/notifications_name" /> 
     	

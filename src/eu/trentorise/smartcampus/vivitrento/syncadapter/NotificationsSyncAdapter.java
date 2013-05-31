@@ -33,8 +33,6 @@ import android.util.Log;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.communicator.model.Notification;
-import eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT;
-import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
 import eu.trentorise.smartcampus.storage.sync.SyncData;
@@ -130,12 +128,26 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 
 				LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) list.get(0);
 				String type = (String) map.get("type");
-				if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
+				if (NOTIFICATION_TYPE_DISCOVERTRENTO.equalsIgnoreCase(type)) {
 					icon = R.drawable.discover;
-					intent = new Intent(mContext, NotificationsFragmentActivityDT.class);
-				} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
+					// intent = new Intent(mContext,
+					// NotificationsFragmentActivityDT.class);
+					intent = new Intent(Intent.ACTION_VIEW);
+					intent.setType(mContext.getString(R.string.notificationsprovider_mimetype_dt));
+				} else if (NOTIFICATION_TYPE_JOURNEYPLANNER.equalsIgnoreCase(type)) {
 					icon = R.drawable.journey;
-					intent = new Intent(mContext, NotificationsFragmentActivityJP.class);
+					// intent = new Intent(mContext,
+					// NotificationsFragmentActivityJP.class);
+					intent = new Intent(Intent.ACTION_VIEW);
+					intent.setType(mContext.getString(R.string.notificationsprovider_mimetype_jp));
+				}
+
+				if (intent != null) {
+					intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN, ViviTrentoHelper.APP_TOKEN);
+					intent.putExtra(NotificationsHelper.PARAM_SYNC_DB_NAME, ViviTrentoHelper.SYNC_DB_NAME);
+					intent.putExtra(NotificationsHelper.PARAM_SYNC_SERVICE, ViviTrentoHelper.SYNC_SERVICE);
+					intent.putExtra(NotificationsHelper.PARAM_AUTHORITY,
+							mContext.getString(R.string.notificationsprovider_authority));
 				}
 
 				NotificationManager mNotificationManager = (NotificationManager) mContext

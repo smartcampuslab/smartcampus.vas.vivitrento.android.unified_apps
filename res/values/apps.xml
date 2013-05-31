@@ -15,6 +15,13 @@
 -->
 <resources>
 
+    <!-- Application specific configuration -->
+    <string name="dtprovider_authority">eu.trentorise.smartcampus.vivitrento</string>
+    <string name="notificationsprovider_authority">eu.trentorise.smartcampus.vivitrento.notifications</string>
+    <string name="notificationsprovider_mimetype_jp">vivitrento.notifications/jp</string>
+    <string name="notificationsprovider_mimetype_dt">vivitrento.notifications/dt</string>
+    <!-- /Application specific configuration -->
+    
     <color name="tile_background_unsel">#999999</color>
     <color name="tile_text_unsel">#666666</color>
 
