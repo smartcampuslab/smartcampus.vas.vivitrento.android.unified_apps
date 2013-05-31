@@ -132,10 +132,16 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 				String type = (String) map.get("type");
 				if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
 					icon = R.drawable.discover;
-					intent = new Intent(mContext, NotificationsFragmentActivityDT.class);
+					// intent = new Intent(mContext,
+					// NotificationsFragmentActivityDT.class);
+					intent = new Intent(Intent.ACTION_VIEW);
+					intent.setType(mContext.getString(R.string.notificationsprovider_mimetype_dt));
 				} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
 					icon = R.drawable.journey;
-					intent = new Intent(mContext, NotificationsFragmentActivityJP.class);
+					// intent = new Intent(mContext,
+					// NotificationsFragmentActivityJP.class);
+					intent = new Intent(Intent.ACTION_VIEW);
+					intent.setType(mContext.getString(R.string.notificationsprovider_mimetype_jp));
 				}
 
 				if (intent != null) {

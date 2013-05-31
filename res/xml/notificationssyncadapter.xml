@@ -18,7 +18,7 @@
 <!-- for the SyncAdapter. -->
 
 <sync-adapter xmlns:android="http://schemas.android.com/apk/res/android"
-    android:contentAuthority="eu.trentorise.smartcampus.notifications"
+    android:contentAuthority="@string/notificationsprovider_authority"
     android:accountType="eu.trentorise.smartcampus.viaggiarovereto"
     android:supportsUploading="false"
 />
