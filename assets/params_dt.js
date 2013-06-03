@@ -72,7 +72,7 @@
 	        "TrentinoFamiglia"
 	    ],
 	    "type" : "Comune"
-	}
+	},
    "center_map":[
                      46069672.7540531,
                      11121270.0605392
