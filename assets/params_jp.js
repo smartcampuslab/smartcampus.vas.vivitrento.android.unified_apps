@@ -17,22 +17,31 @@
  * 7 strike
  * 8 traffic jam
  * 9 diversion
+ * 
+ * COORDINATES
+ * Trento 46.069672, 11.121270
+ * Rovereto 45.890919, 11.040184
  */
 
 {
-    "app_token": "journeyplanner",
-    "smartcheck_options": [
-        1,
-        4,
-        5
-    ],
-    "broadcast_notifications_options": [
-        1,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
-    ]
+   "app_token":"journeyplanner",
+   "smartcheck_options":[
+      1,
+      4,
+      5
+   ],
+   "broadcast_notifications_options":[
+      1,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+   ],
+   "center_map":[
+      46.069672,
+      11.121270
+   ],
+   "zoom_map":15
 }
