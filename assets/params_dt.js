@@ -31,11 +31,15 @@
  * 3 University
  * 4 Culture
  * 5 other stories
+ * 
+ * COORDINATES
+ * Trento 46.069672, 11.121270
+ * Rovereto 45.890919, 11.040184
  */
 
 {
 	"app_token" : "vivitrento",
-	"title" : "blabla",
+	"title" : "ViviTrento",
 	"poi_categories" : [
 	    1,
 	    2,

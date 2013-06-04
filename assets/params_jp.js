@@ -24,7 +24,7 @@
  */
 
 {
-   "app_token":"journeyplanner",
+   "app_token":"vivitrento",
    "smartcheck_options":[
       1,
       4,
