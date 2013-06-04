@@ -24,14 +24,14 @@
  */
 
 {
-    "app_token": "journeyplanner",
-    "smartcheck_options": [
+    "app_token" : "viaggiarovereto",
+    "smartcheck_options" : [
         2,
         3,
         4,
         6
     ],
-    "broadcast_notifications_options": [
+    "broadcast_notifications_options" : [
         2,
         3,
         4,
@@ -41,9 +41,9 @@
         8,
         9
     ],
-   "center_map":[
+   "center_map" : [
       45.890919,
       11.040184
    ],
-   "zoom_map":15
+   "zoom_map" : 15
 }
