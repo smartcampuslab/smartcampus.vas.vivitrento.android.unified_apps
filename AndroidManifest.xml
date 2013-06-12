@@ -192,7 +192,7 @@
         <activity
             android:name="eu.trentorise.smartcampus.dt.DiscoverTrentoActivity"
             android:label="@string/dt_name"
-            android:theme="@style/Theme.discovertrento"            
+            android:theme="@style/Theme.Discovertrento"            
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/dt"
             android:launchMode="singleTop" >
@@ -227,22 +227,22 @@
         <activity
             android:name="eu.trentorise.smartcampus.dt.fragments.pois.AddressSelectActivity"
 			android:logo="@drawable/dt"
-            android:theme="@style/Theme.discovertrento"/>
+            android:theme="@style/Theme.Discovertrento"/>
         <activity
             android:name="eu.trentorise.smartcampus.dt.fragments.events.POISelectActivity"
             android:logo="@drawable/dt"
-            android:theme="@style/Theme.discovertrento"/>
+            android:theme="@style/Theme.Discovertrento"/>
         
         <activity 
             android:name="eu.trentorise.smartcampus.dt.fragments.stories.MyMapActivity"
             android:logo="@drawable/dt"
-            android:theme="@style/Theme.discovertrento" />
+            android:theme="@style/Theme.Discovertrento" />
             
         <activity
             android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT"
             android:label="@string/dt_name"
             android:logo="@drawable/dt"
-            android:theme="@style/Theme.discovertrento">
+            android:theme="@style/Theme.Discovertrento">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="android.intent.action.VIEW" />
