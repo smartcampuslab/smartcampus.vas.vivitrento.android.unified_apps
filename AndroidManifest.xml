@@ -250,17 +250,7 @@
                 <data android:mimeType="@string/notificationsprovider_mimetype_jp" />
             </intent-filter>
         </activity>
-        <service
-            android:name="eu.trentorise.smartcampus.dt.syncadapter.DTSyncService"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.content.SyncAdapter" />
-            </intent-filter>
 
-            <meta-data
-                android:name="android.content.SyncAdapter"
-                android:resource="@xml/syncadapter" />
-        </service>
         <service
             android:name="eu.trentorise.smartcampus.viaggiarovereto.syncadapter.NotificationsSyncService"
             android:exported="false" >
