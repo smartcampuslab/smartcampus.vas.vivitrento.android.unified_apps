@@ -63,6 +63,7 @@ public class LauncherActivity extends BaseActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		JPHelper.init(getApplicationContext());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		try {
@@ -81,7 +82,8 @@ public class LauncherActivity extends BaseActivity {
 					public void onClick(DialogInterface dialog, int which) {
 
 						try {
-							SharedPreferences settings = LauncherActivity.this.getSharedPreferences(AppFragment.PREFS_NAME, 0);
+							SharedPreferences settings = LauncherActivity.this.getSharedPreferences(
+									AppFragment.PREFS_NAME, 0);
 							SharedPreferences.Editor editor = settings.edit();
 							switch (which) {
 							case DialogInterface.BUTTON_POSITIVE:
@@ -106,10 +108,12 @@ public class LauncherActivity extends BaseActivity {
 							invalidateOptionsMenu();
 
 						} catch (OperationCanceledException e) {
-							Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
+							Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG)
+									.show();
 							finish();
 						} catch (Exception e) {
-							Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+							Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT)
+									.show();
 							finish();
 						}
 					}
@@ -149,7 +153,7 @@ public class LauncherActivity extends BaseActivity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
-		} else if (viewId == R.id.btn_broadcast) {
+		}   else if (viewId == R.id.btn_broadcast) {
 			intent = new Intent(this, BroadcastNotificationsActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
@@ -214,7 +218,8 @@ public class LauncherActivity extends BaseActivity {
 					mDownloaderTask = new ApkDownloaderTask(this, extras.getString(AppFragment.PARAM_URL));
 					mDownloaderTask.execute();
 				} else {
-					Log.d(AppFragment.class.getName(), "Empty url for download: " + extras.getString(AppFragment.PARAM_NAME));
+					Log.d(AppFragment.class.getName(),
+							"Empty url for download: " + extras.getString(AppFragment.PARAM_NAME));
 					Toast.makeText(this, R.string.error_occurs, Toast.LENGTH_SHORT).show();
 				}
 			} else {
@@ -237,16 +242,20 @@ public class LauncherActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		JPHelper.getLocationHelper().start();
+		if (JPHelper.isInitialized()) {
+			JPHelper.getLocationHelper().start();
+		}
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		Fragment frag = new AppFragment();
 		ft.add(R.id.fragment_container, frag).commit();
 	}
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
-		JPHelper.getLocationHelper().stop();
+		if (JPHelper.isInitialized()) {
+			JPHelper.getLocationHelper().stop();
+		}
 	}
 
 	@Override
