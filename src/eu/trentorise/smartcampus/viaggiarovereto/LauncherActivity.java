@@ -44,6 +44,7 @@ import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.dt.DiscoverTrentoActivity;
 import eu.trentorise.smartcampus.jp.BaseActivity;
 import eu.trentorise.smartcampus.jp.HomeActivity;
+import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
 import eu.trentorise.smartcampus.jp.PlanJourneyActivity;
 import eu.trentorise.smartcampus.jp.ProfileActivity;
 import eu.trentorise.smartcampus.jp.SavedJourneyActivity;
@@ -153,7 +154,12 @@ public class LauncherActivity extends BaseActivity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
-		}   else if (viewId == R.id.btn_broadcast) {
+		}   else if (viewId == R.id.btn_monitorrecurrentjourney) {
+			intent = new Intent(this, MonitorJourneyActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
+			return;
+		} else if (viewId == R.id.btn_broadcast) {
 			intent = new Intent(this, BroadcastNotificationsActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
