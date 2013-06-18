@@ -119,7 +119,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="eu.trentorise.smartcampus.jp.PlanRecurJourneyActivity"
+            android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/jp"
             android:theme="@style/Theme.journeyplanner"
