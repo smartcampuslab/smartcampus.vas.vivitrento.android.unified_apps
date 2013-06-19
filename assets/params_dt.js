@@ -70,6 +70,22 @@
         4,
         5
 	],
+	"events_default" : [
+	               	    1,
+	                       2,
+	                       3,
+	                       4,
+	                       5,
+	                       6,
+	                       7,
+	                       9
+	                  ],
+	"pois_default" : [
+	                       1,
+	                       2,
+	                       4,
+	                       5
+	               	],
 	"exclude" : {
 		"source" : [
 	        "smartplanner-transitstops",
