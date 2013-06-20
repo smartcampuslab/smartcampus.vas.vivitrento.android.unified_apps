@@ -126,13 +126,6 @@
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
-            android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
-            android:theme="@style/Theme.journeyplanner"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
-        <activity
             android:name="eu.trentorise.smartcampus.jp.SavedJourneyActivity"
             android:configChanges="orientation|screenSize"
             android:logo="@drawable/jp"
@@ -257,7 +250,14 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="eu.trentorise.smartcampus.dt.TutorialActivity"
+        <activity android:name="eu.trentorise.smartcampus.dt.custom.TutorialActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter >
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="eu.trentorise.smartcampus.jp.custom.TutorialActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter >
                 <category android:name="android.intent.category.DEFAULT" />
