@@ -99,8 +99,7 @@
         4,
         5
 	],
-	"events_default" : [0
-	                  ],
+	"events_default" : [0],
 
 	"exclude" : {
 		"source" : [

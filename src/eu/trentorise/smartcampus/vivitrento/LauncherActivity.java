@@ -92,7 +92,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 								break;
 							}
 							editor.commit();
-							appFragmentCheckVersion();
+							//appFragmentCheckVersion();
 							invalidateOptionsMenu();
 
 						} catch (OperationCanceledException e) {
@@ -202,7 +202,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 				// clean shared preferences
 			} else {
-				appFragmentCheckVersion();
+				//appFragmentCheckVersion();
 				invalidateOptionsMenu();
 			}
 
