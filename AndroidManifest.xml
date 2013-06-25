@@ -251,7 +251,7 @@
         </activity>
         
         <activity android:name="eu.trentorise.smartcampus.dt.custom.TutorialActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:theme="@style/TutorialTheme"
             android:configChanges="orientation|screenSize">
             <intent-filter >
                 <category android:name="android.intent.category.DEFAULT" />
@@ -259,7 +259,7 @@
         </activity>
         
         <activity android:name="eu.trentorise.smartcampus.jp.custom.TutorialActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:theme="@style/TutorialTheme"
             android:configChanges="orientation|screenSize">
             <intent-filter >
                 <category android:name="android.intent.category.DEFAULT" />
