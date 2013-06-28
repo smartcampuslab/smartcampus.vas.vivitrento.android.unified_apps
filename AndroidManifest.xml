@@ -52,7 +52,8 @@
         <meta-data android:name="hidden-notification" android:value="false" />
         <meta-data android:name="follow-by-intent" android:value="false" />
         
-        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDM6tvABUoBCzq_svbtGgH4dgCYJ-RxlRo"/>
+<!--         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDM6tvABUoBCzq_svbtGgH4dgCYJ-RxlRo"/> -->
+        <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAoTbDQ_wJDKW_cILKs_X9Dwha0ahucxyw"/>
         
         <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
         
