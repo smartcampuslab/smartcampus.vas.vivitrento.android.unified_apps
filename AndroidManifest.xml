@@ -242,7 +242,7 @@
             android:name="eu.trentorise.smartcampus.dt.fragments.events.POISelectActivity"
             android:logo="@drawable/dt"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:theme="@style/Theme.Discovertrento"/>
+          android:theme="@style/Theme.Discovertrento"/>
         
         <activity
             android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT"
