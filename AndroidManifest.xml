@@ -61,7 +61,7 @@
             android:name="eu.trentorise.smartcampus.vivitrento.LauncherActivity"
             android:theme="@style/Theme.ViviTrento" 
             android:label="@string/launcher_name"            
-            android:configChanges="screenSize"
+            android:configChanges="screenSize|keyboardHidden|keyboard"
             android:launchMode="singleTask">
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -242,7 +242,7 @@
             android:name="eu.trentorise.smartcampus.dt.fragments.events.POISelectActivity"
             android:logo="@drawable/dt"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-          android:theme="@style/Theme.Discovertrento"/>
+            android:theme="@style/Theme.Discovertrento"/>
         
         <activity
             android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT"
