@@ -180,18 +180,11 @@ public class LauncherActivity extends SherlockFragmentActivity {
 	}
 
 	@Override
-	protected void onResume() {
-		super.onResume();
+	protected void onStart() {
+		super.onStart();
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		Fragment frag = new AppFragment();
 		ft.add(R.id.fragment_container, frag).commit();
-
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-
 	}
 
 	@Override
