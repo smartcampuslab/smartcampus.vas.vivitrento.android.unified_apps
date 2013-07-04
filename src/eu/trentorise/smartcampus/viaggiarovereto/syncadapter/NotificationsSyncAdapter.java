@@ -148,7 +148,6 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 					intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN, ViviTrentoHelper.APP_TOKEN);
 					intent.putExtra(NotificationsHelper.PARAM_SYNC_DB_NAME, ViviTrentoHelper.SYNC_DB_NAME);
 					intent.putExtra(NotificationsHelper.PARAM_SYNC_SERVICE, ViviTrentoHelper.SYNC_SERVICE);
-					intent.putExtra(NotificationsHelper.PARAM_AUTHORITY, ViviTrentoHelper.AUTHORITY);
 				}
 
 				NotificationManager mNotificationManager = (NotificationManager) mContext

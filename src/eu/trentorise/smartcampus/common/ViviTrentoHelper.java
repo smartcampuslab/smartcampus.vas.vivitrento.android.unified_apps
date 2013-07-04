@@ -6,13 +6,13 @@ import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
+import eu.trentorise.smartcampus.viaggiarovereto.R;
 
 public class ViviTrentoHelper {
 
 	public static final String APP_TOKEN = "vivitrento";
 	public static final String SYNC_DB_NAME = "vivitrento_notifications";
 	public static final String SYNC_SERVICE = "/communicator/sync";
-	public static final String AUTHORITY = "eu.trentorise.smartcampus.notifications";
 
 	private static Context mContext;
 	private static ViviTrentoHelper helper;
@@ -28,7 +28,7 @@ public class ViviTrentoHelper {
 			helper = new ViviTrentoHelper(ctx);
 		}
 		
-		NotificationsHelper.init(ctx, APP_TOKEN, SYNC_DB_NAME, SYNC_SERVICE, AUTHORITY);
+		NotificationsHelper.init(ctx, APP_TOKEN, SYNC_DB_NAME, SYNC_SERVICE, ctx.getString(R.string.notificationsprovider_authority));
 	}
 	
 	public static boolean isInstantiated() {
