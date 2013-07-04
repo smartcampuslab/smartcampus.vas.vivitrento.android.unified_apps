@@ -25,6 +25,35 @@
  * 8 Family
  * 9 other events
  * 
+ * DEFAULT EVENTS
+ * ********************
+ * 0 Today's event	*** special
+ * ********************
+ * 1 Concerts
+ * 2 Happy hours
+ * 3 Movies
+ * 4 Parties
+ * 5 Seminars
+ * 6 Theaters
+ * 7 Exhibitions
+ * 8 Family
+ * 9 other events
+ * 
+ * DEFAULT POI
+ * 1 Museums
+ * 2 Mobility
+ * 3 Parking
+ * 4 Offices
+ * 5 Theater
+ * 6 University
+ * 7 Accomodation
+ * 8 Libraries
+ * 9 Food
+ * 10 Drink
+ * 11 Cinemas
+ * 12 Family - Organizations
+ * 13 other POIs
+ * 
  * STORY CATEGORIES
  * 1 Leisure
  * 2 Offices and Services
@@ -70,6 +99,8 @@
         4,
         5
 	],
+	"events_default" : [0],
+
 	"exclude" : {
 		"source" : [
 	        "smartplanner-transitstops",

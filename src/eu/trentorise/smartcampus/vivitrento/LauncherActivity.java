@@ -92,7 +92,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 								break;
 							}
 							editor.commit();
-							appFragmentCheckVersion();
+							//appFragmentCheckVersion();
 							invalidateOptionsMenu();
 
 						} catch (OperationCanceledException e) {
@@ -180,18 +180,11 @@ public class LauncherActivity extends SherlockFragmentActivity {
 	}
 
 	@Override
-	protected void onResume() {
-		super.onResume();
+	protected void onStart() {
+		super.onStart();
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		Fragment frag = new AppFragment();
 		ft.add(R.id.fragment_container, frag).commit();
-
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-
 	}
 
 	@Override
@@ -202,7 +195,7 @@ public class LauncherActivity extends SherlockFragmentActivity {
 				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 				// clean shared preferences
 			} else {
-				appFragmentCheckVersion();
+				//appFragmentCheckVersion();
 				invalidateOptionsMenu();
 			}
 
