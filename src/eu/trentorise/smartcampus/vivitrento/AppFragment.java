@@ -183,10 +183,10 @@ public class AppFragment extends SherlockFragment {
 
 	private void startNewAppTask() {
 //		// Stopping task
-		stopAnyActiveAppTask();
+//		stopAnyActiveAppTask();
 //		// Starting new one
-		mAppTask = new AppTask();
-		mAppTask.execute();
+//		mAppTask = new AppTask();
+//		mAppTask.execute();
 
 	}
 
