@@ -6,6 +6,7 @@
  * 4 train timetable
  * 5 parking trento
  * 6 parking rovereto
+ * 7 alerts rovereto
  * 
  * BROADCAST NOTIFICATIONS OPTIONS
  * 1 bus trento delay
@@ -29,7 +30,8 @@
         2,
         3,
         4,
-        6
+        6,
+        7
     ],
     "broadcast_notifications_options" : [
         2,
