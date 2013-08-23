@@ -1,4 +1,7 @@
 /*
+ * SHOW ALERTROADS IN LEG MAP (planning)
+ * "alertroads_in_planning" : true,
+ * 
  * SMART CHECK OPTIONS
  * 1 bus trento timetable
  * 2 bus rovereto timetable
@@ -26,6 +29,7 @@
 
 {
     "app_token" : "viaggiarovereto",
+    "alertroads_in_planning" : true,
     "smartcheck_options" : [
         2,
         3,
