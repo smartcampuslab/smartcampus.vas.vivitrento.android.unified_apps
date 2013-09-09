@@ -203,7 +203,7 @@
             android:label="@string/dt_name"
             android:theme="@style/Theme.Discovertrento"            
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:logo="@drawable/dt_logo"
+            android:logo="@drawable/dt"
             android:launchMode="singleTop" >
 
             <intent-filter>
@@ -235,19 +235,19 @@
 
         <activity
             android:name="eu.trentorise.smartcampus.dt.fragments.pois.AddressSelectActivity"
-			android:logo="@drawable/dt_logo"
+			android:logo="@drawable/dt"
 			android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Discovertrento"/>
         <activity
             android:name="eu.trentorise.smartcampus.dt.fragments.events.POISelectActivity"
-            android:logo="@drawable/dt_logo"
+            android:logo="@drawable/dt"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Discovertrento"/>
         
         <activity
             android:name="eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT"
             android:label="@string/dt_name"
-            android:logo="@drawable/dt_logo"
+            android:logo="@drawable/dt"
             android:theme="@style/Theme.Discovertrento"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard">
             <intent-filter>
