@@ -62,6 +62,7 @@
             android:theme="@style/Theme.ViviTrento" 
             android:label="@string/launcher_name"            
             android:configChanges="screenSize|keyboardHidden|keyboard"
+            android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTask">
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
