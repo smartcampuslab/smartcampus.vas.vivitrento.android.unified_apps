@@ -29,6 +29,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -97,6 +99,7 @@ public class AppFragment extends SherlockFragment {
 	// force the update pressing the menu button
 	private boolean forced = false;
 	private SharedPreferences settings = null;
+	private boolean checkversion = false;
 
 	@Override
 	public void onCreate(Bundle args) {
@@ -109,7 +112,16 @@ public class AppFragment extends SherlockFragment {
 		setHasOptionsMenu(true);
 		UPDATE_ADDRESS = getResources().getString(R.string.update_address);
 		UPDATE_HOST = getResources().getString(R.string.update_host);
-
+		ApplicationInfo ai = null;
+		try {
+			ai = getSherlockActivity().getPackageManager().getApplicationInfo(getSherlockActivity().getPackageName(),
+					PackageManager.GET_META_DATA);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Bundle aBundle = ai.metaData;
+		checkversion = aBundle.getBoolean("check-version");
 		// if you have some problem with the stored data, uncomment these lines
 		// and the data are erased
 
@@ -182,12 +194,14 @@ public class AppFragment extends SherlockFragment {
 	}
 
 	private void startNewAppTask() {
-//		// Stopping task
-//		stopAnyActiveAppTask();
-//		// Starting new one
-//		mAppTask = new AppTask();
-//		mAppTask.execute();
 
+		if (checkversion) {
+			// Stopping task
+			stopAnyActiveAppTask();
+			// Starting new one
+			mAppTask = new AppTask();
+			mAppTask.execute();
+		}
 	}
 
 	private void stopAnyActiveAppTask() {
@@ -221,7 +235,8 @@ public class AppFragment extends SherlockFragment {
 			req.setMethod(Method.GET);
 			ProtocolCarrier pc = new ProtocolCarrier(getActivity(), LAUNCHER);
 			try {
-				MessageResponse mres = pc.invokeSync(req, LAUNCHER, new AMSCAccessProvider().readToken(getActivity(), null));
+				MessageResponse mres = pc.invokeSync(req, LAUNCHER,
+						new AMSCAccessProvider().readToken(getActivity(), null));
 				if (mres != null && mres.getBody() != null) {
 
 					// Update from variable sec
@@ -290,15 +305,16 @@ public class AppFragment extends SherlockFragment {
 			TypedArray icons = getResources().obtainTypedArray(R.array.app_icons);
 			TypedArray grayIcons = getResources().obtainTypedArray(R.array.app_gray_icons);
 			// They have to be the same length
-			assert labels.length == packages.length && labels.length == backgrounds.length && labels.length == icons.length()
-					&& labels.length == grayIcons.length();
+			assert labels.length == packages.length && labels.length == backgrounds.length
+					&& labels.length == icons.length() && labels.length == grayIcons.length();
 			// Preparing all items
 			for (int i = 0; i < labels.length; i++) {
 				AppItem item = new AppItem();
 				item.app = new SmartApp();
 
-				item.app.fillApp(labels[i], packages[i], buildUrlDownloadApp(url, packages[i], versions[i], filenames[i]),
-						icons.getDrawable(i), grayIcons.getDrawable(i), backgrounds[i], versions[i], filenames[i]);
+				item.app.fillApp(labels[i], packages[i],
+						buildUrlDownloadApp(url, packages[i], versions[i], filenames[i]), icons.getDrawable(i),
+						grayIcons.getDrawable(i), backgrounds[i], versions[i], filenames[i]);
 				try {
 					mInspector.isAppInstalled(item.app.appPackage);
 					item.status = eu.trentorise.smartcampus.common.Status.OK;
@@ -411,7 +427,8 @@ public class AppFragment extends SherlockFragment {
 			notificationIntent.putExtra(PARAM_URL, launcher.app.url);
 			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 			notification.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP | Notification.FLAG_SHOW_LIGHTS;
-			notification.contentView = new RemoteViews(getSherlockActivity().getPackageName(), R.layout.update_notification);
+			notification.contentView = new RemoteViews(getSherlockActivity().getPackageName(),
+					R.layout.update_notification);
 			notification.contentIntent = pendingIntent;
 			notification.contentView.setTextViewText(R.id.notification_title,
 					getString(R.string.update_application_notification));
@@ -452,11 +469,12 @@ public class AppFragment extends SherlockFragment {
 		SubMenu submenu = menu.getItem(1).getSubMenu();
 		submenu.clear();
 		submenu.setIcon(R.drawable.ic_action_overflow);
-//
-//		submenu.add(Menu.CATEGORY_SYSTEM, R.id.check_updates, Menu.NONE, R.string.check_updates);// force
-//																									// the
-//																									// update
-//																									// check
+		//
+		// submenu.add(Menu.CATEGORY_SYSTEM, R.id.check_updates, Menu.NONE,
+		// R.string.check_updates);// force
+		// // the
+		// // update
+		// // check
 
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
 																					// page
@@ -490,7 +508,8 @@ public class AppFragment extends SherlockFragment {
 			startActivity(new Intent(getActivity(), SettingsActivity.class));
 			return true;
 		case R.id.about:
-			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.smartcampus_url_credits)));
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW,
+					Uri.parse(getString(R.string.smartcampus_url_credits)));
 			startActivity(browserIntent);
 
 			return true;
@@ -551,8 +570,9 @@ public class AppFragment extends SherlockFragment {
 		// update
 		AlertDialog.Builder builder = new AlertDialog.Builder(getSherlockActivity());
 		builder.setCancelable(false);
-		builder.setMessage(getString(R.string.update_application_question)).setPositiveButton("Yes", updateDialogClickListener)
-				.setNegativeButton("No", updateDialogClickListener).show();
+		builder.setMessage(getString(R.string.update_application_question))
+				.setPositiveButton("Yes", updateDialogClickListener).setNegativeButton("No", updateDialogClickListener)
+				.show();
 
 	}
 
