@@ -70,6 +70,8 @@ import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
 
 public class AppFragment extends SherlockFragment {
 
+	private static final String TAG ="AppFragment"; 
+
 	private ConnectivityManager mConnectivityManager;
 	private AppInspector mInspector;
 
@@ -116,12 +118,12 @@ public class AppFragment extends SherlockFragment {
 		try {
 			ai = getSherlockActivity().getPackageManager().getApplicationInfo(getSherlockActivity().getPackageName(),
 					PackageManager.GET_META_DATA);
+			Bundle aBundle = ai.metaData;
+			checkversion = aBundle.getBoolean("check-version");
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.e(TAG, "Problem getting meta-data \"check-version\"");
 		}
-		Bundle aBundle = ai.metaData;
-		checkversion = aBundle.getBoolean("check-version");
+
 		// if you have some problem with the stored data, uncomment these lines
 		// and the data are erased
 
