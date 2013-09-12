@@ -36,7 +36,7 @@
     <string name="smartcampus_app_url">https://tn.smartcampuslab.it</string>
 
     
-    <string name="smartcampus_url_apk">https://www.smartcampuslab.it/download/VAS/apk/</string>
+    <string name="smartcampus_url_apk">http://www.smartcampuslab.it/download/VAS/apk/</string>
     
     <string-array name="apk_filename">
         <item>vivitrento.apk</item>        
