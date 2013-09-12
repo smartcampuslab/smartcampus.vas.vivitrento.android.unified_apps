@@ -103,7 +103,10 @@
             android:logo="@drawable/jp"                      
             android:theme="@style/Theme.Journeyplanner"
             android:launchMode="singleTask" >
-
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.dt.TODAY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.AddressSelectActivity"
@@ -322,7 +325,20 @@
           </intent-filter>
         </receiver>
    <uses-library android:name="com.google.android.maps" />
-        
+   
+<!--    widget -->
+   <receiver
+       android:icon="@drawable/smallicon"
+       android:label="SmartCampus Shortcuts"
+       android:name="eu.trentorise.smartcampus.vivitrento.widget.shortcuts.SmartCampusShortCuts" >
+       <intent-filter >
+            <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+       </intent-filter>
+
+       <meta-data
+          android:name="android.appwidget.provider"
+          android:resource="@xml/widget_info" />
+</receiver>      
     </application>
 
 </manifest>
