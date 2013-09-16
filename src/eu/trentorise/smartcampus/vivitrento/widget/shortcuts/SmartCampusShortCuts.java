@@ -2,6 +2,7 @@ package eu.trentorise.smartcampus.vivitrento.widget.shortcuts;
 
 import eu.trentorise.smartcampus.dt.DiscoverTrentoActivity;
 import eu.trentorise.smartcampus.jp.HomeActivity;
+import eu.trentorise.smartcampus.jp.SmartCheckActivity;
 import eu.trentorise.smartcampus.vivitrento.R;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -37,7 +38,7 @@ public class SmartCampusShortCuts extends AppWidgetProvider {
 	            PendingIntent dtpendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 	            
 	            
-	            intent = new Intent(context, HomeActivity.class);
+	            intent = new Intent(context, SmartCheckActivity.class);
 	            intent.putExtra("FRAGMENT", "BUS");
 	            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 	                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
