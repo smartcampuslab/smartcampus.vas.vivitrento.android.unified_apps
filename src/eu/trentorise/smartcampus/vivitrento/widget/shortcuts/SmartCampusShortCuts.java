@@ -38,7 +38,8 @@ public class SmartCampusShortCuts extends AppWidgetProvider {
 	            PendingIntent dtpendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 	            
 	            
-	            intent = new Intent(context, SmartCheckActivity.class);
+//	            intent = new Intent(context, SmartCheckActivity.class);
+	            intent = new Intent(context, HomeActivity.class);
 	            intent.putExtra("FRAGMENT", "BUS");
 	            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 	                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
