@@ -29,29 +29,19 @@
  */
 
 {
-    "app_token" : "viaggiarovereto",
-    "alertroads_in_planning" : true,
-    "alertroads_in_planning_agencyid" : "COMUNE_DI_ROVERETO",
+    "app_token" : "viaggiatrento",
     "smartcheck_options" : [
-        2,
-        3,
+        1,
         4,
-        6,
-        7
+        5
     ],
     "broadcast_notifications_options" : [
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
+        1,
+        4
     ],
-   "center_map" : [
-      45.890919,
-      11.040184
+   "center_map":[
+      46.069672,
+      11.121270
    ],
-   "zoom_map" : 15
+   "zoom_map":15
 }

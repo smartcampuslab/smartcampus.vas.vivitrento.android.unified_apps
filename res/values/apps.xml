@@ -16,10 +16,10 @@
 <resources>
 
     <!-- Application specific configuration -->
-    <string name="dtprovider_authority">eu.trentorise.smartcampus.viaggiarovereto</string>
-    <string name="notificationsprovider_authority">eu.trentorise.smartcampus.viaggiarovereto.notifications</string>
-    <string name="notificationsprovider_mimetype_jp">viaggiarovereto.notifications/jp</string>
-    <string name="notificationsprovider_mimetype_dt">viaggiarovereto.notifications/dt</string>
+    <string name="dtprovider_authority">eu.trentorise.smartcampus.viaggiatrento</string>
+    <string name="notificationsprovider_authority">eu.trentorise.smartcampus.viaggiatrento.notifications</string>
+    <string name="notificationsprovider_mimetype_jp">viaggiatrento.notifications/jp</string>
+    <string name="notificationsprovider_mimetype_dt">viaggiatrento.notifications/dt</string>
     <!-- /Application specific configuration -->
     
     <color name="tile_background_unsel">#999999</color>
@@ -39,22 +39,22 @@
     <string name="smartcampus_url_apk">https://www.smartcampuslab.it/download/VAS/apk/</string>
     
     <string-array name="apk_filename">
-        <item>viaggiarovereto.apk</item>        
+        <item>viaggiatrento.apk</item>        
     </string-array>
     
     <string-array name="app_labels">
-        <item>ViaggiaRovereto</item>
+        <item>ViaggiaTrento</item>
         
     </string-array>
     
     <string-array name="app_packages">
-        <item>eu.trentorise.smartcampus.viaggiarovereto</item>
+        <item>eu.trentorise.smartcampus.viaggiatrento</item>
     </string-array>
     
     
     
     <string-array name="app_urls">
-        <item>http://www.smartcampuslab.it/download/VAS-test/apk/smartcampus.vas.viaggiarovereto.apk</item>        
+        <item>http://www.smartcampuslab.it/download/VAS-test/apk/smartcampus.vas.viaggiatrento.apk</item>        
     </string-array>
     
     <integer-array name="app_version">

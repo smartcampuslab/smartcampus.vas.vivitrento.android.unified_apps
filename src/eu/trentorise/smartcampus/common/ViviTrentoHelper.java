@@ -6,7 +6,7 @@ import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
-import eu.trentorise.smartcampus.viaggiarovereto.R;
+import eu.trentorise.smartcampus.viaggiatrento.R;
 
 public class ViviTrentoHelper {
 
