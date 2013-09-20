@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -183,6 +184,13 @@ public class LauncherActivity extends BaseActivity {
 		} else if (viewId == R.id.btn_notifications) {
 			intent = new Intent(this, NotificationsFragmentActivityJP.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
+			return;
+		} else if (viewId == R.id.btn_cit) {
+			intent = getPackageManager().getLaunchIntentForPackage("it.comunitrentini.comuneintasca");
+			if (intent == null) {
+				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=it.comunitrentini.comuneintasca"));
+			}
 			startActivity(intent);
 			return;
 		} else {
