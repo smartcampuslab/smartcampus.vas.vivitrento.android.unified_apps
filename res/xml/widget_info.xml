@@ -3,7 +3,7 @@
     android:initialLayout="@layout/shortcuts_widget"
     android:minHeight="72dp"
     android:minWidth="146dp"
-    android:configure="eu.trentorise.smartcampus.vivitrento.widget.shortcuts.ConfigurationActivity"
     android:updatePeriodMillis="1800000" >
-
+<!--     android:configure="eu.trentorise.smartcampus.widget.shortcuts.ConfigurationActivity" -->
+    
 </appwidget-provider> 
