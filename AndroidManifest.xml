@@ -126,11 +126,13 @@
             android:launchMode="singleTask"
             android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" >
-            <intent-filter>
-                <action android:name="@string/real_time_info_intent_action" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="@string/real_time_info_intent_action" /> -->
+
+
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.AddressSelectActivity"
@@ -158,6 +160,11 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.PLAN_JOURNEY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
@@ -165,6 +172,11 @@
             android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.MONITOR_JOURNEY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.SavedJourneyActivity"
@@ -172,6 +184,11 @@
             android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.SAVED_JOURNEY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.ViewActivity"
@@ -201,17 +218,34 @@
 
                 <data android:mimeType="@string/notificationsprovider_mimetype_jp" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.NOTIFICATIONS_JOURNEY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.ProfileActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:logo="@drawable/jp"
-            android:theme="@style/Theme.Journeyplanner" />
+            android:theme="@style/Theme.Journeyplanner" >
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.PREFERENCES" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:logo="@drawable/jp"
-            android:theme="@style/Theme.Journeyplanner" />
+            android:theme="@style/Theme.Journeyplanner" >
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.SIGNALS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.SmartCheckActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
@@ -219,7 +253,17 @@
             android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" >
             <intent-filter>
-                <action android:name="eu.trentorise.smartcampus.widget.BUS_LINES" />
+                <action android:name="eu.trentorise.smartcampus.widget.REAL_TIME_BUS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.REAL_TIME_TRAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.widget.REAL_TIME_PARKING" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -392,6 +436,12 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
+
+        <activity android:name="eu.trentorise.smartcampus.widget.shortcuts.ConfigurationActivity" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
