@@ -34,20 +34,13 @@
     "alertroads_in_planning_agencyid" : "COMUNE_DI_ROVERETO",
     "smartcheck_options" : [
         2,
-        3,
         4,
         6,
         7
     ],
     "broadcast_notifications_options" : [
         2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9
+        4
     ],
    "center_map" : [
       45.890919,
