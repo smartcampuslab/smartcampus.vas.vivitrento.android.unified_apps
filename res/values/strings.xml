@@ -18,7 +18,6 @@
 <!--     <string name="app_name">ViaggiaRovereto</string> -->
     <string name="launcher_name">ViaggiaRovereto</string>
     <string name="jp_name">ViaggiaRovereto</string>
-    <string name="dt_name">EsploraRovereto</string>
     <string name="notifications_name">Notifications</string>
         
     <string name="hello_world">Hello world!</string>
