@@ -16,10 +16,8 @@
 <resources>
 
     <!-- Application specific configuration -->
-    <string name="dtprovider_authority">eu.trentorise.smartcampus.viaggiatrento</string>
     <string name="notificationsprovider_authority">eu.trentorise.smartcampus.viaggiatrento.notifications</string>
     <string name="notificationsprovider_mimetype_jp">viaggiatrento.notifications/jp</string>
-    <string name="notificationsprovider_mimetype_dt">viaggiatrento.notifications/dt</string>
     <!-- /Application specific configuration -->
     
     <color name="tile_background_unsel">#999999</color>

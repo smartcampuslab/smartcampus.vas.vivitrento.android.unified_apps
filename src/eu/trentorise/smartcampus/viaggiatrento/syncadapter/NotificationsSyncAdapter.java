@@ -33,8 +33,6 @@ import android.util.Log;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.communicator.model.Notification;
-import eu.trentorise.smartcampus.dt.notifications.NotificationsFragmentActivityDT;
-import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
 import eu.trentorise.smartcampus.storage.sync.SyncData;
@@ -106,21 +104,17 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 
 	private void onDBUpdate(List<Object> objsList) {
 
-		List<Object> dtList = new ArrayList<Object>();
 		List<Object> jpList = new ArrayList<Object>();
 
 		for (Object obj : objsList) {
 			LinkedHashMap<String, Object> notification = (LinkedHashMap<String, Object>) obj;
 			String type = (String) notification.get("type");
-			if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
-				dtList.add(notification);
-			} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
+			if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
 				jpList.add(notification);
 			}
 		}
 
 		List<List<Object>> notificationsLists = new ArrayList<List<Object>>();
-		notificationsLists.add(dtList);
 		notificationsLists.add(jpList);
 
 		for (List<Object> list : notificationsLists) {
