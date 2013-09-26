@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.viaggiatrento"
     android:installLocation="internalOnly"
-    android:versionCode="8"
-    android:versionName="1.2.1" >
+    android:versionCode="4"
+    android:versionName="0.9.3" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -59,7 +59,7 @@
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
         <meta-data
             android:name="ACCOUNT_NAME"
-            android:value="Vivi Rovereto" />
+            android:value="@string/launcher_name" />
         <meta-data
             android:name="dt-sync-authority"
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
@@ -291,7 +291,14 @@
                 <data android:mimeType="@string/notificationsprovider_mimetype_jp" />
             </intent-filter>
         </activity>
-
+        <activity android:name="eu.trentorise.smartcampus.jp.custom.TutorialActivity"
+            android:theme="@style/TutorialTheme"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard">
+            <intent-filter >
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
         <service
             android:name="eu.trentorise.smartcampus.viaggiatrento.syncadapter.NotificationsSyncService"
             android:exported="false" >
