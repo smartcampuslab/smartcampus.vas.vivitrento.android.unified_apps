@@ -64,7 +64,7 @@
         <!-- Uses feedback metadata -->
         <meta-data
             android:name="use-feedback"
-            android:value="true" />
+            android:value="false" />
         <meta-data
             android:name="hidden-notification"
             android:value="false" />

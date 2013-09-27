@@ -47,20 +47,20 @@
         android:autoLink="web"
         android:text="@string/about_text_app"
         android:textColor="@color/sc_gray" 
-        android:paddingBottom="40dp"/>
+        android:paddingBottom="50dp"/>
 
     <TextView
+        android:id="@+id/tv_about_sc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autoLink="web"
         android:text="@string/about_text_sc"
         android:textColor="@color/sc_gray" 
-        android:paddingBottom="30dp"/>
+        android:paddingBottom="50dp"/>
 
     <TextView
+        android:id="@+id/tv_about_cdc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autoLink="web"
         android:text="@string/about_text_cdc"
         android:textColor="@color/sc_gray" 
         android:paddingBottom="30dp"/>

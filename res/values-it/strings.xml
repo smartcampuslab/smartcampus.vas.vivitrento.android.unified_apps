@@ -64,11 +64,11 @@
     <string name="not_now">Non adesso</string>
 
     <string name="about_text_app"><b>Informazione sulla mobilità integrata di Trento e dei comuni trentini</b></string>
-	<string name="about_text_sc">L'applicazione sviluppato dal progetto SmartCampus\n<br/>
-	    www.smartcampuslab.it/swabout
+	<string name="about_text_sc">L\'applicazione è sviluppata dal progetto SmartCampus\n\n<br/>
+	    <a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a>
 	</string>
-	<string name="about_text_cdc">In collaborazione con il Consorzio dei Comnuni Trentini\n<br/>
-	    www.comunitrentini.it
+	<string name="about_text_cdc">In collaborazione con il Consorzio dei Comnuni Trentini\n\n<br/>
+	    <a href="http://www.comunitrentini.it">www.comunitrentini.it</a>
 	</string>
     
 </resources>

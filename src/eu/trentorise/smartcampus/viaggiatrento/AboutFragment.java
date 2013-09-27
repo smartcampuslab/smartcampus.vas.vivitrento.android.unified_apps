@@ -2,10 +2,12 @@ package eu.trentorise.smartcampus.viaggiatrento;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockDialogFragment;
 
@@ -19,7 +21,10 @@ public class AboutFragment extends SherlockDialogFragment {
 	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,	Bundle args) {
-		return inflater.inflate(R.layout.about, null);
+		View v = inflater.inflate(R.layout.about, null);
+		((TextView)v.findViewById(R.id.tv_about_sc)).setMovementMethod(LinkMovementMethod.getInstance());
+		((TextView)v.findViewById(R.id.tv_about_cdc)).setMovementMethod(LinkMovementMethod.getInstance());
+		return v;
 	}
 	
 	@Override
