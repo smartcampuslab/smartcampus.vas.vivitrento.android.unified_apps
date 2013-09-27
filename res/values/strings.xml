@@ -69,5 +69,12 @@
 	
 	<string name="notification_type_discovertrento">ViviTrento</string>
 	<string name="notification_type_journeyplanner">ViaggiaTrento</string>
-	
+	<string name="about_text_app"><b>Integrated mobility information for the city and the Province of Trento</b></string>
+	<string name="about_text_sc">The application is developed by the SmartCampus project\n<br/>
+	    www.smartcampuslab.it/swabout
+	</string>
+	<string name="about_text_cdc">In collaboration with Consorzio dei Comnuni Trentini\n<br/>
+	    www.comunitrentini.it
+	</string>
+		
 </resources>

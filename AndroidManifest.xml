@@ -89,12 +89,23 @@
             android:theme="@style/Theme.Journeyplanner" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="smartcampuslab.it"
+                    android:pathPrefix="/viaggiatrentoapp"
+                    android:scheme="http" />
+                <data
+                    android:host="smartcampuslab.it"
+                    android:pathPrefix="/viaggiatrentoapp"
+                    android:scheme="smartcampus" />
+            </intent-filter>
         </activity>
-
-        <service
+		<service
             android:name="eu.trentorise.smartcampus.ac.authenticator.AuthenticationService"
             android:exported="true"
             android:permission="eu.trentorise.smartcampus.ac.AUTHENTICATE" >
