@@ -62,5 +62,13 @@
     <string name="notification_text">%s nuova notifica</string>
     <string name="notification_text_multi">%s nuove notifiche</string>
     <string name="not_now">Non adesso</string>
+
+    <string name="about_text_app"><b>Informazione sulla mobilità integrata di Trento e dei comuni trentini</b></string>
+	<string name="about_text_sc">L'applicazione sviluppato dal progetto SmartCampus\n<br/>
+	    www.smartcampuslab.it/swabout
+	</string>
+	<string name="about_text_cdc">In collaborazione con il Consorzio dei Comnuni Trentini\n<br/>
+	    www.comunitrentini.it
+	</string>
     
 </resources>
