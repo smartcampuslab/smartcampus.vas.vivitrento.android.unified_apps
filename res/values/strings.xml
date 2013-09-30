@@ -57,7 +57,7 @@
     <string name="update_dev_sum">Check for test updates</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
 	<string name="update_application_notification">A new version of ViaggiaTrento is available.</string>
-	<string name="auth_required">Authenticate yourself with your Google account. This step is optional but enables ViaggiaRovereto advanced functionalities. </string>
+	<string name="auth_required">Authenticate yourself with your Google account. This step is optional but enables advanced functionalities. </string>
 
 	<string name="registered_pref">registered</string>
 	<string name="upgrade_user_menu">Register</string>

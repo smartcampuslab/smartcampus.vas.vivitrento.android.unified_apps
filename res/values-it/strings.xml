@@ -57,7 +57,7 @@
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
 	<string name="update_application_notification">E\' disponibile una nuova versione di ViaggiaTrento.</string>
     <string name="upgrade_user_menu">Registrati</string>
-	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate di ViaggiaRovereto.</string>
+	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate.</string>
 
     <string name="notification_text">%s nuova notifica</string>
     <string name="notification_text_multi">%s nuove notifiche</string>
