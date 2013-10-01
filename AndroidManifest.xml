@@ -89,6 +89,23 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="smartcampuslab.it"
+                    android:pathPrefix="/viaggiaroveretoapp"
+                    android:scheme="http" />
+                <data
+                    android:host="smartcampuslab.it"
+                    android:pathPrefix="/viaggiaroveretoapp"
+                    android:scheme="smartcampus" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="eu.trentorise.smartcampus.START" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
 
         <service

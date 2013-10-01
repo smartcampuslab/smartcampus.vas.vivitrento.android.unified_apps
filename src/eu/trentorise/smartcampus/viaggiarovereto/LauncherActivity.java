@@ -15,7 +15,10 @@
  ******************************************************************************/
 package eu.trentorise.smartcampus.viaggiarovereto;
 
+import java.io.IOException;
+
 import android.accounts.AccountManager;
+import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -65,62 +68,9 @@ public class LauncherActivity extends TutorialManagerActivity {
 		setContentView(R.layout.home);
 		try {
 			ViviTrentoHelper.init(getApplicationContext());
-
 			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			initGlobalConstants();
-			//
-			if (accessprovider.readToken(this, null) == null) {
-				// dialogbox for registration
-				DialogInterface.OnClickListener updateDialogClickListener;
-
-				updateDialogClickListener = new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-
-						try {
-							switch (which) {
-							case DialogInterface.BUTTON_POSITIVE:
-
-								// yes -> accessprovider.getAuthToken(this,
-								// null);-> shared preferences "registred" true
-
-								accessprovider.getAuthToken(LauncherActivity.this, null);
-								break;
-
-							case DialogInterface.BUTTON_NEGATIVE:
-								// no -> accessprovider.getAuthToken(this,
-								// "anonymous"); -> shared preferences
-								// "registred" true
-
-								accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
-
-								break;
-							}
-							invalidateOptionsMenu();
-
-						} catch (OperationCanceledException e) {
-							Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG)
-									.show();
-							finish();
-						} catch (Exception e) {
-							Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT)
-									.show();
-							finish();
-						}
-					}
-				};
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setCancelable(false);
-				builder.setMessage(getString(R.string.auth_required))
-						.setPositiveButton(android.R.string.yes, updateDialogClickListener)
-						.setNegativeButton(R.string.not_now, updateDialogClickListener).show();
-			} else {
-				if (JPHelper.isFirstLaunch(this)) {
-					showTourDialog();
-					JPHelper.disableFirstLaunch(this);
-				}
-			}
-
+			ensureToken(accessprovider);
 		}
 
 		catch (Exception e) {
@@ -132,6 +82,80 @@ public class LauncherActivity extends TutorialManagerActivity {
 		FeedbackFragmentInflater.inflateHandleButtonInRelativeLayout(this,
 				(RelativeLayout) findViewById(R.id.home_relative_layout_jp));
 
+	}
+
+	/**
+	 * @param accessprovider
+	 * @throws OperationCanceledException
+	 * @throws AuthenticatorException
+	 * @throws IOException
+	 */
+	private void ensureToken(final AMSCAccessProvider accessprovider)
+			throws OperationCanceledException, AuthenticatorException,
+			IOException {
+		//
+		if (accessprovider.readToken(this, null) == null) {
+			if (accessprovider.readUserData(this, null) == null) {
+				showLoginDialog(accessprovider);
+			} else {
+				accessprovider.getAuthToken(LauncherActivity.this, accessprovider.isUserAnonymous(this) ? "anonymous" : null);
+			}
+		} else {
+			if (JPHelper.isFirstLaunch(this)) {
+				showTourDialog();
+				JPHelper.disableFirstLaunch(this);
+			}
+		}
+	}
+
+	/**
+	 * @param accessprovider
+	 */
+	private void showLoginDialog(final AMSCAccessProvider accessprovider) {
+		// dialogbox for registration
+		DialogInterface.OnClickListener updateDialogClickListener;
+
+		updateDialogClickListener = new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+				try {
+					switch (which) {
+					case DialogInterface.BUTTON_POSITIVE:
+
+						// yes -> accessprovider.getAuthToken(this,
+						// null);-> shared preferences "registred" true
+
+						accessprovider.getAuthToken(LauncherActivity.this, null);
+						break;
+
+					case DialogInterface.BUTTON_NEGATIVE:
+						// no -> accessprovider.getAuthToken(this,
+						// "anonymous"); -> shared preferences
+						// "registred" true
+
+						accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
+
+						break;
+					}
+					invalidateOptionsMenu();
+
+				} catch (OperationCanceledException e) {
+					Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG)
+							.show();
+					finish();
+				} catch (Exception e) {
+					Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT)
+							.show();
+					finish();
+				}
+			}
+		};
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setCancelable(false);
+		builder.setMessage(getString(R.string.auth_required))
+				.setPositiveButton(android.R.string.yes, updateDialogClickListener)
+				.setNegativeButton(R.string.not_now, updateDialogClickListener).show();
 	}
 
 	public void goToFunctionality(View view) {
