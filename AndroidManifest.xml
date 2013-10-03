@@ -424,10 +424,7 @@
         <uses-library android:name="com.google.android.maps" />
 
         <!-- widget -->
-        <receiver
-            android:name="eu.trentorise.smartcampus.widget.shortcuts.SmartCampusShortCuts"
-            android:icon="@drawable/smallicon"
-            android:label="SmartCampus Shortcuts" >
+        <receiver android:name="eu.trentorise.smartcampus.widget.shortcuts.StackWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -437,11 +434,40 @@
                 android:resource="@xml/widget_info" />
         </receiver>
 
+        <service
+            android:name="eu.trentorise.smartcampus.widget.shortcuts.StackWidgetService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
         <activity android:name="eu.trentorise.smartcampus.widget.shortcuts.ConfigurationActivity" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
+
+<!--         <receiver -->
+<!--             android:name="eu.trentorise.smartcampus.widget.shortcuts.SmartCampusShortCutsProvider" -->
+<!--             android:icon="@drawable/smallicon" -->
+<!--             android:label="SmartCampus Shortcuts" > -->
+<!--             <intent-filter> -->
+<!--                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" /> -->
+<!--             </intent-filter> -->
+
+<!--             <meta-data -->
+<!--                 android:name="android.appwidget.provider" -->
+<!--                 android:resource="@xml/widget_info" /> -->
+<!--         </receiver> -->
+
+<!--         <service -->
+<!--             android:name="eu.trentorise.smartcampus.widget.shortcuts.StackWidgetService" -->
+<!--             android:exported="false" -->
+<!--             android:permission="android.permission.BIND_REMOTEVIEWS" /> -->
+
+<!--         <activity android:name="eu.trentorise.smartcampus.widget.shortcuts.ConfigurationActivity" > -->
+<!--             <intent-filter> -->
+<!--                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" /> -->
+<!--             </intent-filter> -->
+<!--         </activity> -->
     </application>
 
 </manifest>
