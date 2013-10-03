@@ -67,7 +67,6 @@
 	<string name="checking_version">Checking applications version</string>
 	<string name="not_now">Not now</string>
 	
-	<string name="notification_type_discovertrento">ViviTrento</string>
-	<string name="notification_type_journeyplanner">ViaggiaTrento</string>
+	<string name="notification_type_journeyplanner">ViaggiaRovereto</string>
 	
 </resources>

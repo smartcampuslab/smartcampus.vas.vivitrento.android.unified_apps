@@ -22,7 +22,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="app_uid_label">ViviTrento</string>
     <string name="label_portfolio_apk">Portfolio</string>
     <string name="downloaded_app">tmp</string>
     <string name="getting_apk">Sto scaricando l\'app&#8230;</string>
