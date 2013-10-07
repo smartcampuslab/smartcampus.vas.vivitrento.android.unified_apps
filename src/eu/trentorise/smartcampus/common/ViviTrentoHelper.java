@@ -8,9 +8,9 @@ import eu.trentorise.smartcampus.vivitrento.R;
 
 public class ViviTrentoHelper {
 
-	public static String APP_TOKEN = "vivitrento";
-	public static String SYNC_DB_NAME = "vivitrento_notifications";
-	public static String SYNC_SERVICE = "/communicator/sync";
+	public static final String APP_TOKEN = "vivitrento";
+	public static final String SYNC_DB_NAME = "vivitrento_notifications";
+	public static final String SYNC_SERVICE = "/communicator/sync";
 
 	private static Context mContext;
 	private static ViviTrentoHelper helper;
@@ -26,6 +26,10 @@ public class ViviTrentoHelper {
 			helper = new ViviTrentoHelper(ctx);
 		}
 		NotificationsHelper.init(ctx, APP_TOKEN, SYNC_DB_NAME, SYNC_SERVICE, ctx.getString(R.string.notificationsprovider_authority));
+	}
+
+	public static boolean isInstantiated() {
+		return (helper != null);
 	}
 
 	public static SCAccessProvider getAccessProvider() {

@@ -33,6 +33,7 @@ import android.util.Log;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.communicator.model.Notification;
+import eu.trentorise.smartcampus.dt.custom.data.DTHelper;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
 import eu.trentorise.smartcampus.storage.sync.SyncData;
@@ -81,25 +82,28 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	}
 
 	private void handleSecurityProblem() {
-		Intent i = new Intent("eu.trentorise.smartcampus.START");
-		i.setPackage(mContext.getPackageName());
+		boolean anonymous = DTHelper.getAccessProvider().isUserAnonymous(mContext);
+        DTHelper.getAccessProvider().invalidateToken(mContext, null);
+        if (!anonymous) {
+    		Intent i = new Intent("eu.trentorise.smartcampus.START");
+    		i.setPackage(mContext.getPackageName());
 
-		ViviTrentoHelper.getAccessProvider().invalidateToken(mContext, null);
+    		ViviTrentoHelper.getAccessProvider().invalidateToken(mContext, null);
 
-		NotificationManager mNotificationManager = (NotificationManager) mContext
-				.getSystemService(Context.NOTIFICATION_SERVICE);
+    		NotificationManager mNotificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
-		int icon = R.drawable.launcher;
-		CharSequence tickerText = mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_expired);
-		long when = System.currentTimeMillis();
-		CharSequence contentText = mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_required);
-		PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, i, 0);
+    		int icon = R.drawable.launcher;
+    		CharSequence tickerText = mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_expired);
+    		long when = System.currentTimeMillis();
+    		CharSequence contentText = mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_required);
+    		PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, i, 0);
 
-		android.app.Notification notification = new android.app.Notification(icon, tickerText, when);
-		notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
-		notification.setLatestEventInfo(mContext, tickerText, contentText, contentIntent);
+    		android.app.Notification notification = new android.app.Notification(icon, tickerText, when);
+    		notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
+    		notification.setLatestEventInfo(mContext, tickerText, contentText, contentIntent);
 
-		mNotificationManager.notify(eu.trentorise.smartcampus.ac.Constants.ACCOUNT_NOTIFICATION_ID, notification);
+    		mNotificationManager.notify(eu.trentorise.smartcampus.ac.Constants.ACCOUNT_NOTIFICATION_ID, notification);
+        }
 	}
 
 	private void onDBUpdate(List<Object> objsList) {

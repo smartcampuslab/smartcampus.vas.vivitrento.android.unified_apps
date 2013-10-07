@@ -15,14 +15,16 @@
  ******************************************************************************/
 package eu.trentorise.smartcampus.vivitrento;
 
+import java.io.IOException;
+
 import android.accounts.AccountManager;
+import android.accounts.AuthenticatorException;
 import android.accounts.OperationCanceledException;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -38,6 +40,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 import eu.trentorise.smartcampus.ac.Constants;
+import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
@@ -49,7 +52,6 @@ import eu.trentorise.smartcampus.vivitrento.util.ConnectionUtil;
 public class LauncherActivity extends SherlockFragmentActivity {
 
 	public static final String UPDATE = "update";
-	private boolean token_present = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -57,62 +59,9 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		setContentView(R.layout.activity_main);
 		try {
 			ViviTrentoHelper.init(getApplicationContext());
-			
 			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			initGlobalConstants();
-			//
-			if (accessprovider.readToken(this, null) == null) {
-				token_present = false;
-				// dialogbox for registration
-				DialogInterface.OnClickListener updateDialogClickListener;
-
-				updateDialogClickListener = new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-
-						try {
-							SharedPreferences settings = LauncherActivity.this.getSharedPreferences(AppFragment.PREFS_NAME, 0);
-							SharedPreferences.Editor editor = settings.edit();
-							switch (which) {
-							case DialogInterface.BUTTON_POSITIVE:
-
-								// yes -> accessprovider.getAuthToken(this,
-								// null);-> shared preferences "registred" true
-
-								accessprovider.getAuthToken(LauncherActivity.this, null);
-								break;
-
-							case DialogInterface.BUTTON_NEGATIVE:
-								// no -> accessprovider.getAuthToken(this,
-								// "anonymous"); -> shared preferences
-								// "registred" true
-
-								accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
-
-								break;
-							}
-							editor.commit();
-							//appFragmentCheckVersion();
-							invalidateOptionsMenu();
-
-						} catch (OperationCanceledException e) {
-							Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
-							finish();
-						} catch (Exception e) {
-							Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
-							finish();
-						}
-					}
-				};
-				AlertDialog.Builder builder = new AlertDialog.Builder(this);
-				builder.setCancelable(false);
-				builder.setMessage(getString(R.string.auth_required))
-						.setPositiveButton(android.R.string.yes, updateDialogClickListener)
-						.setNegativeButton(R.string.not_now, updateDialogClickListener).show();
-			} else {
-				token_present = true;
-			}
-
+			ensureToken(accessprovider);
 		}
 
 		catch (Exception e) {
@@ -130,45 +79,120 @@ public class LauncherActivity extends SherlockFragmentActivity {
 		}
 	}
 
+	/**
+	 * @param accessprovider
+	 * @throws OperationCanceledException
+	 * @throws AuthenticatorException
+	 * @throws IOException
+	 */
+	private void ensureToken(final AMSCAccessProvider accessprovider)
+			throws OperationCanceledException, AuthenticatorException,
+			IOException {
+		//
+		if (accessprovider.readToken(this, null) == null) {
+			if (accessprovider.readUserData(this, null) == null) {
+				showLoginDialog(accessprovider);
+			} else {
+				accessprovider.getAuthToken(LauncherActivity.this, accessprovider.isUserAnonymous(this) ? "anonymous" : null);
+			}
+		}
+	}
+
+	/**
+	 * @param accessprovider
+	 */
+	private void showLoginDialog(final AMSCAccessProvider accessprovider) {
+		// dialogbox for registration
+		DialogInterface.OnClickListener updateDialogClickListener;
+
+		updateDialogClickListener = new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+
+				try {
+					SharedPreferences settings = LauncherActivity.this.getSharedPreferences(AppFragment.PREFS_NAME, 0);
+					SharedPreferences.Editor editor = settings.edit();
+					switch (which) {
+					case DialogInterface.BUTTON_POSITIVE:
+
+						// yes -> accessprovider.getAuthToken(this,
+						// null);-> shared preferences "registred" true
+
+						accessprovider.getAuthToken(LauncherActivity.this, null);
+						break;
+
+					case DialogInterface.BUTTON_NEGATIVE:
+						// no -> accessprovider.getAuthToken(this,
+						// "anonymous"); -> shared preferences
+						// "registred" true
+
+						accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
+
+						break;
+					}
+					editor.commit();
+					//appFragmentCheckVersion();
+					invalidateOptionsMenu();
+
+				} catch (OperationCanceledException e) {
+					Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
+					finish();
+				} catch (Exception e) {
+					Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+					finish();
+				}
+			}
+		};
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setCancelable(false);
+		builder.setMessage(getString(R.string.auth_required))
+				.setPositiveButton(android.R.string.yes, updateDialogClickListener)
+				.setNegativeButton(R.string.not_now, updateDialogClickListener).show();
+	}
+
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
 		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
-	}
-
-	private void appFragmentCheckVersion() {
-		AppFragment appfragment = (AppFragment) LauncherActivity.this.getSupportFragmentManager().findFragmentById(
-				R.id.fragment_container);
-		appfragment.check_version();
 	}
 
 	// getting the notification intent update the launcher
 	@Override
 	public void onNewIntent(Intent arg0) {
 		super.onNewIntent(arg0);
-		Bundle extras = arg0.getExtras();
+		if (getResources().getString(R.string.smartcampus_action_start).equals(arg0.getAction())) {
+			try {
+				final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
+				ensureToken(accessprovider);
+			} catch (Exception e) {
+				Toast.makeText(this, getString(R.string.auth_failed),
+						Toast.LENGTH_SHORT).show();
+				finish();
+			}
+		} else {
+			Bundle extras = arg0.getExtras();
 
-		if (extras != null) {
-			ApkDownloaderTask mDownloaderTask = new ApkDownloaderTask(this, extras.getString("url"));
+			if (extras != null) {
+				ApkDownloaderTask mDownloaderTask = new ApkDownloaderTask(this, extras.getString("url"));
 
-			if (ConnectionUtil.isConnected(ConnectionUtil.getConnectivityManager(this))) {
-				// Checking url
-				if (!TextUtils.isEmpty(extras.getString("url"))) {
-					if (mDownloaderTask != null && !mDownloaderTask.isCancelled()) {
-						mDownloaderTask.cancel(true);
+				if (ConnectionUtil.isConnected(ConnectionUtil.getConnectivityManager(this))) {
+					// Checking url
+					if (!TextUtils.isEmpty(extras.getString("url"))) {
+						if (mDownloaderTask != null && !mDownloaderTask.isCancelled()) {
+							mDownloaderTask.cancel(true);
+						}
+						mDownloaderTask = new ApkDownloaderTask(this, extras.getString(AppFragment.PARAM_URL));
+						mDownloaderTask.execute();
+					} else {
+						Log.d(AppFragment.class.getName(), "Empty url for download: " + extras.getString(AppFragment.PARAM_NAME));
+						Toast.makeText(this, R.string.error_occurs, Toast.LENGTH_SHORT).show();
 					}
-					mDownloaderTask = new ApkDownloaderTask(this, extras.getString(AppFragment.PARAM_URL));
-					mDownloaderTask.execute();
 				} else {
-					Log.d(AppFragment.class.getName(), "Empty url for download: " + extras.getString(AppFragment.PARAM_NAME));
-					Toast.makeText(this, R.string.error_occurs, Toast.LENGTH_SHORT).show();
+					Toast.makeText(this, R.string.enable_connection, Toast.LENGTH_SHORT).show();
+					Intent intent = ConnectionUtil.getWifiSettingsIntent();
+					startActivity(intent);
 				}
-			} else {
-				Toast.makeText(this, R.string.enable_connection, Toast.LENGTH_SHORT).show();
-				Intent intent = ConnectionUtil.getWifiSettingsIntent();
-				startActivity(intent);
 			}
 		}
-
 	}
 
 	public void launchDT(View v) {
@@ -189,25 +213,27 @@ public class LauncherActivity extends SherlockFragmentActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == RESULT_OK) {
-			String token = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
-			if (token == null) {
-				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+		if (requestCode == SCAccessProvider.SC_AUTH_ACTIVITY_REQUEST_CODE) {
+			if (resultCode == RESULT_OK) {
+				String token = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
+				if (token == null) {
+					Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+					// clean shared preferences
+				} else {
+					//appFragmentCheckVersion();
+					invalidateOptionsMenu();
+				}
+
+			} else if (resultCode == RESULT_CANCELED ) {
+				Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
 				// clean shared preferences
-			} else {
-				//appFragmentCheckVersion();
-				invalidateOptionsMenu();
+				finish();
+
+			}else {
+				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+				// clean shared preferences
+				finish();
 			}
-
-		} else if (resultCode == RESULT_CANCELED ) {
-			Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
-			// clean shared preferences
-			finish();
-
-		}else {
-			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-			// clean shared preferences
-			finish();
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
