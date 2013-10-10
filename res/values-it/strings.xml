@@ -16,8 +16,8 @@
 <resources>
 
 <!--     <string name="app_name">ViviRovereto</string> -->
-    <string name="launcher_name">ViaggiaRovereto</string>
-    <string name="jp_name">ViaggiaRovereto</string>
+    <string name="launcher_name">Viaggia Rovereto</string>
+    <string name="jp_name">Viaggia Rovereto</string>
         
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Impostazioni</string>
