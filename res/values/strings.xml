@@ -76,5 +76,7 @@
 	<string name="about_text_cdc">In collaboration with Consorzio dei Comnuni Trentini\n\n<br/>
 	    <a href="http://www.comunitrentini.it">www.comunitrentini.it</a>
 	</string>
-		
+
+	<string name="btn_cit">Comune in tasca</string>
+			
 </resources>
