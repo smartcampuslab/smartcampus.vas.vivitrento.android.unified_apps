@@ -16,9 +16,7 @@
 <resources>
 
 <!--     <string name="app_name">ViaggiaTrento</string> -->
-    <string name="launcher_name">ViaggiaTrento</string>
-    <string name="jp_name">ViaggiaTrento</string>
-    <string name="dt_name">EsploraTrento</string>
+    <string name="jp_name">Viaggia Trento</string>
         
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Impostazioni</string>

@@ -16,8 +16,7 @@
 <resources>
 
 <!--     <string name="app_name">ViaggiaTrento</string> -->
-    <string name="launcher_name">ViaggiaTrento</string>
-    <string name="jp_name">ViaggiaTrento</string>
+    <string name="jp_name">Viaggia Trento</string>
     <string name="notifications_name">Notifications</string>
         
     <string name="hello_world">Hello world!</string>
@@ -77,6 +76,6 @@
 	    <a href="http://www.comunitrentini.it">www.comunitrentini.it</a>
 	</string>
 
-	<string name="btn_cit">Comune in tasca</string>
+	<string name="btn_cit">App \'Il Comune in tasca\'</string>
 			
 </resources>

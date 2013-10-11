@@ -44,7 +44,7 @@
 
     <application
         android:icon="@drawable/launcher"
-        android:label="@string/launcher_name"
+        android:label="@string/jp_name"
         android:launchMode="singleTask"
         android:logo="@drawable/launcher"
         android:theme="@style/Theme.Journeyplanner" >
@@ -59,7 +59,7 @@
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
         <meta-data
             android:name="ACCOUNT_NAME"
-            android:value="@string/launcher_name" />
+            android:value="@string/jp_name" />
 
         <!-- Uses feedback metadata -->
         <meta-data
@@ -84,7 +84,7 @@
         <activity
             android:name="eu.trentorise.smartcampus.viaggiatrento.LauncherActivity"
             android:configChanges="screenSize"
-            android:label="@string/launcher_name"
+            android:label="@string/jp_name"
             android:launchMode="singleTask"
             android:theme="@style/Theme.Journeyplanner" >
             <intent-filter>

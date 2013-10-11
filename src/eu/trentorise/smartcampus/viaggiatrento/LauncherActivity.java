@@ -31,8 +31,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -57,10 +55,11 @@ import eu.trentorise.smartcampus.jp.TutorialManagerActivity;
 import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
-import eu.trentorise.smartcampus.viaggiatrento.apps.ApkInstaller.ApkDownloaderTask;
-import eu.trentorise.smartcampus.viaggiatrento.util.ConnectionUtil;
 
 public class LauncherActivity extends TutorialManagerActivity {
+
+	public static final String FIRSTTIME = "load_first_time";
+	public static final String PREFS_NAME = "LauncherPreferences";
 
 	public static final String UPDATE = "update";
 	private String mToken = null;
@@ -233,8 +232,8 @@ public class LauncherActivity extends TutorialManagerActivity {
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
 		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
-		SharedPreferences settings = LauncherActivity.this.getSharedPreferences(AppFragment.PREFS_NAME, 0);
-		settings.edit().putBoolean(AppFragment.FIRSTTIME, true).commit();
+		SharedPreferences settings = LauncherActivity.this.getSharedPreferences(PREFS_NAME, 0);
+		settings.edit().putBoolean(FIRSTTIME, true).commit();
 
 	}
 
