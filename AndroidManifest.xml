@@ -140,28 +140,23 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/jp_name"
             android:launchMode="singleTask"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" >
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.AddressSelectActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.StopSelectActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.LegMapActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.PlanJourneyActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
@@ -173,21 +168,18 @@
         <activity
             android:name="eu.trentorise.smartcampus.jp.PlanRecurJourneyActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.SavedJourneyActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.ViewActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
@@ -203,7 +195,6 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/jp_name"
             android:launchMode="singleTask"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" >
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -216,30 +207,25 @@
         <activity
             android:name="eu.trentorise.smartcampus.jp.ProfileActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.SmartCheckActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_smart_check"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" >
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.jp.ParkingMapActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_smart_check"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.Launcher"
             android:configChanges="orientation|screenSize"
-            android:logo="@drawable/jp"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
         </activity>
