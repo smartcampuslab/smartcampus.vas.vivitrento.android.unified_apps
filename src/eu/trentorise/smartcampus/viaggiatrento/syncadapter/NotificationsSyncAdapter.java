@@ -33,7 +33,7 @@ import android.util.Log;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.communicator.model.Notification;
-import eu.trentorise.smartcampus.dt.custom.data.DTHelper;
+import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
 import eu.trentorise.smartcampus.storage.sync.SyncData;
@@ -82,8 +82,8 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	}
 
 	private void handleSecurityProblem() {
-        boolean anonymous = DTHelper.getAccessProvider().isUserAnonymous(mContext);
-        DTHelper.getAccessProvider().invalidateToken(mContext, null);
+        boolean anonymous = JPHelper.getAccessProvider().isUserAnonymous(mContext);
+        JPHelper.getAccessProvider().invalidateToken(mContext, null);
         if (!anonymous) {
     		Intent i = new Intent("eu.trentorise.smartcampus.START");
     		i.setPackage(mContext.getPackageName());
