@@ -27,7 +27,8 @@
         android:layout_alignParentBottom="true"
         android:gravity="top|left"
             android:background="@color/jpappcolor"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:visibility="gone">
 
         <Button
             android:id="@+id/btn_cit"
