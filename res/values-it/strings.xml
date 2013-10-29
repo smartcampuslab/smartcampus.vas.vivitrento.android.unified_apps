@@ -61,4 +61,12 @@
     <string name="notification_text_multi">%s nuove notifiche</string>
     <string name="not_now">Non adesso</string>
     
+    <string name="about_text_app"><b>Informazione sulla mobilità integrata di Rovereto</b></string>
+	<string name="about_text_sc">L\'applicazione è sviluppata dal progetto SmartCampus\n\n<br/>
+	    <a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a>
+	</string>
+	<string name="about_text_cdc">In collaborazione con il Comune di Rovereto\n\n<br/>
+	    <a href="http://www.comune.rovereto.tn.it">www.comune.rovereto.tn.it</a>
+	</string>
+    
 </resources>

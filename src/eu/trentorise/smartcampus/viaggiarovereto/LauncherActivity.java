@@ -27,8 +27,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
-import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,7 @@ import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.android.feedback.utils.FeedbackFragmentInflater;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
+import eu.trentorise.smartcampus.jp.Config;
 import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
 import eu.trentorise.smartcampus.jp.PlanJourneyActivity;
 import eu.trentorise.smartcampus.jp.ProfileActivity;
@@ -313,9 +315,12 @@ public class LauncherActivity extends TutorialManagerActivity {
 			AMSCAccessProvider ac = new AMSCAccessProvider();
 			ac.promote(this, null, ac.readToken(this, null));
 		} else if (item.getItemId() == R.id.about) {
-			Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-					Uri.parse(getString(R.string.smartcampus_url_credits)));
-			startActivity(browserIntent);		
+			 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+             Fragment fragment = new AboutFragment();
+             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+             fragmentTransaction.replace(Config.mainlayout,fragment, "about");
+             fragmentTransaction.addToBackStack(fragment.getTag());
+             fragmentTransaction.commit();
 		}
 		
 		return super.onOptionsItemSelected(item);

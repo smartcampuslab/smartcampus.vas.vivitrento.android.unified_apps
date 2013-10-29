@@ -2,7 +2,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="10dp" >
 
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jp_name"
+        android:textColor="@color/jpappcolor"
+        android:gravity="center"
+        android:textAppearance="@android:style/TextAppearance.Large" />
+    
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/jpappcolor" />
+    
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:paddingBottom="40dp"
+		android:paddingTop="20dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/sc" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/rovereto" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:text="@string/about_text_app"
+        android:textColor="@color/sc_gray" 
+        android:paddingBottom="50dp"/>
+
+    <TextView
+        android:id="@+id/tv_about_sc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_text_sc"
+        android:textColor="@color/sc_gray" 
+        android:paddingBottom="50dp"/>
+
+    <TextView
+        android:id="@+id/tv_about_cdc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_text_cdc"
+        android:textColor="@color/sc_gray" 
+        android:paddingBottom="30dp"/>
+    
 </LinearLayout>
