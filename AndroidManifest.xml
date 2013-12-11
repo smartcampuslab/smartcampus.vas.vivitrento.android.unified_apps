@@ -35,9 +35,9 @@
     <permission
         android:name="eu.trentorise.smartcampus.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
-    
+
     <uses-permission android:name="eu.trentorise.smartcampus.permission.MAPS_RECEIVE" />
-    
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -47,7 +47,10 @@
         android:label="@string/jp_name"
         android:launchMode="singleTask"
         android:logo="@drawable/launcher"
-        android:theme="@style/Theme.Journeyplanner">
+        android:theme="@style/Theme.Journeyplanner" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAYMob8Ipl_ykdVq9hkQTvFVSQMNSXn3aA" />
@@ -94,8 +97,10 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="smartcampuslab.it"
                     android:pathPrefix="/viaggiaroveretoapp"
@@ -107,6 +112,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.START" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -232,10 +238,11 @@
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
         </activity>
-        <activity android:name="eu.trentorise.smartcampus.jp.custom.TutorialActivity"
-            android:theme="@style/TutorialTheme"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard">
-            <intent-filter >
+        <activity
+            android:name="eu.trentorise.smartcampus.jp.custom.TutorialActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:theme="@style/TutorialTheme" >
+            <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

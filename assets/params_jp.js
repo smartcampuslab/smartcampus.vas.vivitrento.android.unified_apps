@@ -12,6 +12,14 @@
  * 6 parking rovereto
  * 7 alerts rovereto
  * 
+ * SUBURBAN ZONES
+ * 1 Val di Fiemme, Val di Fassa, Val di Cembra
+ * 2 Val Rendena, Giudicarie
+ * 3 Rovereto, Lavarone, Destra Adige, Riva del Garda
+ * 4 Valsugana
+ * 5 Valle di Primiero
+ * 6 Val di Non, Val di Sole
+ * 
  * BROADCAST NOTIFICATIONS OPTIONS
  * 1 bus trento delay
  * 2 bus rovereto delay
@@ -26,6 +34,10 @@
  * COORDINATES
  * Trento 46.069672, 11.121270
  * Rovereto 45.890919, 11.040184
+ * 
+ *     "suburban_zones" : [
+ *        3
+ *   ],
  */
 
 {
@@ -34,12 +46,17 @@
     "alertroads_in_planning_agencyid" : "COMUNE_DI_ROVERETO",
     "smartcheck_options" : [
         2,
+        3,
         4,
         6,
         7
     ],
+    "suburban_zones" : [
+	    3
+    ],
     "broadcast_notifications_options" : [
         2,
+        3,
         4
     ],
    "center_map" : [
