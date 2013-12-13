@@ -1,0 +1,1 @@
+{"times":[[["11:19","11:50","12:39"]]],"stopsId":["Bolzano_5","Trento_5","Verona-PortaNuova_5"],"stops":["Bolzano FS","Trento FS","VeronaPN FS"],"tripIds":[["EC1289"]],"delays":null}

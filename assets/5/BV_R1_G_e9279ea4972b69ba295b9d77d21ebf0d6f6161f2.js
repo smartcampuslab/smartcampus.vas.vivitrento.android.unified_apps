@@ -1,0 +1,1 @@
+{"times":[[["06:40","06:56"]]],"stopsId":["Trento_5","Rovereto_5"],"stops":["Trento FS","Rovereto FS"],"tripIds":[["R10953"]],"delays":null}
