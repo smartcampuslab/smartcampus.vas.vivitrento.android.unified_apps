@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.viaggiatrento"
     android:installLocation="internalOnly"
-    android:versionCode="4"
-    android:versionName="0.9.3" >
+    android:versionCode="14"
+    android:versionName="0.9.13" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -50,7 +50,7 @@
         android:theme="@style/Theme.Journeyplanner" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAYMob8Ipl_ykdVq9hkQTvFVSQMNSXn3aA" />
+            android:value="AIzaSyC8Iafl-PanukaEoWT8GuYh4UJEUAZcgv8" />
         <meta-data
             android:name="SHARED_PACKAGE"
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
