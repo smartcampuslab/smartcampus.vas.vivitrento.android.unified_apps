@@ -65,8 +65,11 @@
 	<string name="about_text_sc">L\'applicazione è sviluppata dal progetto SmartCampus\n\n<br/>
 	    <a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a>
 	</string>
-	<string name="about_text_cdc">In collaborazione con il Consorzio dei Comnuni Trentini\n\n<br/>
-	    <a href="http://www.comunitrentini.it">www.comunitrentini.it</a>
+	<string name="about_text_cdc">Con la partecipazione del Consorzio dei Comuni Trentini\n\n<br/>
+	    <a href="http://www.innovazione.comunitrentini.tn.it">www.innovazione.comunitrentini.tn.it</a>
 	</string>
-    
+	<string name="about_text_ct">In collaborazione con il Comune di Trento\n\n<br/>
+	    <a href="http://www.comune.trento.it">www.comune.trento.it</a>
+	</string>
+	
 </resources>

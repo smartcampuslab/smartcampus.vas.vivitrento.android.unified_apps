@@ -72,10 +72,13 @@
 	<string name="about_text_sc">The application is developed by the SmartCampus project\n\n<br/>
 	    <a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a>
 	</string>
-	<string name="about_text_cdc">In collaboration with Consorzio dei Comnuni Trentini\n\n<br/>
-	    <a href="http://www.comunitrentini.it">www.comunitrentini.it</a>
+	<string name="about_text_cdc">With the partecipation of Consorzio dei Comnuni Trentini\n\n<br/>
+	    <a href="http://www.innovazione.comunitrentini.tn.it">www.innovazione.comunitrentini.tn.it</a>
 	</string>
-
+	<string name="about_text_ct">In collaboration with the municipality of Trento\n\n<br/>
+	    <a href="http://www.comune.trento.it">www.comune.trento.it</a>
+	</string>
+	
 	<string name="btn_cit">App \'Il Comune in tasca\'</string>
 			
 </resources>

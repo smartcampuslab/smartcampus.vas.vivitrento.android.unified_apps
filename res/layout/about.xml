@@ -24,20 +24,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" 
+        android:orientation="horizontal"
+        android:gravity="center_vertical" 
         android:paddingBottom="40dp"
 		android:paddingTop="20dp">
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
+            android:src="@drawable/vert_colore" />
+        
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
             android:src="@drawable/cdc" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:src="@drawable/sc" />
     </LinearLayout>
 
@@ -47,7 +54,7 @@
         android:autoLink="web"
         android:text="@string/about_text_app"
         android:textColor="@color/sc_gray" 
-        android:paddingBottom="50dp"/>
+        android:paddingBottom="30dp"/>
 
     <TextView
         android:id="@+id/tv_about_sc"
@@ -55,14 +62,22 @@
         android:layout_height="wrap_content"
         android:text="@string/about_text_sc"
         android:textColor="@color/sc_gray" 
-        android:paddingBottom="50dp"/>
+        android:paddingBottom="20dp"/>
 
+    <TextView
+        android:id="@+id/tv_about_ct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_text_ct"
+        android:textColor="@color/sc_gray" 
+        android:paddingBottom="20dp"/>
+    
     <TextView
         android:id="@+id/tv_about_cdc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/about_text_cdc"
         android:textColor="@color/sc_gray" 
-        android:paddingBottom="30dp"/>
+        android:paddingBottom="20dp"/>
     
 </LinearLayout>
