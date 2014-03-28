@@ -15,11 +15,13 @@
  ******************************************************************************/
 package eu.trentorise.smartcampus.viaggiatrento;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.http.HttpStatus;
 
 import android.accounts.AccountManager;
-import android.accounts.AuthenticatorException;
-import android.accounts.OperationCanceledException;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,21 +29,27 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
-import android.net.Uri;
+import android.content.res.TypedArray;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 
+import eu.trentorise.smartcampus.ac.AACException;
 import eu.trentorise.smartcampus.ac.Constants;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
-import eu.trentorise.smartcampus.ac.authenticator.AMSCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.android.feedback.utils.FeedbackFragmentInflater;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
@@ -50,86 +58,114 @@ import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
 import eu.trentorise.smartcampus.jp.PlanJourneyActivity;
 import eu.trentorise.smartcampus.jp.ProfileActivity;
 import eu.trentorise.smartcampus.jp.SavedJourneyActivity;
-import eu.trentorise.smartcampus.jp.SmartCheckActivity;
+import eu.trentorise.smartcampus.jp.SmartCheckDirectActivity;
 import eu.trentorise.smartcampus.jp.TutorialManagerActivity;
 import eu.trentorise.smartcampus.jp.helper.JPHelper;
+import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 
 public class LauncherActivity extends TutorialManagerActivity {
 
-	public static final String FIRSTTIME = "load_first_time";
-	public static final String PREFS_NAME = "LauncherPreferences";
+//	public static final String FIRSTTIME = "load_first_time";
+//	public static final String PREFS_NAME = "LauncherPreferences";
 
 	public static final String UPDATE = "update";
 	private String mToken = null;
 
 	@Override
+	protected void initDataManagement(Bundle savedInstanceState) {
+		
+	}
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		JPHelper.init(getApplicationContext());
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
 
 		try {
-			ViviTrentoHelper.init(getApplicationContext());
-			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			initGlobalConstants();
-			ensureToken(accessprovider);
+			SCAccessProvider accessprovider =  SCAccessProvider.getInstance(LauncherActivity.this);
+			if (!accessprovider.isLoggedIn(this))
+			{
+				showLoginDialog(accessprovider);
+			}
+			else {
+				ViviTrentoHelper.init(getApplicationContext());
+				JPHelper.init(getApplicationContext());
+				prepareView();
+
+			}
 		}
 
 		catch (Exception e) {
 			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 			finish();
 		}
-		// Feedback
-		FeedbackFragmentInflater.inflateHandleButtonInRelativeLayout(this,
-				(RelativeLayout) findViewById(R.id.home_relative_layout_jp));
+		
+		
+		
 
 	}
+	private void prepareView() {
+		if (getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD)
+			getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
-	/**
-	 * @param accessprovider
-	 * @throws OperationCanceledException
-	 * @throws AuthenticatorException
-	 * @throws IOException
-	 */
-	private void ensureToken(final AMSCAccessProvider accessprovider)
-			throws OperationCanceledException, AuthenticatorException,
-			IOException {
-		//
-		if (accessprovider.readToken(this, null) == null) {
-			if (accessprovider.readUserData(this, null) == null) {
-				showLoginDialog(accessprovider);
-			} else {
-				accessprovider.getAuthToken(LauncherActivity.this, accessprovider.isUserAnonymous(this) ? "anonymous" : null);
+		List<View> list = createButtons();
+		LinearLayout ll = null;
+		LinearLayout parent = (LinearLayout)findViewById(R.id.homelayout);
+		for (int i = 0; i < list.size(); i++){
+			if (ll == null) {
+				ll = new LinearLayout(this);
+				ll.setOrientation(LinearLayout.HORIZONTAL);
+				ll.setGravity(Gravity.TOP | Gravity.CENTER);
+				ll.setWeightSum(3);
+				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+					     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+				layoutParams.setMargins(0, 32, 0, 0);
+				parent.addView(ll, layoutParams);
 			}
-		} else {
-			if (JPHelper.isFirstLaunch(this)) {
-				showTourDialog();
-				JPHelper.disableFirstLaunch(this);
+			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+			layoutParams.weight = 1;
+			ll.addView(list.get(i), layoutParams);
+			if ((i+1) % 3 == 0){
+				ll = null;
 			}
 		}
 	}
 
-//	@Override
-//	protected void onStart() {
-//		super.onStart();
-//		if (getIntent() != null && getResources().getString(R.string.smartcampus_action_start).equals(getIntent().getAction())) {
-//			try {
-//				final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
-//				ensureToken(accessprovider);
+//	/**
+//	 * @param accessprovider
+//	 * @throws OperationCanceledException
+//	 * @throws AuthenticatorException
+//	 * @throws IOException
+//	 * @throws AACException 
+//	 */
+//	private void ensureToken(final SCAccessProvider accessprovider)
+//			throws OperationCanceledException, AuthenticatorException,
+//			IOException, AACException {
+//		// or is logged == false ???
+//		if (accessprovider.readToken(this) == null) {
+////			if (accessprovider.readUserData(this, null) == null) {
+//			if (!accessprovider.isLoggedIn(this)){
+//				showLoginDialog(accessprovider);
+//			} else {
+////				accessprovider.login(LauncherActivity.this, accessprovider.isUserAnonymous(this) ? "anonymous" : null);
+//				accessprovider.login(LauncherActivity.this,  null);
 //			}
-//			catch (Exception e) {
-//				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
-//				finish();
+//		} else {
+//			if (JPHelper.isFirstLaunch(this)) {
+//				showTourDialog();
+//				JPHelper.disableFirstLaunch(this);
 //			}
 //		}
 //	}
+
+
 	
 	/**
 	 * @param accessprovider
 	 */
-	private void showLoginDialog(final AMSCAccessProvider accessprovider) {
+	private void showLoginDialog(final SCAccessProvider accessprovider) {
 		// dialogbox for registration
 		DialogInterface.OnClickListener updateDialogClickListener;
 
@@ -144,7 +180,7 @@ public class LauncherActivity extends TutorialManagerActivity {
 						// yes -> accessprovider.getAuthToken(this,
 						// null);-> shared preferences "registred" true
 
-						accessprovider.getAuthToken(LauncherActivity.this, null);
+						accessprovider.login(LauncherActivity.this, null);
 						break;
 
 					case DialogInterface.BUTTON_NEGATIVE:
@@ -152,16 +188,18 @@ public class LauncherActivity extends TutorialManagerActivity {
 						// "anonymous"); -> shared preferences
 						// "registred" true
 
-						accessprovider.getAuthToken(LauncherActivity.this, "anonymous");
+						
+						//con bundle
+//						accessprovider.login(LauncherActivity.this, "anonymous");
+						Bundle bundle = new Bundle();
+						bundle.putString(Constants.KEY_AUTHORITY, "anonymous");
+						accessprovider.login(LauncherActivity.this, bundle);
 
 						break;
 					}
 					invalidateOptionsMenu();
 
-				} catch (OperationCanceledException e) {
-					Toast.makeText(LauncherActivity.this, getString(R.string.token_required), Toast.LENGTH_LONG)
-							.show();
-					finish();
+				
 				} catch (Exception e) {
 					Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT)
 							.show();
@@ -179,13 +217,12 @@ public class LauncherActivity extends TutorialManagerActivity {
 	public void goToFunctionality(View view) {
 		Intent intent;
 		int viewId = view.getId();
-
 		if (viewId == R.id.btn_planjourney) {
 			intent = new Intent(this, PlanJourneyActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
-		}   else if (viewId == R.id.btn_monitorrecurrentjourney) {
+		} else if (viewId == R.id.btn_monitorrecurrent) {
 			intent = new Intent(this, MonitorJourneyActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
@@ -200,13 +237,8 @@ public class LauncherActivity extends TutorialManagerActivity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
-		} else if (viewId == R.id.btn_monitorsavedjourney) {
+		} else if (viewId == R.id.btn_monitorsaved) {
 			intent = new Intent(this, SavedJourneyActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-			startActivity(intent);
-			return;
-		} else if (viewId == R.id.btn_smart) {
-			intent = new Intent(this, SmartCheckActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
@@ -215,25 +247,31 @@ public class LauncherActivity extends TutorialManagerActivity {
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
-		} else if (viewId == R.id.btn_cit) {
-			intent = getPackageManager().getLaunchIntentForPackage("it.comunitrentini.comuneintasca");
-			if (intent == null) {
-				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=it.comunitrentini.comuneintasca"));
-			}
-			startActivity(intent);
-			return;
 		} else {
-			Toast toast = Toast.makeText(this, R.string.tmp, Toast.LENGTH_SHORT);
+			String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
+			TypedArray smartIds = getResources().obtainTypedArray(R.array.smart_check_list_ids);
+			for (int i = 0; i < smartNames.length; i++) {
+				String scName = smartNames[i];
+				if (smartIds.getResourceId(i, 0) == viewId) {
+					SmartCheckDirectActivity.startSmartCheck(this, scName);
+					return;
+				}
+			}
+			smartIds.recycle();
+			
+			Toast toast = Toast.makeText(getApplicationContext(), R.string.tmp, Toast.LENGTH_SHORT);
 			toast.show();
 			return;
 		}
 	}
 
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
-		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
-		SharedPreferences settings = LauncherActivity.this.getSharedPreferences(PREFS_NAME, 0);
-		settings.edit().putBoolean(FIRSTTIME, true).commit();
+
+//		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
+//		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
+//		SharedPreferences settings = LauncherActivity.this.getSharedPreferences(PREFS_NAME, 0);
+//		settings.edit().putBoolean(FIRSTTIME, true).commit();
 
 	}
 
@@ -243,8 +281,7 @@ public class LauncherActivity extends TutorialManagerActivity {
 		if (getResources().getString(R.string.smartcampus_action_start)
 						.equals(arg0.getAction())) {
 			try {
-				final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
-				ensureToken(accessprovider);
+				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
 			} catch (Exception e) {
 				Toast.makeText(this, getString(R.string.auth_failed),
 						Toast.LENGTH_SHORT).show();
@@ -260,9 +297,7 @@ public class LauncherActivity extends TutorialManagerActivity {
 		if (JPHelper.isInitialized()) {
 			JPHelper.getLocationHelper().start();
 		}
-//		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//		Fragment frag = new AppFragment();
-//		ft.add(R.id.fragment_container, frag).commit();
+
 	}
 
 	@Override
@@ -288,6 +323,9 @@ public class LauncherActivity extends TutorialManagerActivity {
 					Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 					// clean shared preferences
 				} else {
+					ViviTrentoHelper.init(getApplicationContext());
+					JPHelper.init(getApplicationContext());
+					prepareView();
 					invalidateOptionsMenu();
 					if (JPHelper.isFirstLaunch(this)) {
 						showTourDialog();
@@ -319,11 +357,18 @@ public class LauncherActivity extends TutorialManagerActivity {
 		// Handle item selection
 		if (item.getItemId() == android.R.id.home) {
 			onBackPressed();
-		} else if (item.getItemId() == R.id.upgrade_user_menu) {
-			// promote user
-			AMSCAccessProvider ac = new AMSCAccessProvider();
-			ac.promote(this, null, ac.readToken(this, null));
-		} else if (item.getItemId() == R.id.about) {
+		} 
+		
+		else if (item.getItemId() == R.id.upgrade_user_menu) {
+		// promote user
+			JPHelper.userPromote(this);
+	} 
+//		else if (item.getItemId() == R.id.upgrade_user_menu) {
+//			// promote user
+//			SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
+//			provider.promote(this, null, provider.readToken(this));
+//		} 
+		else if (item.getItemId() == R.id.about) {
 			
 			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 			Fragment fragment = new AboutFragment();
@@ -332,9 +377,7 @@ public class LauncherActivity extends TutorialManagerActivity {
 			fragmentTransaction.addToBackStack(fragment.getTag());
 			fragmentTransaction.commit();
 			
-//			Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-//					Uri.parse(getString(R.string.smartcampus_url_credits)));
-//			startActivity(browserIntent);		
+	
 		}
 		
 		return super.onOptionsItemSelected(item);
@@ -352,11 +395,140 @@ public class LauncherActivity extends TutorialManagerActivity {
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_tutorial, Menu.NONE, R.string.menu_tutorial);
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
 																					// page
-
-		if (new AMSCAccessProvider().isUserAnonymous(this)) {
-			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
-		}
+		if (JPHelper.isUserAnonymous(this)) {
+		submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
+	}
+//		if (SCAccessProvider.isUserAnonymous(this)) {
+//			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
+//		}
 
 		return super.onPrepareOptionsMenu(menu);
 	}
+	
+	private class TokenTask extends AsyncTask<Void, Void, String> {
+
+		@Override
+		protected String doInBackground(Void... params) {
+			SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
+			try {
+				return provider.readToken(LauncherActivity.this);
+			} catch (AACException e) {
+				Log.e(LauncherActivity.class.getName(), ""+e.getMessage());
+				switch (e.getStatus()) {
+				case HttpStatus.SC_UNAUTHORIZED:
+					try {
+						provider.logout(LauncherActivity.this);
+					} catch (AACException e1) {
+						e1.printStackTrace();
+					}
+				default:
+					break;
+				}
+				return null;
+			}
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			if (result == null) {
+				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
+				try {
+					provider.login(LauncherActivity.this, null);
+				} catch (AACException e) {
+					Log.e(LauncherActivity.class.getName(), ""+e.getMessage());
+				}
+			}
+		}
+		
+	} 
+	
+	public enum Login_Action { LOGIN_DIALOG, LOGIN, TOUR_DIALOG} 
+	private class LoginTask extends AsyncTask<Void, Void, Login_Action> {
+
+		@Override
+		protected Login_Action doInBackground(Void... params) {
+			SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
+			
+			try {
+				//readtoken return null if no account found
+			if (provider.readToken(LauncherActivity.this) == null) {
+				if (!provider.isLoggedIn(LauncherActivity.this)){
+					return Login_Action.LOGIN_DIALOG;
+				} else {
+					return Login_Action.LOGIN;
+					
+				}
+			} else {
+				if (JPHelper.isFirstLaunch(LauncherActivity.this)) {
+					return Login_Action.TOUR_DIALOG;
+				}
+			}
+			
+			} catch (AACException e) {
+				e.printStackTrace();
+			}
+			return Login_Action.LOGIN_DIALOG;
+		}
+
+		@Override
+		protected void onPostExecute(Login_Action result) {
+			if (result != null) {
+				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
+				try {
+					switch (result) {
+					case LOGIN_DIALOG:
+						showLoginDialog(provider);
+						break;
+					case LOGIN:
+						provider.login(LauncherActivity.this,  null);
+						break;
+					case TOUR_DIALOG:
+						showTourDialog();
+						JPHelper.disableFirstLaunch(LauncherActivity.this);
+						break;
+					default:
+						break;
+					}
+				} catch (AACException e) {
+					Log.e(LauncherActivity.class.getName(), ""+e.getMessage());
+				}
+			}
+		}
+		
+	} 
+	
+	
+	private List<View> createButtons() {
+		List<View> list = new ArrayList<View>();
+		// First, set the smart check options
+		String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
+		List<String> smartNamesFiltered = Arrays.asList(JPParamsHelper.getSmartCheckOptions());
+		TypedArray smartIds = getResources().obtainTypedArray(R.array.smart_check_list_ids);
+		TypedArray smartIcons = getResources().obtainTypedArray(R.array.smart_check_list_icons);
+		for (int i = 0; i < smartNames.length; i++) {
+			if (smartNamesFiltered.contains(smartNames[i])) {
+				Button b = (Button)getLayoutInflater().inflate(R.layout.home_btn, null);
+				b.setText(smartNames[i]);
+				b.setId(smartIds.getResourceId(i, 0));
+				b.setCompoundDrawablesWithIntrinsicBounds(null, smartIcons.getDrawable(i), null, null);
+				list.add(b);
+			}
+		}
+		smartIcons.recycle();
+		smartIds.recycle();
+		String[] allNames = getResources().getStringArray(R.array.main_list);
+		TypedArray allIds = getResources().obtainTypedArray(R.array.main_list_ids);
+		TypedArray allIcons = getResources().obtainTypedArray(R.array.main_list_icons);
+		for (int i = 0; i < allNames.length; i++) {
+			Button b = (Button)getLayoutInflater().inflate(R.layout.home_btn, null);
+			b.setText(allNames[i]);
+			b.setId(allIds.getResourceId(i, 0));
+			b.setCompoundDrawablesWithIntrinsicBounds(null, allIcons.getDrawable(i), null, null);
+			list.add(b);
+		}
+		allIcons.recycle();
+		allIds.recycle();
+		return list;
+	}	
+
 }
