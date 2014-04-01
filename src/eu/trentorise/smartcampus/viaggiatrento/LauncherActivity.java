@@ -62,10 +62,12 @@ import eu.trentorise.smartcampus.jp.SmartCheckDirectActivity;
 import eu.trentorise.smartcampus.jp.TutorialManagerActivity;
 import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
+import eu.trentorise.smartcampus.jp.helper.RefreshMenuInterface;
+import eu.trentorise.smartcampus.jp.helper.UserRegistration;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 
-public class LauncherActivity extends TutorialManagerActivity {
+public class LauncherActivity extends TutorialManagerActivity implements RefreshMenuInterface{
 
 //	public static final String FIRSTTIME = "load_first_time";
 //	public static final String PREFS_NAME = "LauncherPreferences";
@@ -91,7 +93,7 @@ public class LauncherActivity extends TutorialManagerActivity {
 			}
 			else {
 				ViviTrentoHelper.init(getApplicationContext());
-				JPHelper.init(getApplicationContext());
+				JPHelper.init(getApplicationContext(), this);
 				prepareView();
 
 			}
@@ -324,7 +326,7 @@ public class LauncherActivity extends TutorialManagerActivity {
 					// clean shared preferences
 				} else {
 					ViviTrentoHelper.init(getApplicationContext());
-					JPHelper.init(getApplicationContext());
+					JPHelper.init(getApplicationContext(), this);
 					prepareView();
 					invalidateOptionsMenu();
 					if (JPHelper.isFirstLaunch(this)) {
@@ -359,15 +361,17 @@ public class LauncherActivity extends TutorialManagerActivity {
 			onBackPressed();
 		} 
 		
-		else if (item.getItemId() == R.id.upgrade_user_menu) {
-		// promote user
-			JPHelper.userPromote(this);
-	} 
 //		else if (item.getItemId() == R.id.upgrade_user_menu) {
-//			// promote user
+//		// promote user
+//			JPHelper.userPromote(this);
+//	} 
+		else if (item.getItemId() == R.id.upgrade_user_menu) {
+			// promote user
+			 UserRegistration.upgradeuser(this);
+ 
 //			SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
 //			provider.promote(this, null, provider.readToken(this));
-//		} 
+		} 
 		else if (item.getItemId() == R.id.about) {
 			
 			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -529,6 +533,13 @@ public class LauncherActivity extends TutorialManagerActivity {
 		allIcons.recycle();
 		allIds.recycle();
 		return list;
+	}
+	@Override
+	public void refreshmenu() {
+//		Log.v("launcherActivity", "refresh menu");
+//		Log.v("launcherActivity", " anonymous"+JPHelper.isUserAnonymous(this));
+
+		invalidateOptionsMenu();
 	}	
 
 }
