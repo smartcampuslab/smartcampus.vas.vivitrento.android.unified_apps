@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.http.HttpStatus;
-
 import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -32,14 +30,13 @@ import android.content.res.Resources.NotFoundException;
 import android.content.res.TypedArray;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
@@ -47,11 +44,10 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 
-import eu.trentorise.smartcampus.ac.AACException;
 import eu.trentorise.smartcampus.ac.Constants;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
-import eu.trentorise.smartcampus.android.feedback.utils.FeedbackFragmentInflater;
+import eu.trentorise.smartcampus.android.common.Utils;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.jp.Config;
 import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
@@ -60,25 +56,30 @@ import eu.trentorise.smartcampus.jp.ProfileActivity;
 import eu.trentorise.smartcampus.jp.SavedJourneyActivity;
 import eu.trentorise.smartcampus.jp.SmartCheckDirectActivity;
 import eu.trentorise.smartcampus.jp.TutorialManagerActivity;
+import eu.trentorise.smartcampus.jp.helper.CopyTask;
 import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
-import eu.trentorise.smartcampus.jp.helper.RefreshMenuInterface;
+import eu.trentorise.smartcampus.jp.helper.OnTaskCompleted;
 import eu.trentorise.smartcampus.jp.helper.UserRegistration;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
+import eu.trentorise.smartcampus.mobilityservice.MobilityUserService;
+import eu.trentorise.smartcampus.mobilityservice.model.BasicItinerary;
+import eu.trentorise.smartcampus.mobilityservice.model.BasicRecurrentJourney;
 
-public class LauncherActivity extends TutorialManagerActivity implements RefreshMenuInterface{
+public class LauncherActivity extends TutorialManagerActivity implements OnTaskCompleted {
 
-//	public static final String FIRSTTIME = "load_first_time";
-//	public static final String PREFS_NAME = "LauncherPreferences";
+	// public static final String FIRSTTIME = "load_first_time";
+	// public static final String PREFS_NAME = "LauncherPreferences";
 
 	public static final String UPDATE = "update";
 	private String mToken = null;
 
 	@Override
 	protected void initDataManagement(Bundle savedInstanceState) {
-		
+
 	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -86,14 +87,12 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 
 		try {
 			initGlobalConstants();
-			SCAccessProvider accessprovider =  SCAccessProvider.getInstance(LauncherActivity.this);
-			if (!accessprovider.isLoggedIn(this))
-			{
+			SCAccessProvider accessprovider = SCAccessProvider.getInstance(LauncherActivity.this);
+			if (!accessprovider.isLoggedIn(this)) {
 				showLoginDialog(accessprovider);
-			}
-			else {
+			} else {
 				ViviTrentoHelper.init(getApplicationContext());
-				JPHelper.init(getApplicationContext(), this);
+				JPHelper.init(getApplicationContext());
 				prepareView();
 
 			}
@@ -103,67 +102,65 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 			finish();
 		}
-		
-		
-		
 
 	}
+
 	private void prepareView() {
 		if (getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD)
 			getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
 		List<View> list = createButtons();
 		LinearLayout ll = null;
-		LinearLayout parent = (LinearLayout)findViewById(R.id.homelayout);
-		for (int i = 0; i < list.size(); i++){
+		LinearLayout parent = (LinearLayout) findViewById(R.id.homelayout);
+		for (int i = 0; i < list.size(); i++) {
 			if (ll == null) {
 				ll = new LinearLayout(this);
 				ll.setOrientation(LinearLayout.HORIZONTAL);
 				ll.setGravity(Gravity.TOP | Gravity.CENTER);
 				ll.setWeightSum(3);
 				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-					     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+						LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 				layoutParams.setMargins(0, 32, 0, 0);
 				parent.addView(ll, layoutParams);
 			}
-			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
+			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,
+					LinearLayout.LayoutParams.WRAP_CONTENT);
 			layoutParams.weight = 1;
 			ll.addView(list.get(i), layoutParams);
-			if ((i+1) % 3 == 0){
+			if ((i + 1) % 3 == 0) {
 				ll = null;
 			}
 		}
 	}
 
-//	/**
-//	 * @param accessprovider
-//	 * @throws OperationCanceledException
-//	 * @throws AuthenticatorException
-//	 * @throws IOException
-//	 * @throws AACException 
-//	 */
-//	private void ensureToken(final SCAccessProvider accessprovider)
-//			throws OperationCanceledException, AuthenticatorException,
-//			IOException, AACException {
-//		// or is logged == false ???
-//		if (accessprovider.readToken(this) == null) {
-////			if (accessprovider.readUserData(this, null) == null) {
-//			if (!accessprovider.isLoggedIn(this)){
-//				showLoginDialog(accessprovider);
-//			} else {
-////				accessprovider.login(LauncherActivity.this, accessprovider.isUserAnonymous(this) ? "anonymous" : null);
-//				accessprovider.login(LauncherActivity.this,  null);
-//			}
-//		} else {
-//			if (JPHelper.isFirstLaunch(this)) {
-//				showTourDialog();
-//				JPHelper.disableFirstLaunch(this);
-//			}
-//		}
-//	}
+	// /**
+	// * @param accessprovider
+	// * @throws OperationCanceledException
+	// * @throws AuthenticatorException
+	// * @throws IOException
+	// * @throws AACException
+	// */
+	// private void ensureToken(final SCAccessProvider accessprovider)
+	// throws OperationCanceledException, AuthenticatorException,
+	// IOException, AACException {
+	// // or is logged == false ???
+	// if (accessprovider.readToken(this) == null) {
+	// // if (accessprovider.readUserData(this, null) == null) {
+	// if (!accessprovider.isLoggedIn(this)){
+	// showLoginDialog(accessprovider);
+	// } else {
+	// // accessprovider.login(LauncherActivity.this,
+	// accessprovider.isUserAnonymous(this) ? "anonymous" : null);
+	// accessprovider.login(LauncherActivity.this, null);
+	// }
+	// } else {
+	// if (JPHelper.isFirstLaunch(this)) {
+	// showTourDialog();
+	// JPHelper.disableFirstLaunch(this);
+	// }
+	// }
+	// }
 
-
-	
 	/**
 	 * @param accessprovider
 	 */
@@ -181,7 +178,7 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 
 						// yes -> accessprovider.getAuthToken(this,
 						// null);-> shared preferences "registred" true
-
+						JPHelper.setUserAnonymous(LauncherActivity.this, false);
 						accessprovider.login(LauncherActivity.this, null);
 						break;
 
@@ -190,9 +187,11 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 						// "anonymous"); -> shared preferences
 						// "registred" true
 
-						
-						//con bundle
-//						accessprovider.login(LauncherActivity.this, "anonymous");
+						// con bundle
+						// accessprovider.login(LauncherActivity.this,
+						// "anonymous");
+						JPHelper.setUserAnonymous(LauncherActivity.this, true);
+
 						Bundle bundle = new Bundle();
 						bundle.putString(Constants.KEY_AUTHORITY, "anonymous");
 						accessprovider.login(LauncherActivity.this, bundle);
@@ -201,10 +200,8 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 					}
 					invalidateOptionsMenu();
 
-				
 				} catch (Exception e) {
-					Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT)
-							.show();
+					Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 					finish();
 				}
 			}
@@ -260,7 +257,7 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 				}
 			}
 			smartIds.recycle();
-			
+
 			Toast toast = Toast.makeText(getApplicationContext(), R.string.tmp, Toast.LENGTH_SHORT);
 			toast.show();
 			return;
@@ -270,23 +267,24 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
 
-//		Constants.setAuthUrl(this, getResources().getString(R.string.smartcampus_auth_url));
-//		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
-//		SharedPreferences settings = LauncherActivity.this.getSharedPreferences(PREFS_NAME, 0);
-//		settings.edit().putBoolean(FIRSTTIME, true).commit();
+		// Constants.setAuthUrl(this,
+		// getResources().getString(R.string.smartcampus_auth_url));
+		// GlobalConfig.setAppUrl(this,
+		// getResources().getString(R.string.smartcampus_app_url));
+		// SharedPreferences settings =
+		// LauncherActivity.this.getSharedPreferences(PREFS_NAME, 0);
+		// settings.edit().putBoolean(FIRSTTIME, true).commit();
 
 	}
 
 	@Override
 	public void onNewIntent(Intent arg0) {
 		super.onNewIntent(arg0);
-		if (getResources().getString(R.string.smartcampus_action_start)
-						.equals(arg0.getAction())) {
+		if (getResources().getString(R.string.smartcampus_action_start).equals(arg0.getAction())) {
 			try {
 				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
 			} catch (Exception e) {
-				Toast.makeText(this, getString(R.string.auth_failed),
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 				finish();
 			}
 		}
@@ -316,34 +314,60 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 
 	}
 
+	
+	/*
+	 * Manage the result after login
+	 * if in sharedpreferences are stored itinerarys -> upgrade user
+	 * else if result is ok -> anonymous
+	 * else is cancelled
+	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == SCAccessProvider.SC_AUTH_ACTIVITY_REQUEST_CODE) {
-			if (resultCode == RESULT_OK) {
-				mToken  = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
-				if (mToken == null) {
-					Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
-					// clean shared preferences
-				} else {
-					ViviTrentoHelper.init(getApplicationContext());
-					JPHelper.init(getApplicationContext(), this);
-					prepareView();
-					invalidateOptionsMenu();
-					if (JPHelper.isFirstLaunch(this)) {
-						showTourDialog();
-						JPHelper.disableFirstLaunch(this);
+
+			try {
+				SharedPreferences sharedPref = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+				MobilityUserService userService = new MobilityUserService(GlobalConfig.getAppUrl(this)
+						+ JPHelper.MOBILITY_URL);
+				if (sharedPref.contains(JPHelper.MY_ITINERARIES)) {
+					mToken = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
+					if (mToken == null) {
+						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+					} else {
+						//set user to not anonymous
+						JPHelper.setUserAnonymous(this, false);
+						invalidateOptionsMenu();
+						JPHelper.readAccountProfile(new CopyTask(sharedPref, userService, resultCode, data,this,this));
 					}
 				}
 
-			} else if (resultCode == RESULT_CANCELED) {
-				Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
-				// clean shared preferences
-				finish();
+				else if (resultCode == RESULT_OK) {
+					mToken = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
+					if (mToken == null) {
+						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+					} else {
+						ViviTrentoHelper.init(getApplicationContext());
+						JPHelper.init(getApplicationContext());
+						prepareView();
+						invalidateOptionsMenu();
+						if (JPHelper.isFirstLaunch(this)) {
+							showTourDialog();
+							JPHelper.disableFirstLaunch(this);
+						}
+					}
 
-			} else {
-				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-				// clean shared preferences
-				finish();
+				} else if (resultCode == RESULT_CANCELED) {
+					Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
+					// clean shared preferences
+					finish();
+
+				} else {
+					Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+					// clean shared preferences
+					finish();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
@@ -356,34 +380,25 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
 		if (item.getItemId() == android.R.id.home) {
 			onBackPressed();
-		} 
-		
-//		else if (item.getItemId() == R.id.upgrade_user_menu) {
-//		// promote user
-//			JPHelper.userPromote(this);
-//	} 
+		}
+
 		else if (item.getItemId() == R.id.upgrade_user_menu) {
 			// promote user
-			 UserRegistration.upgradeuser(this);
- 
-//			SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
-//			provider.promote(this, null, provider.readToken(this));
-		} 
-		else if (item.getItemId() == R.id.about) {
-			
+			UserRegistration.upgradeuser(this);
+
+		} else if (item.getItemId() == R.id.about) {
+
 			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 			Fragment fragment = new AboutFragment();
 			fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-	        fragmentTransaction.replace(Config.mainlayout,fragment, "about");
+			fragmentTransaction.replace(Config.mainlayout, fragment, "about");
 			fragmentTransaction.addToBackStack(fragment.getTag());
 			fragmentTransaction.commit();
-			
-	
+
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -400,108 +415,16 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
 																					// page
 		if (JPHelper.isUserAnonymous(this)) {
-		submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
-	}
-//		if (SCAccessProvider.isUserAnonymous(this)) {
-//			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
-//		}
+			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
+		}
+		// if (SCAccessProvider.isUserAnonymous(this)) {
+		// submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE,
+		// R.string.upgrade_user_menu);
+		// }
 
 		return super.onPrepareOptionsMenu(menu);
 	}
-	
-	private class TokenTask extends AsyncTask<Void, Void, String> {
 
-		@Override
-		protected String doInBackground(Void... params) {
-			SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
-			try {
-				return provider.readToken(LauncherActivity.this);
-			} catch (AACException e) {
-				Log.e(LauncherActivity.class.getName(), ""+e.getMessage());
-				switch (e.getStatus()) {
-				case HttpStatus.SC_UNAUTHORIZED:
-					try {
-						provider.logout(LauncherActivity.this);
-					} catch (AACException e1) {
-						e1.printStackTrace();
-					}
-				default:
-					break;
-				}
-				return null;
-			}
-		}
-
-		@Override
-		protected void onPostExecute(String result) {
-			if (result == null) {
-				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
-				try {
-					provider.login(LauncherActivity.this, null);
-				} catch (AACException e) {
-					Log.e(LauncherActivity.class.getName(), ""+e.getMessage());
-				}
-			}
-		}
-		
-	} 
-	
-	public enum Login_Action { LOGIN_DIALOG, LOGIN, TOUR_DIALOG} 
-	private class LoginTask extends AsyncTask<Void, Void, Login_Action> {
-
-		@Override
-		protected Login_Action doInBackground(Void... params) {
-			SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
-			
-			try {
-				//readtoken return null if no account found
-			if (provider.readToken(LauncherActivity.this) == null) {
-				if (!provider.isLoggedIn(LauncherActivity.this)){
-					return Login_Action.LOGIN_DIALOG;
-				} else {
-					return Login_Action.LOGIN;
-					
-				}
-			} else {
-				if (JPHelper.isFirstLaunch(LauncherActivity.this)) {
-					return Login_Action.TOUR_DIALOG;
-				}
-			}
-			
-			} catch (AACException e) {
-				e.printStackTrace();
-			}
-			return Login_Action.LOGIN_DIALOG;
-		}
-
-		@Override
-		protected void onPostExecute(Login_Action result) {
-			if (result != null) {
-				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
-				try {
-					switch (result) {
-					case LOGIN_DIALOG:
-						showLoginDialog(provider);
-						break;
-					case LOGIN:
-						provider.login(LauncherActivity.this,  null);
-						break;
-					case TOUR_DIALOG:
-						showTourDialog();
-						JPHelper.disableFirstLaunch(LauncherActivity.this);
-						break;
-					default:
-						break;
-					}
-				} catch (AACException e) {
-					Log.e(LauncherActivity.class.getName(), ""+e.getMessage());
-				}
-			}
-		}
-		
-	} 
-	
-	
 	private List<View> createButtons() {
 		List<View> list = new ArrayList<View>();
 		// First, set the smart check options
@@ -511,7 +434,7 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 		TypedArray smartIcons = getResources().obtainTypedArray(R.array.smart_check_list_icons);
 		for (int i = 0; i < smartNames.length; i++) {
 			if (smartNamesFiltered.contains(smartNames[i])) {
-				Button b = (Button)getLayoutInflater().inflate(R.layout.home_btn, null);
+				Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
 				b.setText(smartNames[i]);
 				b.setId(smartIds.getResourceId(i, 0));
 				b.setCompoundDrawablesWithIntrinsicBounds(null, smartIcons.getDrawable(i), null, null);
@@ -524,7 +447,7 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 		TypedArray allIds = getResources().obtainTypedArray(R.array.main_list_ids);
 		TypedArray allIcons = getResources().obtainTypedArray(R.array.main_list_icons);
 		for (int i = 0; i < allNames.length; i++) {
-			Button b = (Button)getLayoutInflater().inflate(R.layout.home_btn, null);
+			Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
 			b.setText(allNames[i]);
 			b.setId(allIds.getResourceId(i, 0));
 			b.setCompoundDrawablesWithIntrinsicBounds(null, allIcons.getDrawable(i), null, null);
@@ -534,12 +457,9 @@ public class LauncherActivity extends TutorialManagerActivity implements Refresh
 		allIds.recycle();
 		return list;
 	}
+
 	@Override
-	public void refreshmenu() {
-//		Log.v("launcherActivity", "refresh menu");
-//		Log.v("launcherActivity", " anonymous"+JPHelper.isUserAnonymous(this));
-
-		invalidateOptionsMenu();
-	}	
-
+	public void onTaskCompleted(String result) {
+		mToken = result;
+	}
 }
