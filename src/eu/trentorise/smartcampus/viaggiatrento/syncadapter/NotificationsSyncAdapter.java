@@ -16,8 +16,6 @@
 
 package eu.trentorise.smartcampus.viaggiatrento.syncadapter;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import android.accounts.Account;
@@ -30,16 +28,11 @@ import android.content.Intent;
 import android.content.SyncResult;
 import android.os.Bundle;
 import android.util.Log;
-import eu.trentorise.smartcampus.android.common.GlobalConfig;
-import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.communicator.model.DBNotification;
-import eu.trentorise.smartcampus.communicator.model.Notification;
-import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.notifications.NotificationsHelper;
 import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
 import eu.trentorise.smartcampus.storage.sync.SyncData;
-import eu.trentorise.smartcampus.storage.sync.SyncStorage;
 import eu.trentorise.smartcampus.viaggiatrento.R;
 
 /**
@@ -60,7 +53,7 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	private final static String CORE_MOBILITY = "core.mobility";
 
 	private final static int MAX_MSG = 50;
-	
+
 	public NotificationsSyncAdapter(Context context, boolean autoInitialize) {
 		super(context, autoInitialize);
 		mContext = context;
@@ -70,133 +63,174 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 
 	private void init(Context context) {
 		if (!NotificationsHelper.isInstantiated()) {
-			String authority = context
-					.getString(R.string.notificationprovider_authority);
+			String authority = context.getString(R.string.notificationprovider_authority);
 			try {
 				NotificationsHelper.init(context, appToken, authority, CORE_MOBILITY, MAX_MSG);
 				NotificationsHelper.start(true);
 			} catch (Exception e) {
-				Log.e(TAG,
-						"Failed to instantiate SyncAdapter: " + e.getMessage());
+				Log.e(TAG, "Failed to instantiate SyncAdapter: " + e.getMessage());
 			}
 		}
 	}
 
 	@Override
 	public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider,
-			SyncResult syncResult) {		
+			SyncResult syncResult) {
 		init(getContext());
-			try {
-				Log.e(TAG, "Trying synchronization");
-				// SyncStorage storage = NotificationsHelper.getSyncStorage();
-				SyncData data = NotificationsHelper.synchronize();
-				if (data.getUpdated() != null
-						&& !data.getUpdated().isEmpty()
-						&& data.getUpdated().containsKey(
-								DBNotification.class.getCanonicalName()))
-					onDBUpdate(data.getUpdated().get(
-							DBNotification.class.getCanonicalName()));
-			} catch (SecurityException e) {
-				handleSecurityProblem();
-			} catch (Exception e) {
-				Log.e(TAG, "on PerformSynch Exception: " + e.getMessage());
-			}
+		try {
+			Log.e(TAG, "Trying synchronization");
+			// SyncStorage storage = NotificationsHelper.getSyncStorage();
+			SyncData data = NotificationsHelper.synchronize();
+			if (data.getUpdated() != null && !data.getUpdated().isEmpty()
+					&& data.getUpdated().containsKey(DBNotification.class.getCanonicalName()))
+				onDBUpdate(data.getUpdated().get(DBNotification.class.getCanonicalName()));
+		} catch (SecurityException e) {
+			handleSecurityProblem();
+		} catch (Exception e) {
+			Log.e(TAG, "on PerformSynch Exception: " + e.getMessage());
+		}
 	}
 
 	private void handleSecurityProblem() {
-		//to be done
-//        boolean anonymous = JPHelper.getAccessProvider().isUserAnonymous(mContext);
-//        JPHelper.getAccessProvider().invalidateToken(mContext, null);
-//        if (!anonymous) {
-//    		Intent i = new Intent("eu.trentorise.smartcampus.START");
-//    		i.setPackage(mContext.getPackageName());
-//
-//    		ViviTrentoHelper.getAccessProvider().invalidateToken(mContext, null);
-//
-//    		NotificationManager mNotificationManager = (NotificationManager) mContext
-//    				.getSystemService(Context.NOTIFICATION_SERVICE);
-//
-//    		int icon = R.drawable.launcher;
-//    		CharSequence tickerText = mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_expired);
-//    		long when = System.currentTimeMillis();
-//    		CharSequence contentText = mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_required);
-//    		PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, i, 0);
-//
-//    		android.app.Notification notification = new android.app.Notification(icon, tickerText, when);
-//    		notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
-//    		notification.setLatestEventInfo(mContext, tickerText, contentText, contentIntent);
-//
-//    		mNotificationManager.notify(eu.trentorise.smartcampus.ac.Constants.ACCOUNT_NOTIFICATION_ID, notification);
-//        }
+		// to be done
+		// boolean anonymous =
+		// JPHelper.getAccessProvider().isUserAnonymous(mContext);
+		// JPHelper.getAccessProvider().invalidateToken(mContext, null);
+		// if (!anonymous) {
+		// Intent i = new Intent("eu.trentorise.smartcampus.START");
+		// i.setPackage(mContext.getPackageName());
+		//
+		// ViviTrentoHelper.getAccessProvider().invalidateToken(mContext, null);
+		//
+		// NotificationManager mNotificationManager = (NotificationManager)
+		// mContext
+		// .getSystemService(Context.NOTIFICATION_SERVICE);
+		//
+		// int icon = R.drawable.launcher;
+		// CharSequence tickerText =
+		// mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_expired);
+		// long when = System.currentTimeMillis();
+		// CharSequence contentText =
+		// mContext.getString(eu.trentorise.smartcampus.ac.R.string.token_required);
+		// PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,
+		// i, 0);
+		//
+		// android.app.Notification notification = new
+		// android.app.Notification(icon, tickerText, when);
+		// notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
+		// notification.setLatestEventInfo(mContext, tickerText, contentText,
+		// contentIntent);
+		//
+		// mNotificationManager.notify(eu.trentorise.smartcampus.ac.Constants.ACCOUNT_NOTIFICATION_ID,
+		// notification);
+		// }
 	}
 
 	private void onDBUpdate(List<Object> objsList) {
 
-		List<Object> dtList = new ArrayList<Object>();
-		List<Object> jpList = new ArrayList<Object>();
+		if (!objsList.isEmpty()) {
+			int icon = 0;
+			Intent intent = null;
 
-		for (Object obj : objsList) {
-			LinkedHashMap<String, Object> notification = (LinkedHashMap<String, Object>) obj;
-			jpList.add(notification);
-		}
-
-		List<List<Object>> notificationsLists = new ArrayList<List<Object>>();
-		notificationsLists.add(dtList);
-		notificationsLists.add(jpList);
-
-		for (List<Object> list : notificationsLists) {
-			if (!list.isEmpty()) {
-				int icon = 0;
-				Intent intent = null;
-
-				LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) list
-						.get(0);
-				icon = R.drawable.jp;
-				intent = new Intent(mContext,
-						NotificationsFragmentActivityJP.class);
-
-				if (intent != null) {
-					intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN,
-							appToken);
-					intent.putExtra(
-							NotificationsHelper.PARAM_AUTHORITY,
-							mContext.getString(R.string.notificationprovider_authority));
-				}
-
-				NotificationManager mNotificationManager = (NotificationManager) mContext
-						.getSystemService(Context.NOTIFICATION_SERVICE);
-
-				CharSequence tickerText = extractTitle(list);
-				long when = System.currentTimeMillis();
-				CharSequence contentText = extractText(list);
-				PendingIntent contentIntent = PendingIntent.getActivity(
-						mContext, 0, intent, 0);
-
-				android.app.Notification notification = new android.app.Notification(
-						icon, tickerText, when);
-				notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
-				notification.setLatestEventInfo(mContext, tickerText,
-						contentText, contentIntent);
-
-				mNotificationManager.notify(1, notification);
+			icon = R.drawable.dt;
+			intent = new Intent(mContext, NotificationsFragmentActivityJP.class);
+			if (intent != null) {
+				intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN, appToken);
+				intent.putExtra(NotificationsHelper.PARAM_AUTHORITY,
+						mContext.getString(R.string.notificationprovider_authority));
 			}
+			NotificationManager mNotificationManager = (NotificationManager) mContext
+					.getSystemService(Context.NOTIFICATION_SERVICE);
+
+			CharSequence tickerText = extractTitle(objsList);
+			long when = System.currentTimeMillis();
+			CharSequence contentText = extractText(objsList);
+			PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0, intent, 0);
+
+			android.app.Notification notification = new android.app.Notification(icon, tickerText, when);
+			notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
+			notification.setLatestEventInfo(mContext, tickerText, contentText, contentIntent);
+
+			mNotificationManager.notify(1, notification);
 		}
+		// List<Object> dtList = new ArrayList<Object>();
+		// List<Object> jpList = new ArrayList<Object>();
+		//
+		// for (Object obj : objsList) {
+		// LinkedHashMap<String, Object> notification = (LinkedHashMap<String,
+		// Object>) obj;
+		// jpList.add(notification);
+		// }
+		//
+		// List<List<Object>> notificationsLists = new
+		// ArrayList<List<Object>>();
+		// notificationsLists.add(dtList);
+		// notificationsLists.add(jpList);
+		//
+		// for (List<Object> list : notificationsLists) {
+		// if (!list.isEmpty()) {
+		// int icon = 0;
+		// Intent intent = null;
+		//
+		// LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>)
+		// list
+		// .get(0);
+		// icon = R.drawable.jp;
+		// intent = new Intent(mContext,
+		// NotificationsFragmentActivityJP.class);
+		//
+		// if (intent != null) {
+		// intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN,
+		// appToken);
+		// intent.putExtra(
+		// NotificationsHelper.PARAM_AUTHORITY,
+		// mContext.getString(R.string.notificationprovider_authority));
+		// }
+		//
+		// NotificationManager mNotificationManager = (NotificationManager)
+		// mContext
+		// .getSystemService(Context.NOTIFICATION_SERVICE);
+		//
+		// CharSequence tickerText = extractTitle(list);
+		// long when = System.currentTimeMillis();
+		// CharSequence contentText = extractText(list);
+		// PendingIntent contentIntent = PendingIntent.getActivity(
+		// mContext, 0, intent, 0);
+		//
+		// android.app.Notification notification = new android.app.Notification(
+		// icon, tickerText, when);
+		// notification.flags |= android.app.Notification.FLAG_AUTO_CANCEL;
+		// notification.setLatestEventInfo(mContext, tickerText,
+		// contentText, contentIntent);
+		//
+		// mNotificationManager.notify(1, notification);
+		// }
+		// }
 	}
 
+//	private CharSequence extractTitle(List<Object> list) {
+//		String txt = "";
+//
+//		LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) list.get(0);
+//		String type = (String) map.get("type");
+//		if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
+//			txt = mContext.getString(R.string.notification_type_discovertrento);
+//		} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
+//			txt = mContext.getString(R.string.notification_type_journeyplanner);
+//		}
+//
+//		return txt;
+//	}
 	private CharSequence extractTitle(List<Object> list) {
 		String txt = "";
 
-		LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>) list.get(0);
-		String type = (String) map.get("type");
-		if (type.equalsIgnoreCase(NOTIFICATION_TYPE_DISCOVERTRENTO)) {
-			txt = mContext.getString(R.string.notification_type_discovertrento);
-		} else if (type.equalsIgnoreCase(NOTIFICATION_TYPE_JOURNEYPLANNER)) {
-			txt = mContext.getString(R.string.notification_type_journeyplanner);
-		}
+		DBNotification map = (DBNotification) list.get(0);
+		String type = map.getNotification().getType();
+		txt = mContext.getString(R.string.app_name);
 
 		return txt;
 	}
-
+	 
 	private CharSequence extractText(List<Object> list) {
 		String txt = "";
 
