@@ -144,14 +144,15 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-		<activity
+
+        <activity
             android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.Journeyplanner" />
-        <!--         <activity -->
-<!--             android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
-<!--             android:configChanges="orientation|screenSize" -->
-<!--             android:theme="@style/Theme.Journeyplanner" /> -->
+        <!-- <activity -->
+        <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
+        <!-- android:configChanges="orientation|screenSize" -->
+        <!-- android:theme="@style/Theme.Journeyplanner" /> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
@@ -186,6 +187,14 @@
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:scheme="http"
+                    android:host="maps.google.com"/>
+            </intent-filter>
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.jp.NAVIGATE" />
 
