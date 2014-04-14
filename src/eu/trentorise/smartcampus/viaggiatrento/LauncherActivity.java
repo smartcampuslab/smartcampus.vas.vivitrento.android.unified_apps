@@ -28,9 +28,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
 import android.content.res.TypedArray;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
@@ -47,7 +45,6 @@ import com.actionbarsherlock.view.SubMenu;
 import eu.trentorise.smartcampus.ac.Constants;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
-import eu.trentorise.smartcampus.android.common.Utils;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.jp.Config;
 import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
@@ -64,8 +61,6 @@ import eu.trentorise.smartcampus.jp.helper.UserRegistration;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.mobilityservice.MobilityUserService;
-import eu.trentorise.smartcampus.mobilityservice.model.BasicItinerary;
-import eu.trentorise.smartcampus.mobilityservice.model.BasicRecurrentJourney;
 
 public class LauncherActivity extends TutorialManagerActivity implements OnTaskCompleted {
 
@@ -91,6 +86,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			if (!accessprovider.isLoggedIn(this)) {
 				showLoginDialog(accessprovider);
 			} else {
+				JPParamsHelper.init(getApplicationContext());
 				ViviTrentoHelper.init(getApplicationContext());
 				JPHelper.init(getApplicationContext());
 				prepareView();
@@ -398,7 +394,11 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			fragmentTransaction.commit();
 
 		}
-
+		else   if (item.getItemId() == R.id.menu_item_pref) {
+			Intent intent = new Intent(this, ProfileActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -414,6 +414,8 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_tutorial, Menu.NONE, R.string.menu_tutorial);
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
 																					// page
+		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_pref, Menu.NONE, R.string.btn_myprofile);
+
 		if (JPHelper.isUserAnonymous(this)) {
 			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
 		}
