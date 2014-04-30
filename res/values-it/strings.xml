@@ -38,11 +38,6 @@
     <string name="list_of_applications">Lista delle app</string>
     <string name="list_empty">Nessun aggiornamento disponibile.</string>
     <string name="empty" />
-    <!-- string name="update_address">/download/VAS/update.conf</string-->
-    <!-- string name="update_address">/download/VAS-dev/update-dev.conf</string-->
-<!--     <string name="update_address">/download/VAS-test/update-test.conf</string>
- --><string name="update_address">/download/VAS/update-viaggiatrento.conf</string>
-<!--     <string name="update_address_develop">/download/VAS/update-test.conf</string> -->
    
     <string name="update_host">www.smartcampuslab.it</string>
     <string name="check_updates">Verifica aggiornamenti</string>

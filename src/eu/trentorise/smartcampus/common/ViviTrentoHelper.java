@@ -11,8 +11,8 @@ import eu.trentorise.smartcampus.viaggiatrento.R;
 
 public class ViviTrentoHelper {
 
-	public static final String APP_TOKEN = "vivitrento";
-	public static final String SYNC_DB_NAME = "vivitrento_notifications";
+	public static final String APP_TOKEN = "viaggiatrento";
+	public static final String SYNC_DB_NAME = "viaggiatrento_notifications";
 //	public static final String SYNC_SERVICE = "/communicator/sync";
 	private final static String CORE_MOBILITY = "core.mobility";
 	private static final int MAX_MSG = 50;
@@ -31,9 +31,10 @@ public class ViviTrentoHelper {
 			helper = new ViviTrentoHelper(ctx);
 		}
 		try{
-		NotificationsHelper.init(ctx, JPParamsHelper.getAppToken(), null, CORE_MOBILITY, MAX_MSG);
+		NotificationsHelper.init(ctx, APP_TOKEN, null, CORE_MOBILITY, MAX_MSG);
 		} catch (Exception e) {
 			Log.e(ctx.getClass().getName(), e.toString());
+			e.printStackTrace();
 			Toast.makeText(ctx.getApplicationContext(),
 					ctx.getString(R.string.app_failure_operation),
 					Toast.LENGTH_SHORT).show();
