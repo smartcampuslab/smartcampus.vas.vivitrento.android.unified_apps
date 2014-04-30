@@ -62,7 +62,5 @@
     <string name="about_text_ct">In collaboration with the Municipality of Trento\n\n<br /><a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
     <string name="btn_cit">App \'Il Comune in tasca\'</string>
     
-    
-    <string name="notificationprovider_authority">eu.trentorise.smartcampus.jp.notifications</string>
-    
+        
 </resources>

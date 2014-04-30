@@ -63,7 +63,7 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 
 	private void init(Context context) {
 		if (!NotificationsHelper.isInstantiated()) {
-			String authority = context.getString(R.string.notificationprovider_authority);
+			String authority = context.getString(R.string.notificationsprovider_authority);
 			try {
 				NotificationsHelper.init(context, appToken, authority, CORE_MOBILITY, MAX_MSG);
 				NotificationsHelper.start(true);
@@ -137,7 +137,7 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 			if (intent != null) {
 				intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN, appToken);
 				intent.putExtra(NotificationsHelper.PARAM_AUTHORITY,
-						mContext.getString(R.string.notificationprovider_authority));
+						mContext.getString(R.string.notificationsprovider_authority));
 			}
 			NotificationManager mNotificationManager = (NotificationManager) mContext
 					.getSystemService(Context.NOTIFICATION_SERVICE);

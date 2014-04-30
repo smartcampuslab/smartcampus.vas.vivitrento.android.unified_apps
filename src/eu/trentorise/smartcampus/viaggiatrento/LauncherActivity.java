@@ -342,8 +342,9 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 					if (mToken == null) {
 						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 					} else {
-						ViviTrentoHelper.init(getApplicationContext());
 						JPHelper.init(getApplicationContext());
+//						ViviTrentoHelper.init(getApplicationContext());
+
 						prepareView();
 						invalidateOptionsMenu();
 						if (JPHelper.isFirstLaunch(this)) {
