@@ -334,6 +334,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						JPHelper.setUserAnonymous(this, false);
 						invalidateOptionsMenu();
 						JPHelper.readAccountProfile(new CopyTask(sharedPref, userService, resultCode, data,this,this));
+						ViviTrentoHelper.init(getApplicationContext());
 					}
 				}
 
@@ -343,7 +344,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 					} else {
 						JPHelper.init(getApplicationContext());
-//						ViviTrentoHelper.init(getApplicationContext());
+						ViviTrentoHelper.init(getApplicationContext());
 
 						prepareView();
 						invalidateOptionsMenu();

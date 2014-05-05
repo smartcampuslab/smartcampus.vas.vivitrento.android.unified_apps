@@ -31,7 +31,8 @@ public class ViviTrentoHelper {
 			helper = new ViviTrentoHelper(ctx);
 		}
 		try{
-		NotificationsHelper.init(ctx, APP_TOKEN, null, CORE_MOBILITY, MAX_MSG);
+		NotificationsHelper.init(ctx, APP_TOKEN, ctx.getString(R.string.notificationsprovider_authority), CORE_MOBILITY, MAX_MSG);
+		NotificationsHelper.start(true);
 		} catch (Exception e) {
 			Log.e(ctx.getClass().getName(), e.toString());
 			e.printStackTrace();
