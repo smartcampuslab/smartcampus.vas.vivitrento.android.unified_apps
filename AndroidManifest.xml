@@ -53,10 +53,10 @@
             android:value="AIzaSyC8Iafl-PanukaEoWT8GuYh4UJEUAZcgv8" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_ID"
-            android:value="ec03a596-e41e-49cc-808c-62f39e01de0b" />
+            android:value="" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_SECRET"
-            android:value="14c06fa2-9fbe-41a5-bd6f-c080c637775f" />
+            android:value="" />
         <meta-data
             android:name="SHARED_PACKAGE"
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
