@@ -1,1 +1,0 @@
-{"times":[[["08:25","08:28","08:28","08:28","08:30","08:34","08:36","08:36"]]],"stopsId":["2137_17","2138_17","2141_17","2142_17","2134_17","2135_17","2127_17","2128_17"],"stops":["Cazzano","Crosano-Via S.Biagio 21","Crosano-Fam. Coop.","Crosano-Via Mazzini","Crosano Bivio","Brentonico-Mobil.Zoller","Brentonico-Ferramenta","Brentonico"],"tripIds":null,"delays":null}
