@@ -22,9 +22,14 @@
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <permission
         android:name="eu.trentorise.smartcampus.ac.AUTHENTICATE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="eu.trentorise.smartcampus.pushservice.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.READ_SYNC_STATS" />
@@ -50,13 +55,13 @@
         android:theme="@style/Theme.Journeyplanner" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyC8Iafl-PanukaEoWT8GuYh4UJEUAZcgv8" />
+            android:value="@string/maps_api" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_ID"
-            android:value="" />
+            android:value="@string/client_id" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_SECRET"
-            android:value="" />
+            android:value="@string/client_secret" />
         <meta-data
             android:name="SHARED_PACKAGE"
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
@@ -94,11 +99,12 @@
             android:name="check-version"
             android:value="false" />
         <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
-
+        <!--
         <meta-data
             android:name="option1"
             android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" />
-
+        -->
+        <uses-library android:name="com.google.android.maps" />
         <activity
             android:name="eu.trentorise.smartcampus.viaggiatrento.LauncherActivity"
             android:configChanges="screenSize|keyboardHidden|keyboard"
@@ -189,11 +195,13 @@
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
-                    android:scheme="http"
-                    android:host="maps.google.com"/>
+                    android:host="maps.google.com"
+                    android:scheme="http" />
             </intent-filter>
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.jp.NAVIGATE" />
@@ -273,6 +281,7 @@
             </intent-filter>
         </activity>
 
+        <!--
         <service
             android:name="eu.trentorise.smartcampus.viaggiatrento.syncadapter.NotificationsSyncService"
             android:exported="false" >
@@ -284,21 +293,37 @@
                 android:name="android.content.SyncAdapter"
                 android:resource="@xml/notificationssyncadapter" />
         </service>
+        -->
 
-        <provider
+
+        <!--
+             <provider
             android:name="eu.trentorise.smartcampus.notifications.DummyProvider"
             android:authorities="@string/notificationsprovider_authority"
             android:exported="false"
             android:label="@string/notifications_name"
             android:syncable="true" />
+        -->
 
+
+        <!--
         <receiver android:name="eu.trentorise.smartcampus.viaggiatrento.UpdateNotificationReceiver" >
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.UpdateNotification" />
             </intent-filter>
         </receiver>
+        -->
+        <receiver
+            android:name=".NotificationReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-        <uses-library android:name="com.google.android.maps" />
+                <category android:name="eu.trentorise.smartcampus.pushservice" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".NotificationService" />
     </application>
 
 </manifest>

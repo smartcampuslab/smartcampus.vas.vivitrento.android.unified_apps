@@ -1,13 +1,7 @@
 package eu.trentorise.smartcampus.common;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
-import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
-import eu.trentorise.smartcampus.notifications.NotificationsHelper;
-import eu.trentorise.smartcampus.viaggiatrento.LauncherActivity;
-import eu.trentorise.smartcampus.viaggiatrento.R;
 
 public class ViviTrentoHelper {
 
@@ -30,16 +24,16 @@ public class ViviTrentoHelper {
 		if (helper == null) {
 			helper = new ViviTrentoHelper(ctx);
 		}
-		try{
-		NotificationsHelper.init(ctx, APP_TOKEN, ctx.getString(R.string.notificationsprovider_authority), CORE_MOBILITY, MAX_MSG);
-		NotificationsHelper.start(true);
-		} catch (Exception e) {
-			Log.e(ctx.getClass().getName(), e.toString());
-			e.printStackTrace();
-			Toast.makeText(ctx.getApplicationContext(),
-					ctx.getString(R.string.app_failure_operation),
-					Toast.LENGTH_SHORT).show();
-		}
+//		try{
+//		NotificationsHelper.init(ctx, APP_TOKEN, ctx.getString(R.string.notificationsprovider_authority), CORE_MOBILITY, MAX_MSG);
+//		NotificationsHelper.start(true);
+//		} catch (Exception e) {
+//			Log.e(ctx.getClass().getName(), e.toString());
+//			e.printStackTrace();
+//			Toast.makeText(ctx.getApplicationContext(),
+//					ctx.getString(R.string.app_failure_operation),
+//					Toast.LENGTH_SHORT).show();
+//		}
 	}
 	
 	public static boolean isInstantiated() {

@@ -27,12 +27,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SyncResult;
 import android.os.Bundle;
-import android.util.Log;
-import eu.trentorise.smartcampus.communicator.model.DBNotification;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
-import eu.trentorise.smartcampus.notifications.NotificationsHelper;
-import eu.trentorise.smartcampus.protocolcarrier.exceptions.SecurityException;
-import eu.trentorise.smartcampus.storage.sync.SyncData;
 import eu.trentorise.smartcampus.viaggiatrento.R;
 
 /**
@@ -62,33 +57,33 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	}
 
 	private void init(Context context) {
-		if (!NotificationsHelper.isInstantiated()) {
-			String authority = context.getString(R.string.notificationsprovider_authority);
-			try {
-				NotificationsHelper.init(context, appToken, authority, CORE_MOBILITY, MAX_MSG);
-				NotificationsHelper.start(true);
-			} catch (Exception e) {
-				Log.e(TAG, "Failed to instantiate SyncAdapter: " + e.getMessage());
-			}
-		}
+//		if (!NotificationsHelper.isInstantiated()) {
+//			String authority = context.getString(R.string.notificationsprovider_authority);
+//			try {
+//				NotificationsHelper.init(context, appToken, authority, CORE_MOBILITY, MAX_MSG);
+//				NotificationsHelper.start(true);
+//			} catch (Exception e) {
+//				Log.e(TAG, "Failed to instantiate SyncAdapter: " + e.getMessage());
+//			}
+//		}
 	}
 
 	@Override
 	public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider,
 			SyncResult syncResult) {
 		init(getContext());
-		try {
-			Log.e(TAG, "Trying synchronization");
-			// SyncStorage storage = NotificationsHelper.getSyncStorage();
-			SyncData data = NotificationsHelper.synchronize();
-			if (data.getUpdated() != null && !data.getUpdated().isEmpty()
-					&& data.getUpdated().containsKey(DBNotification.class.getCanonicalName()))
-				onDBUpdate(data.getUpdated().get(DBNotification.class.getCanonicalName()));
-		} catch (SecurityException e) {
-			handleSecurityProblem();
-		} catch (Exception e) {
-			Log.e(TAG, "on PerformSynch Exception: " + e.getMessage());
-		}
+//		try {
+//			Log.e(TAG, "Trying synchronization");
+//			// SyncStorage storage = NotificationsHelper.getSyncStorage();
+//			SyncData data = NotificationsHelper.synchronize();
+//			if (data.getUpdated() != null && !data.getUpdated().isEmpty()
+//					&& data.getUpdated().containsKey(DBNotification.class.getCanonicalName()))
+//				onDBUpdate(data.getUpdated().get(DBNotification.class.getCanonicalName()));
+//		} catch (SecurityException e) {
+//			handleSecurityProblem();
+//		} catch (Exception e) {
+//			Log.e(TAG, "on PerformSynch Exception: " + e.getMessage());
+//		}
 	}
 
 	private void handleSecurityProblem() {
@@ -134,11 +129,11 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 
 			icon = R.drawable.dt;
 			intent = new Intent(mContext, NotificationsFragmentActivityJP.class);
-			if (intent != null) {
-				intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN, appToken);
-				intent.putExtra(NotificationsHelper.PARAM_AUTHORITY,
-						mContext.getString(R.string.notificationsprovider_authority));
-			}
+//			if (intent != null) {
+//				intent.putExtra(NotificationsHelper.PARAM_APP_TOKEN, appToken);
+//				intent.putExtra(NotificationsHelper.PARAM_AUTHORITY,
+//						mContext.getString(R.string.notificationsprovider_authority));
+//			}
 			NotificationManager mNotificationManager = (NotificationManager) mContext
 					.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -224,9 +219,9 @@ public class NotificationsSyncAdapter extends AbstractThreadedSyncAdapter {
 	private CharSequence extractTitle(List<Object> list) {
 		String txt = "";
 
-		DBNotification map = (DBNotification) list.get(0);
-		String type = map.getNotification().getType();
-		txt = mContext.getString(R.string.app_name);
+//		DBNotification map = (DBNotification) list.get(0);
+//		String type = map.getNotification().getType();
+//		txt = mContext.getString(R.string.app_name);
 
 		return txt;
 	}
