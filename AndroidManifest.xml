@@ -61,7 +61,7 @@
             android:value="@string/client_id" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_SECRET"
-            android:value="@string/client_secret" />
+            android:value="@string/client_secret" />                                                                                                                                                                                                                                                                " />
         <meta-data
             android:name="SHARED_PACKAGE"
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
