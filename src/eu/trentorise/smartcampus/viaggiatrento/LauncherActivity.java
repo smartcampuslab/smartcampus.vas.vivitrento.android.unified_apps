@@ -42,7 +42,6 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 
-import eu.trentorise.smartcampus.ac.Constants;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
@@ -88,7 +87,8 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			} else {
 				JPParamsHelper.init(getApplicationContext());
 				ViviTrentoHelper.init(getApplicationContext());
-				JPHelper.init(getApplicationContext());
+				super.initDataManagement(savedInstanceState);
+				//JPHelper.init(getApplicationContext());
 				prepareView();
 
 			}
@@ -108,6 +108,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		List<View> list = createButtons();
 		LinearLayout ll = null;
 		LinearLayout parent = (LinearLayout) findViewById(R.id.homelayout);
+		parent.removeAllViews();
 		for (int i = 0; i < list.size(); i++) {
 			if (ll == null) {
 				ll = new LinearLayout(this);
@@ -175,7 +176,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						// yes -> accessprovider.getAuthToken(this,
 						// null);-> shared preferences "registred" true
 						JPHelper.setUserAnonymous(LauncherActivity.this, false);
-						accessprovider.login(LauncherActivity.this, null);
+						JPHelper.login(LauncherActivity.this);
 						break;
 
 					case DialogInterface.BUTTON_NEGATIVE:
@@ -187,11 +188,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						// accessprovider.login(LauncherActivity.this,
 						// "anonymous");
 						JPHelper.setUserAnonymous(LauncherActivity.this, true);
-
-						Bundle bundle = new Bundle();
-						bundle.putString(Constants.KEY_AUTHORITY, "anonymous");
-						accessprovider.login(LauncherActivity.this, bundle);
-
+						JPHelper.login(LauncherActivity.this);
 						break;
 					}
 					invalidateOptionsMenu();
