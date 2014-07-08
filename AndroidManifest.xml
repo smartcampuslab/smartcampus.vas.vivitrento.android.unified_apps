@@ -41,6 +41,26 @@
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
+    <permission
+        android:name="eu.trentorise.smartcampus.viaggiatrento.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="eu.trentorise.smartcampus.viaggiatrento.permission.C2D_MESSAGE" />
+    
+    <!-- receives GCM messages -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- GCM connects to Google services -->
+    <uses-permission android:name="android.permission.INTERNET" />
+        
+    <!-- GCM requires a Google account -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+    
+    <!-- wake the processor if a GCM message is received -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:icon="@drawable/launcher"
@@ -53,10 +73,10 @@
             android:value="AIzaSyC8Iafl-PanukaEoWT8GuYh4UJEUAZcgv8" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_ID"
-            android:value="" />
+            android:value="@string/client_id" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_SECRET"
-            android:value="" />
+            android:value="@string/client_secret" />
         <meta-data
             android:name="SHARED_PACKAGE"
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
@@ -272,7 +292,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+<!-- 
         <service
             android:name="eu.trentorise.smartcampus.viaggiatrento.syncadapter.NotificationsSyncService"
             android:exported="false" >
@@ -296,8 +316,17 @@
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.UpdateNotification" />
             </intent-filter>
+        </receiver> -->
+        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.avilyne.android.gcmclient" />  
+            </intent-filter>   
         </receiver>
-
+        <service
+            android:name=".GCMIntentService">
+        </service>
         <uses-library android:name="com.google.android.maps" />
     </application>
 
