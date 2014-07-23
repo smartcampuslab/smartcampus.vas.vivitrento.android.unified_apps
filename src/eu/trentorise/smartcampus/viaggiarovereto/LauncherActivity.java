@@ -100,7 +100,7 @@ public class LauncherActivity extends TutorialManagerActivity {
 			if (accessprovider.readUserData(this, null) == null) {
 				showLoginDialog(accessprovider);
 			} else {
-				accessprovider.getAuthToken(LauncherActivity.this, accessprovider.isUserAnonymous(this) ? "anonymous" : null);
+//				accessprovider.getAuthToken(LauncherActivity.this, accessprovider.isUserAnonymous(this) ? "anonymous" : null);
 			}
 		} else {
 			if (JPHelper.isFirstLaunch(this)) {

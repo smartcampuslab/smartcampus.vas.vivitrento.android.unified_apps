@@ -161,7 +161,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner" />
         <activity
-            android:name="eu.trentorise.smartcampus.jp.PlanJourneyActivity"
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.PlanJourneyActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
