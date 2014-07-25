@@ -82,7 +82,7 @@
             android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" />
 
         <activity
-            android:name="eu.trentorise.smartcampus.viaggiarovereto.LauncherActivity"
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.SplashScreenActivity"
             android:configChanges="screenSize|keyboardHidden|keyboard"
             android:label="@string/jp_name"
             android:launchMode="singleTask"
@@ -92,6 +92,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+           
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.LauncherActivity"
+            android:configChanges="screenSize|keyboardHidden|keyboard"
+            android:label="@string/jp_name"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Journeyplanner" >
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
