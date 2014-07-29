@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
-import eu.trentorise.smartcampus.common.ViviTrentoHelper;
-import eu.trentorise.smartcampus.jp.TutorialManagerActivity;
 
-public class SplashScreenActivity extends TutorialManagerActivity {
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+import eu.trentorise.smartcampus.common.ViviTrentoHelper;
+
+public class SplashScreenActivity extends SherlockFragmentActivity {
 private static final long SPLASH_TIME_OUT = 2000;
 
 @Override

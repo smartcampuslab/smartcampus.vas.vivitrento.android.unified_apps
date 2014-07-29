@@ -70,8 +70,8 @@ public class LauncherActivity extends TutorialManagerActivity {
 		setContentView(R.layout.home);
 		try {
 			ViviTrentoHelper.init(getApplicationContext());
-			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			initGlobalConstants();
+			final AMSCAccessProvider accessprovider = new AMSCAccessProvider();
 			ensureToken(accessprovider);
 		}
 
