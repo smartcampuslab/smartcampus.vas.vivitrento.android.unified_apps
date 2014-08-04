@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
@@ -171,7 +172,7 @@
             android:theme="@style/Theme.Journeyplanner" />
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
-        <!-- android:configChanges="orientation|screenSize" -->
+        <!-- android:configChanges="orientation|screenSize" -->eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
         <!-- android:theme="@style/Theme.Journeyplanner" /> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
@@ -292,40 +293,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-<!-- 
-        <service
-            android:name="eu.trentorise.smartcampus.viaggiatrento.syncadapter.NotificationsSyncService"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="android.content.SyncAdapter" />
-            </intent-filter>
 
-            <meta-data
-                android:name="android.content.SyncAdapter"
-                android:resource="@xml/notificationssyncadapter" />
-        </service>
-
-        <provider
-            android:name="eu.trentorise.smartcampus.notifications.DummyProvider"
-            android:authorities="@string/notificationsprovider_authority"
-            android:exported="false"
-            android:label="@string/notifications_name"
-            android:syncable="true" />
-
-        <receiver android:name="eu.trentorise.smartcampus.viaggiatrento.UpdateNotificationReceiver" >
-            <intent-filter>
-                <action android:name="eu.trentorise.smartcampus.UpdateNotification" />
-            </intent-filter>
-        </receiver> -->
         <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="eu.trentorise.smartcampus.viaggiatrento.gcmclient" />  
+                <category android:name="eu.trentorise.smartcampus.viaggiatrento" />  
             </intent-filter>   
         </receiver>
         <service
-            android:name="eu.trentorise.smartcampus.pushservice.GCMIntentService">
+            android:name=".GCMIntentService">
         </service>
         <uses-library android:name="com.google.android.maps" />
     </application>

@@ -2,6 +2,7 @@ package eu.trentorise.smartcampus.common;
 
 import android.content.Context;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
+import eu.trentorise.smartcampus.pushservice.NotificationCenter;
 
 public class ViviTrentoHelper {
 
@@ -15,6 +16,8 @@ public class ViviTrentoHelper {
 	private static ViviTrentoHelper helper;
 
 	private static SCAccessProvider accessProvider;
+	public static NotificationCenter notificationCenter;
+
 
 	public ViviTrentoHelper(Context ctx) {
 		this.mContext = ctx;
@@ -24,6 +27,9 @@ public class ViviTrentoHelper {
 		if (helper == null) {
 			helper = new ViviTrentoHelper(ctx);
 		}
+		
+		notificationCenter = new NotificationCenter(ctx);
+		
 //		try{
 //		NotificationsHelper.init(ctx, APP_TOKEN, ctx.getString(R.string.notificationsprovider_authority), CORE_MOBILITY, MAX_MSG);
 //		NotificationsHelper.start(true);
