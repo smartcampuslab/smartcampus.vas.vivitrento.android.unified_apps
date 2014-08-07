@@ -4,6 +4,7 @@ import android.content.Context;
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.pushservice.NotificationCenter;
 
+
 public class ViviTrentoHelper {
 
 	public static final String APP_TOKEN = "viaggiatrento";
@@ -30,16 +31,6 @@ public class ViviTrentoHelper {
 		
 		notificationCenter = new NotificationCenter(ctx);
 		
-//		try{
-//		NotificationsHelper.init(ctx, APP_TOKEN, ctx.getString(R.string.notificationsprovider_authority), CORE_MOBILITY, MAX_MSG);
-//		NotificationsHelper.start(true);
-//		} catch (Exception e) {
-//			Log.e(ctx.getClass().getName(), e.toString());
-//			e.printStackTrace();
-//			Toast.makeText(ctx.getApplicationContext(),
-//					ctx.getString(R.string.app_failure_operation),
-//					Toast.LENGTH_SHORT).show();
-//		}
 	}
 	
 	public static boolean isInstantiated() {

@@ -23,9 +23,14 @@
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <permission
         android:name="eu.trentorise.smartcampus.ac.AUTHENTICATE"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="eu.trentorise.smartcampus.pushservice.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.READ_SYNC_STATS" />
@@ -42,26 +47,21 @@
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
-    <permission
-        android:name="eu.trentorise.smartcampus.viaggiatrento.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
 
-    <uses-permission android:name="eu.trentorise.smartcampus.viaggiatrento.permission.C2D_MESSAGE" />
-    
+
+
     <!-- receives GCM messages -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <!-- GCM connects to Google services -->
     <uses-permission android:name="android.permission.INTERNET" />
-        
+
     <!-- GCM requires a Google account -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    
     <uses-permission android:name="android.permission.READ_OWNER_DATA" />
-    
+
     <!-- wake the processor if a GCM message is received -->
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:icon="@drawable/launcher"
@@ -69,9 +69,9 @@
         android:launchMode="singleTask"
         android:logo="@drawable/launcher"
         android:theme="@style/Theme.Journeyplanner" >
-        <meta-data
+        <!-- <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyC8Iafl-PanukaEoWT8GuYh4UJEUAZcgv8" />
+            android:value="@string/maps_api" /> -->
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_ID"
             android:value="@string/client_id" />
@@ -115,10 +115,12 @@
             android:name="check-version"
             android:value="false" />
         <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
-
+        <!--
         <meta-data
             android:name="option1"
             android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" />
+        -->
+        <uses-library android:name="com.google.android.maps" />
 
         <activity
             android:name="eu.trentorise.smartcampus.viaggiatrento.LauncherActivity"
@@ -172,7 +174,8 @@
             android:theme="@style/Theme.Journeyplanner" />
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
-        <!-- android:configChanges="orientation|screenSize" -->eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
+        <!-- android:configChanges="orientation|screenSize" -->
+eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
         <!-- android:theme="@style/Theme.Journeyplanner" /> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
@@ -210,11 +213,13 @@
             android:windowSoftInputMode="stateHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
-                    android:scheme="http"
-                    android:host="maps.google.com"/>
+                    android:host="maps.google.com"
+                    android:scheme="http" />
             </intent-filter>
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.jp.NAVIGATE" />
