@@ -92,7 +92,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-           
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.viaggiarovereto.LauncherActivity"
@@ -100,7 +99,6 @@
             android:label="@string/jp_name"
             android:launchMode="singleTask"
             android:theme="@style/Theme.Journeyplanner" >
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -180,12 +178,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="eu.trentorise.smartcampus.jp.PlanRecurJourneyActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:theme="@style/Theme.Journeyplanner"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+        <!-- <activity -->
+        <!-- android:name="eu.trentorise.smartcampus.jp.PlanRecurJourneyActivity" -->
+        <!-- android:configChanges="orientation|screenSize|keyboardHidden|keyboard" -->
+        <!-- android:theme="@style/Theme.Journeyplanner" -->
+        <!-- android:windowSoftInputMode="stateHidden" > -->
+        <!-- </activity> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.SavedJourneyActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
@@ -252,6 +250,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.questionnaire.QuizActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:theme="@style/Theme.Journeyplanner" />
 
         <service
             android:name="eu.trentorise.smartcampus.viaggiarovereto.syncadapter.NotificationsSyncService"

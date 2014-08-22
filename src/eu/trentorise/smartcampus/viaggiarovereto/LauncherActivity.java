@@ -48,7 +48,6 @@ import eu.trentorise.smartcampus.android.feedback.utils.FeedbackFragmentInflater
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.jp.Config;
 import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
-import eu.trentorise.smartcampus.jp.PlanJourneyActivity;
 import eu.trentorise.smartcampus.jp.ProfileActivity;
 import eu.trentorise.smartcampus.jp.SavedJourneyActivity;
 import eu.trentorise.smartcampus.jp.SmartCheckActivity;
@@ -57,6 +56,7 @@ import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.viaggiarovereto.apps.ApkInstaller.ApkDownloaderTask;
+import eu.trentorise.smartcampus.viaggiarovereto.questionnaire.QuizHelper;
 import eu.trentorise.smartcampus.viaggiarovereto.util.ConnectionUtil;
 
 public class LauncherActivity extends TutorialManagerActivity {
@@ -83,6 +83,8 @@ public class LauncherActivity extends TutorialManagerActivity {
 		// Feedback
 		FeedbackFragmentInflater.inflateHandleButtonInRelativeLayout(this,
 				(RelativeLayout) findViewById(R.id.home_relative_layout_jp));
+		QuizHelper.checkQuiz(this);
+
 
 	}
 
