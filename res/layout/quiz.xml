@@ -83,13 +83,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical" 
+            android:weightSum="1" >
 
             <Button
                 android:id="@+id/btnNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Next" />
+                android:layout_weight="0.5"
+                android:text="@string/next_quiz" />
+
+            <Button
+                android:id="@+id/btnSkip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/skip_quiz"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 

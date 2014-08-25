@@ -23,7 +23,7 @@ import eu.trentorise.smartcampus.viaggiarovereto.R;
 public class QuizHelper {
 
 	public static final String MY_PREFERENCES = "Questionnaire";
-	public static final String QUESTIONS_STORED = "Question stored";
+	public static final String NEXT_QUESTION = "Question stored";
 	public static final String TIME_TO_QUIZ = "time to quiz";
 	public static final String HOST = "http://150.241.239.65:8080";
 	public static final String SERVICE_RESPONSE = "/IESCities/api/log/rating/response";
@@ -124,7 +124,7 @@ public class QuizHelper {
 			if (result == true) {
 				// store on SharedPreferences number of question
 				SharedPreferences.Editor editor = sp.edit();
-				editor.putLong(QUESTIONS_STORED, questionNumber);
+				editor.putLong(NEXT_QUESTION, questionNumber+1);
 				editor.commit();
 				// next question
 				quizActivityInterface.nextQuestion();

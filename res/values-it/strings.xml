@@ -73,5 +73,7 @@
     <string name="questionnaire_welcome_back">Bentornato, vuoi ripartire con il questionario?</string>
     <string name="questionnary_intro">Vuoi partecipare ad un questionario? </string>
     <string name="questionnaire_exit">Grazie per il tuo contributo</string>
+    <string name="next_quiz">Avanti</string>
+    <string name="skip_quiz">Salta</string>
 
 </resources>

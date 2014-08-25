@@ -10,9 +10,11 @@
         <item>Come valuteresti l\'usabilità di quest’app?</item>
         <item>Come valuteresti le informazioni fornite da quest\'app?</item>
         <item>Come valuteresti  la velocità di quest\'app?</item>
+        <item>Cosa ne pensi della funzionalità di monitorare i viaggi abituali?</item>
+        <item>Come si può rendere più facile e veloce il sistema di segnalazione?</item>
         <item>Quali funzioni aggiuntive vorresti vedere nell’app?</item>
         <item>Prego, lascia il tuo indirizzo email se vuoi prendere parte ad un questionario più dettagliato</item>
-        </string-array>
+    </string-array>
     <string-array name="answers01">
         <item>Cittadino</item>
         <item>Visitatore</item>
@@ -66,6 +68,8 @@
     </string-array>
     <string-array name="answers09"></string-array>
     <string-array name="answers10"></string-array>
+    <string-array name="answers11"></string-array>
+    <string-array name="answers12"></string-array>
 
     <array name="answers">
         <item>@array/answers01</item>
@@ -78,6 +82,8 @@
         <item>@array/answers08</item>
         <item>@array/answers09</item>
         <item>@array/answers10</item>
+        <item>@array/answers11</item>
+        <item>@array/answers12</item>
     </array>
 
 </resources>

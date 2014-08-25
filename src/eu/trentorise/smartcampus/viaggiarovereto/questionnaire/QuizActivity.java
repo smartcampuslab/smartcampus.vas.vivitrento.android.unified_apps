@@ -64,7 +64,7 @@ public class QuizActivity extends Activity implements QuizInterface {
 		openQuestion = (EditText) findViewById(R.id.editOpenQuestion);
 		// check previous question if it was done
 		if (prefs != null) {
-			if (prefs.contains(QuizHelper.QUESTIONS_STORED)) {
+			if (prefs.contains(QuizHelper.NEXT_QUESTION)) {
 				restoreQuestionnaire();
 				return;
 			}
@@ -83,7 +83,7 @@ public class QuizActivity extends Activity implements QuizInterface {
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putString(PREF_QUIZ, PREF_QUESTIONS);
 		editor.commit();
-		questNo = (int) prefs.getLong(QuizHelper.QUESTIONS_STORED, 0) + 1;
+		questNo = (int) prefs.getLong(QuizHelper.NEXT_QUESTION, 0);
 		welcomeBackLayout();
 	}
 
@@ -163,7 +163,7 @@ public class QuizActivity extends Activity implements QuizInterface {
 			if ((openQuestion.getVisibility() == View.GONE && answerNo != -1)
 					|| (openQuestion != null && !openQuestion.getText().toString().equals(""))) {
 				// if last question check email
-				if (questNo == db.getQuestions().length - 1) {
+				if (isTheLastQuestion()) {
 					if (QuizHelper.isEmailValid(openQuestion.getText().toString())) {
 						QuizHelper.sendData(questNo, answerNo, openQuestion.getText().toString(), QuizActivity.this);
 					} else {
@@ -222,10 +222,22 @@ public class QuizActivity extends Activity implements QuizInterface {
 
 		}
 	};
+	private View.OnClickListener btnSkip_Listener = new View.OnClickListener() {
 
+		@Override
+		public void onClick(View v) {
+			nextQuestion();
+		}
+
+	};
 	private void displayQuestion() {
 		// Fetching data quiz data and incrementing on each click
-		// questNo++;
+		if (isTheLastQuestion()) {
+			//if last question you can also skip the answer
+			Button skipButton = (Button) findViewById(R.id.btnSkip);
+			skipButton.setVisibility(View.VISIBLE);
+			skipButton.setOnClickListener(btnSkip_Listener);
+		}
 		openQuestion.setText("");
 		questions = db.getQuestion(questNo);
 		answers = db.getAnswers(questNo);
@@ -252,7 +264,10 @@ public class QuizActivity extends Activity implements QuizInterface {
 		}
 
 	}
-
+	private boolean isTheLastQuestion() {
+		return questNo == db.getQuestions().length - 1;
+	}
+	
 	@Override
 	public void nextQuestion() {
 		// if it is sended store the new value on sharedPreferences
