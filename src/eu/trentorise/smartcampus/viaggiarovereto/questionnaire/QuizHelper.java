@@ -163,10 +163,13 @@ public class QuizHelper {
 				activity.startActivity(new Intent(activity, QuizActivity.class));
 			}
 		} else {
-			// put the date
-			SharedPreferences.Editor editor = sp.edit();
-			editor.putString(TIME_TO_QUIZ, readFormat.format(new Date()));
-			editor.commit();
+			// check if is done
+			if (!sp.contains(QUIZ_FINISHED)) {
+				// put the date
+				SharedPreferences.Editor editor = sp.edit();
+				editor.putString(TIME_TO_QUIZ, readFormat.format(new Date()));
+				editor.commit();
+			}
 		}
 	}
 
