@@ -191,7 +191,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						JPHelper.login(LauncherActivity.this);
 						break;
 					}
-					invalidateOptionsMenu();
+					supportInvalidateOptionsMenu();
 
 				} catch (Exception e) {
 					Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
@@ -329,7 +329,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 					} else {
 						//set user to not anonymous
 						JPHelper.setUserAnonymous(this, false);
-						invalidateOptionsMenu();
+						supportInvalidateOptionsMenu();
 						JPHelper.readAccountProfile(new CopyTask(sharedPref, userService, resultCode, data,this,this));
 						ViviTrentoHelper.init(getApplicationContext());
 					}
@@ -344,7 +344,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						ViviTrentoHelper.init(getApplicationContext());
 
 						prepareView();
-						invalidateOptionsMenu();
+						supportInvalidateOptionsMenu();
 						if (JPHelper.isFirstLaunch(this)) {
 							showTourDialog();
 							JPHelper.disableFirstLaunch(this);
