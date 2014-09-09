@@ -15,8 +15,10 @@
 -->
 <resources>
 
-    <!-- <string name="app_name">ViaggiaTrento</string> -->
-    <string name="jp_name">Viaggia Trento</string>
+
+    <!-- <string name="app_name">ViaggiaRovereto</string> -->
+    <string name="launcher_name">Viaggia Rovereto</string>
+    <string name="jp_name">Viaggia Rovereto</string>
     <string name="notifications_name">Notifications</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -37,7 +39,6 @@
     <string name="list_of_applications">List of applications</string>
     <string name="list_empty">No updates available</string>
     <string name="empty" />
-
     <string name="update_host">www.smartcampuslab.it</string>
     <string name="check_updates">Check for updates</string>
     <string name="settings">Settings</string>
@@ -46,8 +47,8 @@
     <string name="update_dev">Apps Version</string>
     <string name="update_dev_sum">Check for test updates</string>
     <string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
-    <string name="update_application_notification">A new version of ViaggiaTrento is available.</string>
-    <string name="auth_required">Authenticate yourself with your Google account. This step is optional but enables advanced functionalities. </string>
+    <string name="update_application_notification">A new version of ViaggiaRovereto is available.</string>
+    <string name="auth_required">Authenticate yourself with your Google account. This step is optional but enables ViaggiaRovereto advanced functionalities. </string>
     <string name="registered_pref">registered</string>
     <string name="upgrade_user_menu">Register</string>
     <string name="notification_text">%s new notification</string>
@@ -55,12 +56,15 @@
     <string name="checking_version">Checking applications version</string>
     <string name="not_now">Not now</string>
     <string name="notification_type_discovertrento">ViviTrento</string>
-    <string name="notification_type_journeyplanner">ViaggiaTrento</string>
-    <string name="about_text_app"><b>Integrated mobility information for the city and the Province of Trento</b></string>
+    <string name="notification_type_journeyplanner">ViaggiaRovereto</string>
+    <string name="about_text_app"><b>Integrated mobility information for the city and of Rovereto</b></string>
     <string name="about_text_sc">The application is developed by the SmartCampus project\n\n<br /><a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a></string>
-    <string name="about_text_cdc">With the partecipation of Consorzio dei Comuni Trentini\n\n<br /><a href="http://www.innovazione.comunitrentini.tn.it">www.innovazione.comunitrentini.tn.it</a></string>
+    <string name="about_text_cdc">In collaboration with the municipality of Rovereto\n\n<br /><a href="http://www.comune.rovereto.tn.it">www.comune.rovereto.tn.it</a></string>
     <string name="about_text_ct">In collaboration with the Municipality of Trento\n\n<br /><a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
     <string name="btn_cit">App \'Il Comune in tasca\'</string>
+
+    <item name="client_id" type="string">ec03a596-e41e-49cc-808c-62f39e01de0b</item>
+    <item name="client_secret" type="string">6c6829bc-6621-4273-84b8-d74d23744f04</item>
+    <item name="maps_api" type="string">AIzaSyAYMob8Ipl_ykdVq9hkQTvFVSQMNSXn3aA</item>
     
-        
 </resources>

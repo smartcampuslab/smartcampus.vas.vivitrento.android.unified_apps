@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="eu.trentorise.smartcampus.viaggiatrento"
+    package="eu.trentorise.smartcampus.viaggiarovereto"
     android:installLocation="internalOnly"
 
     android:versionCode="21"
@@ -71,9 +71,9 @@
         android:launchMode="singleTask"
         android:logo="@drawable/launcher"
         android:theme="@style/Theme.Journeyplanner" >
-        <!-- <meta-data
+        <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="@string/maps_api" /> -->
+            android:value="@string/maps_api" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.CLIENT_ID"
             android:value="@string/client_id" />
@@ -82,13 +82,13 @@
             android:value="@string/client_secret" />
         <meta-data
             android:name="SHARED_PACKAGE"
-            android:value="eu.trentorise.smartcampus.viaggiatrento" />
+            android:value="eu.trentorise.smartcampus.viaggiarovereto" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.AUTH_URL"
             android:value="https://tn.smartcampuslab.it/aac" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.ACCOUNT_TYPE"
-            android:value="eu.trentorise.smartcampus.viaggiatrento" />
+            android:value="eu.trentorise.smartcampus.viaggiarovereto" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.ACCOUNT_NAME"
             android:value="@string/jp_name" />
@@ -126,7 +126,7 @@
 
         <activity
 
-            android:name="eu.trentorise.smartcampus.viaggiatrento.LauncherActivity"
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.LauncherActivity"
             android:configChanges="screenSize|keyboardHidden|keyboard"
             android:label="@string/jp_name"
             android:launchMode="singleTask"
@@ -144,11 +144,11 @@
 
                 <data
                     android:host="smartcampuslab.it"
-                    android:pathPrefix="/viaggiatrentoapp"
+                    android:pathPrefix="/viaggiaroveretoapp"
                     android:scheme="http" />
                 <data
                     android:host="smartcampuslab.it"
-                    android:pathPrefix="/viaggiatrentoapp"
+                    android:pathPrefix="/viaggiaroveretoapp"
                     android:scheme="smartcampus" />
             </intent-filter>
             <intent-filter>
@@ -178,7 +178,7 @@
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
         <!-- android:configChanges="orientation|screenSize" -->
-eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
+<!-- eu.trentorise.smartcampus.viaggiatrento.GCMIntentService -->
         <!-- android:theme="@style/Theme.Journeyplanner" /> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
@@ -187,7 +187,7 @@ eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name="eu.trentorise.smartcampus.viaggiatrento.settings.SettingsActivity"
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.settings.SettingsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner" />
 
@@ -308,7 +308,7 @@ eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="eu.trentorise.smartcampus.viaggiatrento" />  
+                <category android:name="eu.trentorise.smartcampus.viaggiarovereto" />  
             </intent-filter>   
         </receiver>
         <service

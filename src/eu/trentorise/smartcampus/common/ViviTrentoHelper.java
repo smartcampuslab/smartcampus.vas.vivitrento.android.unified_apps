@@ -7,8 +7,8 @@ import eu.trentorise.smartcampus.pushservice.NotificationCenter;
 
 public class ViviTrentoHelper {
 
-	public static final String APP_TOKEN = "viaggiatrento";
-	public static final String SYNC_DB_NAME = "viaggiatrento_notifications";
+	public static final String APP_TOKEN = "viaggiarovereto";
+	public static final String SYNC_DB_NAME = "viaggiarovereto_notifications";
 //	public static final String SYNC_SERVICE = "/communicator/sync";
 	private final static String CORE_MOBILITY = "core.mobility";
 	private static final int MAX_MSG = 50;

@@ -15,8 +15,8 @@
 -->
 <resources>
 
-<!--     <string name="app_name">ViaggiaTrento</string> -->
-    <string name="jp_name">Viaggia Trento</string>
+    <!-- <string name="app_name">ViviRovereto</string> -->
+    <string name="launcher_name">Viaggia Rovereto</string>
         
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Impostazioni</string>
@@ -48,15 +48,15 @@
     <string name="update_dev">Versione delle app</string>
     <string name="update_dev_sum">Verifica la presenza di aggiornamenti di test</string>
 	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
-	<string name="update_application_notification">E\' disponibile una nuova versione di ViaggiaTrento.</string>
+    <string name="update_application_notification">E\' disponibile una nuova versione di ViaggiaRovereto.</string>
     <string name="upgrade_user_menu">Registrati</string>
-	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate.</string>
+    <string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate di ViaggiaRovereto.</string>
 
     <string name="notification_text">%s nuova notifica</string>
     <string name="notification_text_multi">%s nuove notifiche</string>
     <string name="not_now">Non adesso</string>
 
-    <string name="about_text_app"><b>Informazione sulla mobilità integrata di Trento e dei comuni trentini</b></string>
+    <string name="about_text_app"><b>Informazione sulla mobilità integrata di Rovereto e dei comuni trentini</b></string>
 	<string name="about_text_sc">L\'applicazione è sviluppata dal progetto SmartCampus\n\n<br/>
 	    <a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a>
 	</string>
