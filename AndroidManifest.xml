@@ -2,8 +2,8 @@
     package="eu.trentorise.smartcampus.viaggiatrento"
     android:installLocation="internalOnly"
 
-    android:versionCode="21"
-    android:versionName="0.10.3" >
+    android:versionCode="22"
+    android:versionName="0.10.4" >
 
     <uses-sdk
         android:minSdkVersion="8"
