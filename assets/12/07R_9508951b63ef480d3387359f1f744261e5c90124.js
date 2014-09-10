@@ -1,0 +1,1 @@
+{"stopsId":["262_12","441_12","56_12","57_12","12_12"],"stops":["M. Rossi \"Stella D.Mattino\"","Maso Rossi Aichner","Canova Aichner","Canova Via Della Canova","Canova Paludi"],"tripIds":null,"compressedTimes":"0710071107110711071207400741074107410742"}

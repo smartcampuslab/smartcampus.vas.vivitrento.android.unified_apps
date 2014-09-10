@@ -62,6 +62,8 @@
     <string name="about_text_cdc">In collaboration with the municipality of Rovereto\n\n<br /><a href="http://www.comune.rovereto.tn.it">www.comune.rovereto.tn.it</a></string>
     <string name="about_text_ct">In collaboration with the Municipality of Trento\n\n<br /><a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
     <string name="btn_cit">App \'Il Comune in tasca\'</string>
-
+<item name="client_id" type="string">ec03a596-e41e-49cc-808c-62f39e01de0b</item>
+<item name="client_secret" type="string">6c6829bc-6621-4273-84b8-d74d23744f04</item>
+<item name="maps_api" type="string">AIzaSyAYMob8Ipl_ykdVq9hkQTvFVSQMNSXn3aA</item>
 
 </resources>
