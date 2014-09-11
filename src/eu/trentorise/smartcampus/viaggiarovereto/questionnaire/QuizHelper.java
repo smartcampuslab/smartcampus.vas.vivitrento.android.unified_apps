@@ -28,7 +28,7 @@ public class QuizHelper {
 	public static final String HOST = "http://150.241.239.65:8080";
 	public static final String SERVICE_RESPONSE = "/IESCities/api/log/rating/response";
 	public static final String APP_ID = "ViaggiaRovereto";
-	private static final int QUIZ_SKIP_DAYS = 5;
+	private static final int QUIZ_SKIP_DAYS = 7;
 	private static final String QUIZ_FINISHED = "quiz finished";
 
 	private static String[][] answers;
@@ -156,7 +156,7 @@ public class QuizHelper {
 			newDate = new Date();
 			Calendar c = Calendar.getInstance();
 			c.setTime(oldDate); // Now use today date.
-			c.add(Calendar.SECOND, QUIZ_SKIP_DAYS); // Adding 5 days
+			c.add(Calendar.DATE, QUIZ_SKIP_DAYS); // Adding 5 days
 
 			if (newDate.after(c.getTime())) {
 				// we are after 5 days so do the quiz
