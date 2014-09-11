@@ -1,16 +1,16 @@
 package eu.trentorise.smartcampus.viaggiarovereto;
 
-import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
+import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 
 public class TermsDialogBox extends DialogFragment {
 
@@ -24,7 +24,14 @@ public class TermsDialogBox extends DialogFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.terms_dialog_box, container, false);
 		getDialog().setTitle("Terms of service");
-
+		WebView mWebView = (WebView) v.findViewById(R.id.textview_terms_of_service);    
+		String text = "<html><body>"
+				                   + "<p align=\"justify\">"                
+				                   + getString(R.string.terms_of_service) 
+				                   + "</p> "
+				                   + "</body></html>";
+				           
+				           mWebView.loadData(text, "text/html", "utf-8");
 		Button button_ok = (Button) v.findViewById(R.id.button_accept);
 		button_ok.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
