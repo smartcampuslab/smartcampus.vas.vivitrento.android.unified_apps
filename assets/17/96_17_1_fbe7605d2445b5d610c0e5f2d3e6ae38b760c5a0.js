@@ -1,0 +1,1 @@
+{"stopsId":["960_17","2220_17","2219_17","2218_17","598_17"],"stops":["Svaldi","Bedollo-Inc.Via S.Osvaldo/Pec","Bedollo-Via S.Osvaldo 26","Bedollo-Inc.Osvaldo/Martinati","Bedollo"],"tripIds":null,"compressedTimes":"0642064206430644064507180718071907200721"}

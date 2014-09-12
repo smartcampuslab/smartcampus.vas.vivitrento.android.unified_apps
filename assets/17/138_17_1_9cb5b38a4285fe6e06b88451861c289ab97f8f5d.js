@@ -1,0 +1,1 @@
+{"stopsId":["1496_17","2338_17","1497_17","1498_17","1499_17","1501_17","1484_17","1483_17","589_17"],"stops":["Montagnaga","Montagnaga \"Villa Alpina\"","Valt","Ferrari-Hotel Scoiattolo","Ferrari","Miola-Bivio Ferrari/Miola","Miola","Baselga di Pinè-Monum.","Baselga P.-Municipio"],"tripIds":null,"compressedTimes":"093609370939094009410942094309440945"}

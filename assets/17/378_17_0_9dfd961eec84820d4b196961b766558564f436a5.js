@@ -1,0 +1,1 @@
+{"stopsId":["2427_17","2776_17","2617_17","2732_17","2731_17"],"stops":["Cles-Autostazione","Cles-Piazza Fiera","Mostizzolo-Bivio","Cis-Sud","Cis"],"tripIds":null,"compressedTimes":"07020704071007160717"}

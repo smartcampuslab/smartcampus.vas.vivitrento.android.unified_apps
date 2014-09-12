@@ -1,0 +1,1 @@
+{"stopsId":["1648_17","1646_17","1645_17","1646_17","1647_17","742_17"],"stops":["Lundo","Godenzo","Comano","Godenzo","Poia","Ponte Arche-Autost."],"tripIds":null,"compressedTimes":"071007160719072207250730"}

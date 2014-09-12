@@ -1,0 +1,1 @@
+{"stopsId":["1085_17","4941_17","1087_17","1061_17","1088_17","1089_17","1058_17","1057_17","1056_17"],"stops":["Masi di Imer","Imer Via Nazionale 144","Imer","Imer--Sup. Schlecker","Mezzano","Mezzano-Alb.Salgetti","Sorive","Fiera di P.-Sup.Trentini","Fiera di Primiero"],"tripIds":null,"compressedTimes":"122612271228122912311232123312341236"}

@@ -1,0 +1,1 @@
+{"stopsId":["4154_17","673_17","4516_17","963_17","2871_17","2798_17","2211_17"],"stops":["Pergine V.-C.Intermodale","Pergine V.","Pergine-V.Padova","Masetti-Strada Provinciale","Assizzi","Vignola","Falesina"],"tripIds":null,"compressedTimes":"09350937094109420943095209571145114711511152115312021207"}

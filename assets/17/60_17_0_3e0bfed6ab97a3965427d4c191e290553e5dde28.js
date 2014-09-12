@@ -1,0 +1,1 @@
+{"stopsId":["88_17","89_17","90_17","91_17","92_17","93_17","94_17"],"stops":["Verla","Verla-Cantina Rossi","Valternigo","Ville di Giovo","Ville di Giovo-Maso Roncador","Passo Croce","Palu' di Giovo"],"tripIds":null,"compressedTimes":"12511253125612591302130313061751175317561759180218031806"}

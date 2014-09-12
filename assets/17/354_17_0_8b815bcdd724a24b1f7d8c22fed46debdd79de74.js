@@ -1,0 +1,1 @@
+{"stopsId":["2427_17","2776_17","2609_17","2610_17","2611_17","2612_17","2613_17"],"stops":["Cles-Autostazione","Cles-Piazza Fiera","Cles-Ospedale","Cles-Masere","Mechel-Sud","Mechel--Civ. 19","Mechel"],"tripIds":null,"compressedTimes":"|0721072307240727072807281307|130913101313131413141810|18121813181618171817"}

@@ -1,0 +1,1 @@
+{"stopsId":["2137_17","2138_17","2141_17","2142_17","2134_17","2135_17","2127_17","2128_17"],"stops":["Cazzano","Crosano-Via S.Biagio 25/27","Crosano-Fam. Coop.","Crosano-Via Mazzini","Crosano Bivio","Brentonico-Mobil.Zoller","Brentonico-Ferramenta","Brentonico"],"tripIds":null,"compressedTimes":"08250828082808280830083408360836"}

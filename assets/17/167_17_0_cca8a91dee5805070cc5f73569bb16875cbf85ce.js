@@ -1,0 +1,1 @@
+{"stopsId":["1587_17","1629_17","1628_17","1627_17","1626_17","1585_17","2292_17","1690_17","1691_17"],"stops":["Pieve di Bono-Loc. Creto","Strada","Agrone","Forti di Lardaro","Lardaro","Forti di Lardaro","Praso-Loc. Sevror","Praso","Daone"],"tripIds":null,"compressedTimes":"|||1256125712591303130613111305130613081310||131413171322"}

@@ -1,0 +1,1 @@
+{"stopsId":["1613_17","1640_17","2289_17","1639_17","1638_17","1609_17","1608_17","1606_17","4149_17","1637_17"],"stops":["Ponte Caffaro Bivio","Lodrone","Lodrone-Hotel Castel Lodrone","Darzo-Zona Ind.Le","Darzo","Darzo-Stork Club","Casa Rossa","Storo-Al Melograno","Storo-Via Sette Civ. 8","Storo"],"tripIds":null,"compressedTimes":"1300130113011302130313041305130613071309"}

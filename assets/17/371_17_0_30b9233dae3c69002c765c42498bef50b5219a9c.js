@@ -1,0 +1,1 @@
+{"stopsId":["2673_17","2674_17","4459_17","2688_17","3319_17"],"stops":["Fondo-Piazza S.Giovanni","Fondo-Via Garibaldi","Fondo-Strada Delle Palade 46","Tret","Tret Nord"],"tripIds":null,"compressedTimes":"12051206120712151216|1305130613151316"}

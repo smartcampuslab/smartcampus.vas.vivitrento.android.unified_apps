@@ -1,0 +1,1 @@
+{"stopsId":["2621_17","4863_17","2622_17","2623_17","2624_17","2625_17"],"stops":["Livo","Preghena-Sp 68 Bivio","Preghena Ovest","Baselga di Bresimo","Bresimo Sud","Bresimo"],"tripIds":null,"compressedTimes":"095809591000100510071008175817591800180518071808"}

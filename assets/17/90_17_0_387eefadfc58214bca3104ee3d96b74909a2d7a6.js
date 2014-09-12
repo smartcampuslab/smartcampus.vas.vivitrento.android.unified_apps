@@ -1,0 +1,1 @@
+{"stopsId":["939_17","940_17","941_17"],"stops":["Levico Terme-Autostazione","Levico T.-P.Za Medici","Barco"],"tripIds":null,"compressedTimes":"071707190725124012421248"}

@@ -1,0 +1,1 @@
+{"stopsId":["1490_17","69_17","70_17","2768_17","2376_17"],"stops":["Cavalese-Autostaz.","Cavalese-Via Esterle","Cavalese-Hotel Garden","Cavalese-Via Degli Artigiani","Cavalese-Ospedale"],"tripIds":null,"compressedTimes":"15531556155715571558"}

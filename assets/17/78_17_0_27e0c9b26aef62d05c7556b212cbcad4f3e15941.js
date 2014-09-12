@@ -1,0 +1,1 @@
+{"stopsId":["3944_17","729_17","896_17","4972_17","897_17","898_17","897_17","899_17","900_17","901_17"],"stops":["Vezzano-Apt","Vezzano","Fraveggio Bivio","Fraveggio Loc. Vernisi","Lon","Ciago","Lon","Margone Bivio","Ranzo","Margone"],"tripIds":null,"compressedTimes":"12431244124712491251125512591305131113211916191719201922192419281932193819441954"}

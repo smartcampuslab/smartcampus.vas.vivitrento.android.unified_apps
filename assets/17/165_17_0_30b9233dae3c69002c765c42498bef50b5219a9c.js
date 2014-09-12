@@ -1,0 +1,1 @@
+{"stopsId":["2344_17","1629_17","1688_17","1595_17","1594_17","1593_17","1631_17","1630_17","1587_17"],"stops":["Por","Strada","Castel Condino","Cimego","Ponte Cimego","Cimego-Centrale Enel","Cologna di P.Bono","Pieve di Bono-Tratt.Borel","Pieve di Bono-Loc. Creto"],"tripIds":null,"compressedTimes":"||065507040705070707080709071007000705|||||||"}

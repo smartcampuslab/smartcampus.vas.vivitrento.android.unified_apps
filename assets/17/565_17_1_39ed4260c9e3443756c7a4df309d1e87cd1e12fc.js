@@ -1,0 +1,1 @@
+{"stopsId":["2373_17","4802_17","1_17"],"stops":["Sopramonte","Trento \"Forte Bus De Vela\"","Trento-Autostaz."],"tripIds":null,"compressedTimes":"|063806470933|09471048|11071153|12121513|15271748|1807"}

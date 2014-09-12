@@ -1,0 +1,1 @@
+{"stopsId":["1202_17","1201_17","1200_17","2217_17","25_17"],"stops":["Bellamonte-H.Torretta","Bellamonte","Bellamonte-Albergo Zaluna","Predazzo-Piscina Com.","Predazzo-Autostaz."],"tripIds":null,"compressedTimes":"13021300125612511250"}

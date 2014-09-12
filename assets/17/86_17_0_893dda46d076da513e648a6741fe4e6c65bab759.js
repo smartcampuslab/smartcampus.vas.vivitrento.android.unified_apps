@@ -1,0 +1,1 @@
+{"stopsId":["909_17","946_17","4303_17","947_17","949_17"],"stops":["Borgo V.-C.Intermodale","Borgo Vals.-Sp.40","Olle-Via Per Olle Civ. 55","Olle-Trattoria Alla Croce","Olle"],"tripIds":null,"compressedTimes":"072507270729073007311245124712491250125117221724172617271728"}
