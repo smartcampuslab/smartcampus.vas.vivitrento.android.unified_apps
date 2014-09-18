@@ -43,5 +43,8 @@ public void onCreate(Bundle savedInstanceState) {
 		}
 	}, SPLASH_TIME_OUT);
 }
+@Override
+	protected void onSaveInstanceState(Bundle outState) {
 
+	}
 }
