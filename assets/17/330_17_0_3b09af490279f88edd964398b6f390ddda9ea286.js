@@ -1,1 +1,0 @@
-{"stopsId":["2438_17","2385_17","3779_17","2429_17","3901_17","2437_17"],"stops":["Montes","Male'","Malè-Ex Stazione Ftm","Mangiasa","Bolentina Sud","Bolentina"],"tripIds":null,"compressedTimes":"|0805080508150817082008230840084008300827||11251125113511371140114812051205115511521145"}

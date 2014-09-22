@@ -1,1 +1,0 @@
-{"stopsId":["958_17","587_17","588_17","589_17","590_17"],"stops":["S.Mauro","S.Mauro-Bivio","Tressilla","Baselga P.-Municipio","Baselga di Pine'-Lago"],"tripIds":null,"compressedTimes":"07000703070507080710"}

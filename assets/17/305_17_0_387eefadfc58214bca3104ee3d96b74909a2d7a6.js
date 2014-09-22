@@ -1,1 +1,0 @@
-{"stopsId":["939_17","2205_17","3929_17","2206_17","2207_17","2204_17","3931_17","2208_17"],"stops":["Levico Terme-Autostazione","Terme di Levico","Levico Terme-Ris. Scarano'","Baiti di Vetriolo","Ristorante Cacciatore","Vetriolo Terme","Terme di Vetriolo","Compet"],"tripIds":null,"compressedTimes":"0825082808320842084508570858090217251728173217421745175717581802"}

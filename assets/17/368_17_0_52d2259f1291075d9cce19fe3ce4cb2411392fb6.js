@@ -1,1 +1,0 @@
-{"stopsId":["2684_17","2838_17","5064_17","2685_17","4801_17","2686_17","4385_17","4285_17","2687_17"],"stops":["Dermulo","Coredo-Distributore Repsol","Coredo Via Trento","Coredo","Coredo-Segheria Biasi","Smarano","Sfruz Via Smarano \"Segheria\"","Sfruz-Via Smarano 16","Sfruz"],"tripIds":null,"compressedTimes":"183218401841184218441847185018501851"}

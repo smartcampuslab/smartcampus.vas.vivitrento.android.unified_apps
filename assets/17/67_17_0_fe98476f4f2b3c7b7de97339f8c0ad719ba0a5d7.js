@@ -1,1 +1,0 @@
-{"stopsId":["1490_17","69_17","4817_17","566_17","567_17","569_17","570_17"],"stops":["Cavalese-Autostaz.","Cavalese-Via Esterle","Carano Via Carano 79","Carano-Bar Sport","Carano-Municipio","Carano-Albergo Bagni","Carano-Garnì Belvedere"],"tripIds":null,"compressedTimes":"1250125312541255125612571259"}

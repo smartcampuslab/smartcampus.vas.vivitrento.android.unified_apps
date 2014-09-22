@@ -1,1 +1,0 @@
-{"stopsId":["1080_17","4155_17","1078_17","1077_17","1076_17","1081_17","1082_17","909_17"],"stops":["Feltre-Staz. Fs","Feltre Pasquer","Feltre-Ospedale","Feltre-Rist.Sole di Napoli","Feltre-Gel. La Zuecca","S.Lucia","Arten","Borgo V.-C.Intermodale"],"tripIds":null,"compressedTimes":"0815081708200821082308280831090617001702170517061708171317161756"}

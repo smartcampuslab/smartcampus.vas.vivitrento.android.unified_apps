@@ -1,1 +1,0 @@
-{"stopsId":["2376_17","2769_17","15_17","1490_17"],"stops":["Cavalese-Ospedale","Cavalese-P.Zza Francescani","Cavalese-Piazza G.Verdi","Cavalese-Autostaz."],"tripIds":null,"compressedTimes":"15581600160116031610161216131615"}

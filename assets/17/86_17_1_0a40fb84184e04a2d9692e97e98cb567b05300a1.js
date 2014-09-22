@@ -1,1 +1,0 @@
-{"stopsId":["949_17","948_17","947_17","4303_17","946_17","909_17"],"stops":["Olle","Olle-Via Del Boaletto","Olle-Trattoria Alla Croce","Olle-Via Per Olle Civ. 55","Borgo Vals.-Sp.40","Borgo V.-C.Intermodale"],"tripIds":null,"compressedTimes":"063706370638063906410643073207320733073407360738125212521253125412561258133513351336133713391341172817281729173017321734"}

@@ -1,1 +1,0 @@
-{"stopsId":["1053_17","1054_17","1056_17","1055_17","1191_17","1195_17","1196_17","2351_17"],"stops":["Siror","Tressane","Fiera di Primiero","Ponte Mirabello","Tonadico-Lisiera","Passo Cereda","Mis","Agordo-Luxottica"],"tripIds":null,"compressedTimes":"06390641064406460649070207110746"}

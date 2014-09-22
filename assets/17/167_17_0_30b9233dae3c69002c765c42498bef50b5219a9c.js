@@ -1,1 +1,0 @@
-{"stopsId":["1627_17","1626_17","1585_17","2292_17","1690_17","1691_17"],"stops":["Forti di Lardaro","Lardaro","Forti di Lardaro","Praso-Loc. Sevror","Praso","Daone"],"tripIds":null,"compressedTimes":"125612571259130313061311"}

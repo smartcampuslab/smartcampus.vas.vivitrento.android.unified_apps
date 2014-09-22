@@ -1,1 +1,0 @@
-{"stopsId":["959_17","2384_17","602_17"],"stops":["Valcava","Caloneghi","Brusago"],"tripIds":null,"compressedTimes":"062506290633"}

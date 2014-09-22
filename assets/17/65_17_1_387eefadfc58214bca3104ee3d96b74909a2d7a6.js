@@ -1,1 +1,0 @@
-{"stopsId":["562_17","563_17","564_17","557_17","1490_17"],"stops":["Masi di Cavalese","Masi-Via Chiesa Civ.118","Marco di Cavalese","Cavalese-Case Itea","Cavalese-Autostaz."],"tripIds":null,"compressedTimes":"0747074807500751075412171218122012211224"}

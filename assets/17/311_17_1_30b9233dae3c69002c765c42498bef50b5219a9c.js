@@ -1,1 +1,0 @@
-{"stopsId":["1056_17","2232_17","2231_17","2230_17","2818_17"],"stops":["Fiera di Primiero","Transacqua-Isolabella","Transacqua-Piazza S.Marco","Transacqua-Albergo Belvedere","Transacqua-Via Navoi 66"],"tripIds":null,"compressedTimes":"14071408140914101419"}

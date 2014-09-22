@@ -1,1 +1,0 @@
-{"stopsId":["1857_17","1856_17","1021_17","1003_17","1028_17","4154_17"],"stops":["Ischia di Pergine","S.Cristoforo-Ht.Meridiana","Pergine V.-Via Al Lago Civ 17","Pergine V.-Bivio Susà","Pergine V.","Pergine V.-C.Intermodale"],"tripIds":null,"compressedTimes":"084808500852085308550857114811501152115311551157171617181720172117231725"}

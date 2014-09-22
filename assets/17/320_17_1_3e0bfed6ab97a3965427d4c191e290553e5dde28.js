@@ -1,1 +1,0 @@
-{"stopsId":["2320_17","829_17","3213_17","757_17"],"stops":["Tione Ospedale Civile","Tione-Via Circonvallaz.","Tione-Via Circonvallazione 65","Tione-Autostazione"],"tripIds":null,"compressedTimes":"080508080808081012371240124012421418142114211423"}

@@ -1,1 +1,0 @@
-{"stopsId":["1_17","2373_17"],"stops":["Trento-Autostaz.","Sopramonte"],"tripIds":null,"compressedTimes":"092509401025104011251140144515061525154017251740"}

@@ -1,1 +1,0 @@
-{"stopsId":["4868_17","4867_17","1485_17","1484_17","1483_17","589_17"],"stops":["Loc. Fiorè","Loc. Canè","Miola-St. Ghiaccio","Miola","Baselga di Pinè-Monum.","Baselga P.-Municipio"],"tripIds":null,"compressedTimes":"132613301332133313351337"}

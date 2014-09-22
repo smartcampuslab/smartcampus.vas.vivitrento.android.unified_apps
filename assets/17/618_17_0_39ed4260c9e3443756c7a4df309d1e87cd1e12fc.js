@@ -1,1 +1,0 @@
-{"stopsId":["1199_17","1198_17","1197_17","1196_17"],"stops":["Sagron","Mis di Sotto","Mis di Mezzo","Mis"],"tripIds":null,"compressedTimes":"0655070007010702"}

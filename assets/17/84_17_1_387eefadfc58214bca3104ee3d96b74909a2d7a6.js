@@ -1,1 +1,0 @@
-{"stopsId":["945_17","944_17","2358_17","943_17","597_17"],"stops":["Regnana","Regnana-Via Redebus 9","Regnana Via Dei Tamagi","Regnana Biv.-Dopo A.Costalta","Centrale di Bedollo"],"tripIds":null,"compressedTimes":"0725072607290730073013151316131913201320"}

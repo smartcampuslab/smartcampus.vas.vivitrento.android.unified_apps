@@ -1,1 +1,0 @@
-{"stopsId":["1490_17","15_17","557_17","564_17","559_17","560_17","561_17","562_17"],"stops":["Cavalese-Autostaz.","Cavalese-Piazza G.Verdi","Cavalese-Case Itea","Marco di Cavalese","Milon","Masi-Campo Sportivo","Masi-Piccolo Bar","Masi di Cavalese"],"tripIds":null,"compressedTimes":"0735073707390740074107420743074412041206120812091210121112121213"}

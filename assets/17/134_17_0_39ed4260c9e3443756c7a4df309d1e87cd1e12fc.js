@@ -1,1 +1,0 @@
-{"stopsId":["869_17","2782_17","2808_17","2809_17","2342_17"],"stops":["Sarche-Cassa Rurale","Ponte Oliveti","Pergolese-V.Dell'agricoltura","Pergolese-Inc Via Dos Dei Pini","Pergolese"],"tripIds":null,"compressedTimes":"13161317131913191320"}

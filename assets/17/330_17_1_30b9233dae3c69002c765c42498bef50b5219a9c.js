@@ -1,1 +1,0 @@
-{"stopsId":["2437_17","2438_17","3901_17","2429_17","4720_17","3779_17","2385_17"],"stops":["Bolentina","Montes","Bolentina Sud","Mangiasa","Malè Scuola Elementare","Malè-Ex Stazione Ftm","Male'"],"tripIds":null,"compressedTimes":"0640064406480650|0659065907300734073807400749074907491300130413081310|13151315"}

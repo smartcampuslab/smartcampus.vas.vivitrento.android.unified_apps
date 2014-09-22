@@ -1,1 +1,0 @@
-{"stopsId":["2431_17","2430_17","5479_17","2432_17","2433_17","2434_17","5352_17","2435_17","2436_17"],"stops":["Pellizzano","Claiano Bivio","Claiano Nord-Sp 140","Termenago Sud","Termenago","Castello di Pellizzano","Castello-Bivio di Stavel","Ortisè","Menas"],"tripIds":null,"compressedTimes":"080008040805080908100813081508180820123012341235123912401243124512481250"}

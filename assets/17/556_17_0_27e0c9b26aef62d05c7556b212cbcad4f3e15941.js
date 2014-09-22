@@ -1,1 +1,0 @@
-{"stopsId":["4154_17","673_17","4516_17","2263_17","2261_17","963_17","2871_17"],"stops":["Pergine V.-C.Intermodale","Pergine V.","Pergine-V.Padova","Masetti-Paese","Zava","Masetti-Strada Provinciale","Assizzi"],"tripIds":null,"compressedTimes":"080308050809||0810081109350937094109410945||114011421146||1147114812051207121112111215||"}
