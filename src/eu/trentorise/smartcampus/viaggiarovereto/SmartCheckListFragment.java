@@ -37,6 +37,10 @@ public class SmartCheckListFragment extends FeedbackFragment {
 	protected static final String PARAM_LINE = "line";
 	protected static final String PARAM_AGENCY = "agency";
 	protected static final String PARAM_LINES = "lines";
+	protected static final String PARAM_PARKINGID = "parkingAgencyId";
+	protected static final String PARAM_ALERTSID = "alertRoadsAgencyId";
+	protected static final String PARAM_ALERTSMAPID = "alertsAgencyId";
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -271,7 +275,7 @@ public class SmartCheckListFragment extends FeedbackFragment {
 					tab.setTabListener(new TabListener<SmartCheckParkingsFragment>(getSherlockActivity(), "lines",
 							SmartCheckParkingsFragment.class, null));
 					Bundle bundle = new Bundle();
-					bundle.putString(PARAM_AID, ParkingsHelper.PARKING_AID_ROVERETO);
+					bundle.putString(PARAM_PARKINGID, ParkingsHelper.PARKING_AID_ROVERETO);
 					tab.setTag(bundle);
 					actionBar.addTab(tab);
 
@@ -281,7 +285,7 @@ public class SmartCheckListFragment extends FeedbackFragment {
 					tab.setTabListener(new TabListener<SmartCheckParkingMapV2Fragment>(getSherlockActivity(), "map",
 							SmartCheckParkingMapV2Fragment.class, null));
 					bundle = new Bundle();
-					bundle.putString(PARAM_AID, ParkingsHelper.PARKING_AID_ROVERETO);
+					bundle.putString(PARAM_PARKINGID, ParkingsHelper.PARKING_AID_ROVERETO);
 					tab.setTag(bundle);
 					actionBar.addTab(tab);
 
@@ -297,7 +301,7 @@ public class SmartCheckListFragment extends FeedbackFragment {
 					tab.setTabListener(new TabListener<SmartCheckAlertsFragment>(getSherlockActivity(), "lines",
 							SmartCheckAlertsFragment.class, null));
 					Bundle bundle = new Bundle();
-					bundle.putString(PARAM_AID, AlertRoadsHelper.ALERTS_AID_ROVERETO);
+					bundle.putString(PARAM_ALERTSID, AlertRoadsHelper.ALERTS_AID_ROVERETO);
 					tab.setTag(bundle);
 					actionBar.addTab(tab);
 
@@ -307,7 +311,7 @@ public class SmartCheckListFragment extends FeedbackFragment {
 					tab.setTabListener(new TabListener<SmartCheckAlertsMapV2Fragment>(getSherlockActivity(), "map",
 							SmartCheckAlertsMapV2Fragment.class, null));
 					bundle = new Bundle();
-					bundle.putString(PARAM_AID, AlertRoadsHelper.ALERTS_AID_ROVERETO);
+					bundle.putString(PARAM_ALERTSMAPID, AlertRoadsHelper.ALERTS_AID_ROVERETO);
 					tab.setTag(bundle);
 					actionBar.addTab(tab);
 
