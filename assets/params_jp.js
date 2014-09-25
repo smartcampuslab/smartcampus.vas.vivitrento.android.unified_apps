@@ -3,6 +3,15 @@
  * "alertroads_in_planning" : true,
  * "alertroads_in_planning_agencyid" : "COMUNE_DI_ROVERETO",
  * 
+ * AGENCY ID
+ * 	
+ *  TRAIN_BZVR  5;
+ *	TRAIN_TNBDG  6;
+ *	TRAIN_TM  10;
+ *	BUS_TRENTO  12;
+ *	BUS_ROVERETO  16;
+ *	BUS_SUBURBAN  17;
+ *	
  * SMART CHECK OPTIONS
  * 1 bus trento timetable
  * 2 bus rovereto timetable
@@ -54,6 +63,22 @@
     "suburban_zones" : [
 	    3
     ],
+    "agency" : [
+                {"agency_id":"10",
+                	"routes_id":[
+                	             "555"
+                	             ]},
+                {"agency_id":"16",
+                	"routes_id":[
+                	             "02_A"
+                	             ]},
+                {"agency_id":"17",
+                	"routes_id":[
+                	             "110_17_0",
+                	             "110_17_1"
+                	             ]
+                }
+                    ],
     "broadcast_notifications_options" : [
         2,
         3,

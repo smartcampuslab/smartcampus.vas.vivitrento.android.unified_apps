@@ -88,7 +88,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 				JPParamsHelper.init(getApplicationContext());
 				ViviTrentoHelper.init(getApplicationContext());
 				super.initDataManagement(savedInstanceState);
-				//JPHelper.init(getApplicationContext());
+				// JPHelper.init(getApplicationContext());
 				prepareView();
 
 			}
@@ -239,6 +239,11 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
+		} else if (viewId == R.id.btn_smartcheck) {
+			intent = new Intent(this, SmartCheckActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
+			return;
 		} else {
 			String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
 			TypedArray smartIds = getResources().obtainTypedArray(R.array.smart_check_list_ids);
@@ -307,12 +312,10 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 
 	}
 
-	
 	/*
-	 * Manage the result after login
-	 * if in sharedpreferences are stored itinerarys -> upgrade user
-	 * else if result is ok -> anonymous
-	 * else is cancelled
+	 * Manage the result after login if in sharedpreferences are stored
+	 * itinerarys -> upgrade user else if result is ok -> anonymous else is
+	 * cancelled
 	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -327,10 +330,10 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 					if (mToken == null) {
 						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 					} else {
-						//set user to not anonymous
+						// set user to not anonymous
 						JPHelper.setUserAnonymous(this, false);
 						supportInvalidateOptionsMenu();
-						JPHelper.readAccountProfile(new CopyTask(sharedPref, userService, resultCode, data,this,this));
+						JPHelper.readAccountProfile(new CopyTask(sharedPref, userService, resultCode, data, this, this));
 						ViviTrentoHelper.init(getApplicationContext());
 					}
 				}
@@ -392,8 +395,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			fragmentTransaction.addToBackStack(fragment.getTag());
 			fragmentTransaction.commit();
 
-		}
-		else   if (item.getItemId() == R.id.menu_item_pref) {
+		} else if (item.getItemId() == R.id.menu_item_pref) {
 			Intent intent = new Intent(this, ProfileActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
@@ -429,21 +431,21 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 	private List<View> createButtons() {
 		List<View> list = new ArrayList<View>();
 		// First, set the smart check options
-		String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
-		List<String> smartNamesFiltered = Arrays.asList(JPParamsHelper.getSmartCheckOptions());
-		TypedArray smartIds = getResources().obtainTypedArray(R.array.smart_check_list_ids);
-		TypedArray smartIcons = getResources().obtainTypedArray(R.array.smart_check_list_icons);
-		for (int i = 0; i < smartNames.length; i++) {
-			if (smartNamesFiltered.contains(smartNames[i])) {
-				Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
-				b.setText(smartNames[i]);
-				b.setId(smartIds.getResourceId(i, 0));
-				b.setCompoundDrawablesWithIntrinsicBounds(null, smartIcons.getDrawable(i), null, null);
-				list.add(b);
-			}
-		}
-		smartIcons.recycle();
-		smartIds.recycle();
+//		String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
+//		List<String> smartNamesFiltered = Arrays.asList(JPParamsHelper.getSmartCheckOptions());
+//		TypedArray smartIds = getResources().obtainTypedArray(R.array.smart_check_list_ids);
+//		TypedArray smartIcons = getResources().obtainTypedArray(R.array.smart_check_list_icons);
+//		for (int i = 0; i < smartNames.length; i++) {
+//			if (smartNamesFiltered.contains(smartNames[i])) {
+//				Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
+//				b.setText(smartNames[i]);
+//				b.setId(smartIds.getResourceId(i, 0));
+//				b.setCompoundDrawablesWithIntrinsicBounds(null, smartIcons.getDrawable(i), null, null);
+//				list.add(b);
+//			}
+//		}
+//		smartIcons.recycle();
+//		smartIds.recycle();
 		String[] allNames = getResources().getStringArray(R.array.main_list);
 		TypedArray allIds = getResources().obtainTypedArray(R.array.main_list_ids);
 		TypedArray allIcons = getResources().obtainTypedArray(R.array.main_list_icons);
