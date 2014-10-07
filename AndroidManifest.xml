@@ -1,13 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.viaggiatrento"
     android:installLocation="internalOnly"
-
     android:versionCode="23"
     android:versionName="0.10.5" >
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="16" />
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,7 +23,6 @@
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
@@ -49,8 +47,6 @@
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
-
-
 
     <!-- receives GCM messages -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -120,12 +116,11 @@
         <!--
         <meta-data
             android:name="option1"
-            android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" />
+            android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" />
         -->
-        <uses-library android:name="com.google.android.maps" />
+        <!-- <uses-library android:name="com.google.android.maps" /> -->
 
         <activity
-
             android:name="eu.trentorise.smartcampus.viaggiatrento.LauncherActivity"
             android:configChanges="screenSize|keyboardHidden|keyboard"
             android:label="@string/jp_name"
@@ -153,6 +148,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.START" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -171,14 +167,13 @@
         </service>
 
         <activity
-
             android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.Journeyplanner" />
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
         <!-- android:configChanges="orientation|screenSize" -->
-eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
+eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
         <!-- android:theme="@style/Theme.Journeyplanner" /> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
@@ -190,7 +185,6 @@ eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
             android:name="eu.trentorise.smartcampus.viaggiatrento.settings.SettingsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner" />
-
         <activity
             android:name="eu.trentorise.smartcampus.jp.HomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
@@ -201,7 +195,6 @@ eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
         <activity
             android:name="eu.trentorise.smartcampus.jp.AddressSelectActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-
             android:theme="@style/Theme.Journeyplanner" />
         <activity
             android:name="eu.trentorise.smartcampus.jp.StopSelectActivity"
@@ -304,17 +297,19 @@ eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="eu.trentorise.smartcampus.viaggiatrento" />  
-            </intent-filter>   
+
+                <category android:name="eu.trentorise.smartcampus.viaggiatrento" />
+            </intent-filter>
         </receiver>
-        <service
-            android:name=".GCMIntentService">
+
+        <service android:name=".GCMIntentService" >
         </service>
-        <uses-library android:name="com.google.android.maps" />
     </application>
 
 </manifest>
