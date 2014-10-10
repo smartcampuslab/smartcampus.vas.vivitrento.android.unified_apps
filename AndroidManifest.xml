@@ -113,11 +113,11 @@
             android:name="check-version"
             android:value="false" />
         <!-- <meta-data android:name="use-feedback" android:value="true" /> -->
-        <!--
-        <meta-data
-            android:name="option1"
-            android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" />
-        -->
+
+
+        <!-- <meta-data -->
+        <!-- android:name="option1" -->
+        <!-- android:value="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" /> -->
         <!-- <uses-library android:name="com.google.android.maps" /> -->
 
         <activity
@@ -173,7 +173,8 @@
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
         <!-- android:configChanges="orientation|screenSize" -->
-eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
+
+
         <!-- android:theme="@style/Theme.Journeyplanner" /> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
@@ -218,6 +219,9 @@ eu.trentorise.smartcampus.viaggiatrento.GCMIntentService
                 <data
                     android:host="maps.google.com"
                     android:scheme="http" />
+                <data
+                    android:host="maps.google.com"
+                    android:scheme="https" />
             </intent-filter>
             <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.jp.NAVIGATE" />
