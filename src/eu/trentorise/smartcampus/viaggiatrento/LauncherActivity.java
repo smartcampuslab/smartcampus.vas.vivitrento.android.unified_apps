@@ -71,7 +71,6 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 
 	@Override
 	protected void initDataManagement(Bundle savedInstanceState) {
-
 	}
 
 	@Override
@@ -88,9 +87,8 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 				JPParamsHelper.init(getApplicationContext());
 				ViviTrentoHelper.init(getApplicationContext());
 				super.initDataManagement(savedInstanceState);
-				//JPHelper.init(getApplicationContext());
+				// JPHelper.init(getApplicationContext());
 				prepareView();
-
 			}
 		}
 
@@ -98,12 +96,157 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 			finish();
 		}
+	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (JPHelper.isInitialized()) {
+			JPHelper.getLocationHelper().start();
+		}
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (JPHelper.isInitialized()) {
+			JPHelper.getLocationHelper().stop();
+		}
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		menu.clear();
+		getSupportMenuInflater().inflate(R.menu.launchergripmenu, menu);
+		menu.getItem(0).setVisible(false);
+		SubMenu submenu = menu.getItem(1).getSubMenu();
+		submenu.clear();
+		submenu.setIcon(R.drawable.ic_action_overflow);
+
+		// tutorial
+		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_tutorial, Menu.NONE, R.string.menu_tutorial);
+		// preferences
+		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_pref, Menu.NONE, R.string.btn_myprofile);
+		// about pages
+		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);
+
+		if (JPHelper.isUserAnonymous(this)) {
+			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
+		}
+		// if (SCAccessProvider.isUserAnonymous(this)) {
+		// submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE,
+		// R.string.upgrade_user_menu);
+		// }
+
+		return super.onPrepareOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == android.R.id.home) {
+			onBackPressed();
+		} else if (item.getItemId() == R.id.upgrade_user_menu) {
+			// promote user
+			UserRegistration.upgradeuser(this);
+		} else if (item.getItemId() == R.id.about) {
+			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+			Fragment fragment = new AboutFragment();
+			fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+			fragmentTransaction.replace(Config.mainlayout, fragment, "about");
+			fragmentTransaction.addToBackStack(fragment.getTag());
+			fragmentTransaction.commit();
+		} else if (item.getItemId() == R.id.menu_item_pref) {
+			Intent intent = new Intent(this, ProfileActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onNewIntent(Intent arg0) {
+		super.onNewIntent(arg0);
+		if (getResources().getString(R.string.smartcampus_action_start).equals(arg0.getAction())) {
+			try {
+				// SCAccessProvider provider =
+				SCAccessProvider.getInstance(LauncherActivity.this);
+			} catch (Exception e) {
+				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+				finish();
+			}
+		}
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle arg0) {
+		super.onSaveInstanceState(arg0);
+	}
+
+	/*
+	 * Manage the result after login if in sharedpreferences are stored
+	 * itinerarys -> upgrade user else if result is ok -> anonymous else is
+	 * cancelled
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == SCAccessProvider.SC_AUTH_ACTIVITY_REQUEST_CODE) {
+			try {
+				SharedPreferences sharedPref = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+				MobilityUserService userService = new MobilityUserService(GlobalConfig.getAppUrl(this) + JPHelper.MOBILITY_URL);
+				if (sharedPref.contains(JPHelper.MY_ITINERARIES)) {
+					mToken = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
+					if (mToken == null) {
+						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+					} else {
+						// set user to not anonymous
+						JPHelper.setUserAnonymous(this, false);
+						supportInvalidateOptionsMenu();
+						JPHelper.readAccountProfile(new CopyTask(sharedPref, userService, resultCode, data, this, this));
+						ViviTrentoHelper.init(getApplicationContext());
+					}
+				}
+
+				else if (resultCode == RESULT_OK) {
+					mToken = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
+					if (mToken == null) {
+						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
+					} else {
+						JPHelper.init(getApplicationContext());
+						ViviTrentoHelper.init(getApplicationContext());
+						prepareView();
+						supportInvalidateOptionsMenu();
+						if (JPHelper.isFirstLaunch(this)) {
+							showTourDialog();
+							JPHelper.disableFirstLaunch(this);
+						}
+					}
+
+				} else if (resultCode == RESULT_CANCELED) {
+					Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
+					// clean shared preferences
+					finish();
+				} else {
+					Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+					// clean shared preferences
+					finish();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	private void prepareView() {
-		if (getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD)
+		if (getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD) {
 			getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		}
 
 		List<View> list = createButtons();
 		LinearLayout ll = null;
@@ -115,13 +258,12 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 				ll.setOrientation(LinearLayout.HORIZONTAL);
 				ll.setGravity(Gravity.TOP | Gravity.CENTER);
 				ll.setWeightSum(3);
-				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-						LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+						LinearLayout.LayoutParams.WRAP_CONTENT);
 				layoutParams.setMargins(0, 32, 0, 0);
 				parent.addView(ll, layoutParams);
 			}
-			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,
-					LinearLayout.LayoutParams.WRAP_CONTENT);
+			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
 			layoutParams.weight = 1;
 			ll.addView(list.get(i), layoutParams);
 			if ((i + 1) % 3 == 0) {
@@ -168,7 +310,6 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		updateDialogClickListener = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-
 				try {
 					switch (which) {
 					case DialogInterface.BUTTON_POSITIVE:
@@ -178,12 +319,10 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						JPHelper.setUserAnonymous(LauncherActivity.this, false);
 						JPHelper.login(LauncherActivity.this);
 						break;
-
 					case DialogInterface.BUTTON_NEGATIVE:
 						// no -> accessprovider.getAuthToken(this,
 						// "anonymous"); -> shared preferences
 						// "registred" true
-
 						// con bundle
 						// accessprovider.login(LauncherActivity.this,
 						// "anonymous");
@@ -192,7 +331,6 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 						break;
 					}
 					supportInvalidateOptionsMenu();
-
 				} catch (Exception e) {
 					Toast.makeText(LauncherActivity.this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 					finish();
@@ -259,7 +397,6 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
-
 		// Constants.setAuthUrl(this,
 		// getResources().getString(R.string.smartcampus_auth_url));
 		// GlobalConfig.setAppUrl(this,
@@ -267,163 +404,6 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		// SharedPreferences settings =
 		// LauncherActivity.this.getSharedPreferences(PREFS_NAME, 0);
 		// settings.edit().putBoolean(FIRSTTIME, true).commit();
-
-	}
-
-	@Override
-	public void onNewIntent(Intent arg0) {
-		super.onNewIntent(arg0);
-		if (getResources().getString(R.string.smartcampus_action_start).equals(arg0.getAction())) {
-			try {
-				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
-			} catch (Exception e) {
-				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
-				finish();
-			}
-		}
-
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		if (JPHelper.isInitialized()) {
-			JPHelper.getLocationHelper().start();
-		}
-
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		if (JPHelper.isInitialized()) {
-			JPHelper.getLocationHelper().stop();
-		}
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-
-	}
-
-	
-	/*
-	 * Manage the result after login
-	 * if in sharedpreferences are stored itinerarys -> upgrade user
-	 * else if result is ok -> anonymous
-	 * else is cancelled
-	 */
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == SCAccessProvider.SC_AUTH_ACTIVITY_REQUEST_CODE) {
-
-			try {
-				SharedPreferences sharedPref = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
-				MobilityUserService userService = new MobilityUserService(GlobalConfig.getAppUrl(this)
-						+ JPHelper.MOBILITY_URL);
-				if (sharedPref.contains(JPHelper.MY_ITINERARIES)) {
-					mToken = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
-					if (mToken == null) {
-						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
-					} else {
-						//set user to not anonymous
-						JPHelper.setUserAnonymous(this, false);
-						supportInvalidateOptionsMenu();
-						JPHelper.readAccountProfile(new CopyTask(sharedPref, userService, resultCode, data,this,this));
-						ViviTrentoHelper.init(getApplicationContext());
-					}
-				}
-
-				else if (resultCode == RESULT_OK) {
-					mToken = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
-					if (mToken == null) {
-						Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
-					} else {
-						JPHelper.init(getApplicationContext());
-						ViviTrentoHelper.init(getApplicationContext());
-
-						prepareView();
-						supportInvalidateOptionsMenu();
-						if (JPHelper.isFirstLaunch(this)) {
-							showTourDialog();
-							JPHelper.disableFirstLaunch(this);
-						}
-					}
-
-				} else if (resultCode == RESULT_CANCELED) {
-					Toast.makeText(this, getString(R.string.token_required), Toast.LENGTH_LONG).show();
-					// clean shared preferences
-					finish();
-
-				} else {
-					Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
-					// clean shared preferences
-					finish();
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-
-	@Override
-	protected void onSaveInstanceState(Bundle arg0) {
-		super.onSaveInstanceState(arg0);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
-			onBackPressed();
-		}
-
-		else if (item.getItemId() == R.id.upgrade_user_menu) {
-			// promote user
-			UserRegistration.upgradeuser(this);
-
-		} else if (item.getItemId() == R.id.about) {
-
-			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-			Fragment fragment = new AboutFragment();
-			fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-			fragmentTransaction.replace(Config.mainlayout, fragment, "about");
-			fragmentTransaction.addToBackStack(fragment.getTag());
-			fragmentTransaction.commit();
-
-		}
-		else   if (item.getItemId() == R.id.menu_item_pref) {
-			Intent intent = new Intent(this, ProfileActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-			startActivity(intent);
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		menu.clear();
-		getSupportMenuInflater().inflate(R.menu.launchergripmenu, menu);
-		menu.getItem(0).setVisible(false);
-		SubMenu submenu = menu.getItem(1).getSubMenu();
-		submenu.clear();
-		submenu.setIcon(R.drawable.ic_action_overflow);
-
-		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_tutorial, Menu.NONE, R.string.menu_tutorial);
-		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
-																					// page
-		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_pref, Menu.NONE, R.string.btn_myprofile);
-
-		if (JPHelper.isUserAnonymous(this)) {
-			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
-		}
-		// if (SCAccessProvider.isUserAnonymous(this)) {
-		// submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE,
-		// R.string.upgrade_user_menu);
-		// }
-
-		return super.onPrepareOptionsMenu(menu);
 	}
 
 	private List<View> createButtons() {
@@ -435,7 +415,8 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		TypedArray smartIcons = getResources().obtainTypedArray(R.array.smart_check_list_icons);
 		for (int i = 0; i < smartNames.length; i++) {
 			if (smartNamesFiltered.contains(smartNames[i])) {
-				Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
+				Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, new LinearLayout(getApplicationContext()),
+						false);
 				b.setText(smartNames[i]);
 				b.setId(smartIds.getResourceId(i, 0));
 				b.setCompoundDrawablesWithIntrinsicBounds(null, smartIcons.getDrawable(i), null, null);
@@ -448,7 +429,8 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		TypedArray allIds = getResources().obtainTypedArray(R.array.main_list_ids);
 		TypedArray allIcons = getResources().obtainTypedArray(R.array.main_list_icons);
 		for (int i = 0; i < allNames.length; i++) {
-			Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
+			Button b = (Button) getLayoutInflater()
+					.inflate(R.layout.home_btn, new LinearLayout(getApplicationContext()), false);
 			b.setText(allNames[i]);
 			b.setId(allIds.getResourceId(i, 0));
 			b.setCompoundDrawablesWithIntrinsicBounds(null, allIcons.getDrawable(i), null, null);
@@ -463,4 +445,5 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 	public void onTaskCompleted(String result) {
 		mToken = result;
 	}
+
 }
