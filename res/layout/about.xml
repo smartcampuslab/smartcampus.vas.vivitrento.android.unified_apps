@@ -1,83 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    android:padding="10dp" >
+    android:layout_height="match_parent" >
 
-    <TextView 
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/jp_name"
-        android:textColor="@color/jpappcolor"
-        android:gravity="center"
-        android:textAppearance="@android:style/TextAppearance.Large" />
-    
-    <View
+        android:layout_height="match_parent"
+        android:background="@android:color/white" >
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/jpappcolor" />
-    
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical" 
-        android:paddingBottom="40dp"
-		android:paddingTop="20dp">
-
-        <ImageView
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
-            android:src="@drawable/vert_colore" />
-        
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:src="@drawable/cdc" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/sc_small" >
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:src="@drawable/sc" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sc_large"
+                android:layout_marginTop="@dimen/sc_medium"
+                android:text="@string/info_credits" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autoLink="web"
-        android:text="@string/about_text_app"
-        android:textColor="@color/sc_gray" 
-        android:paddingBottom="30dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info_intro"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/jpappcolor"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_about_sc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/about_text_sc"
-        android:textColor="@color/sc_gray" 
-        android:paddingBottom="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/info_subtitle"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_about_ct"
-        android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sc_small"
+                android:layout_marginTop="@dimen/sc_large"
+                android:text="@string/info_project"
+                android:textColor="@color/jpappcolor" />
+
+            <ImageView
+                android:id="@+id/smartcampus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sc_small"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/smart_campus_credits" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sc_small"
+                android:layout_marginTop="@dimen/sc_large"
+                android:text="@string/info_collab"
+                android:textColor="@color/jpappcolor" />
+
+            <ImageView
+                android:id="@+id/cdt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/comune_tn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sc_small"
+                android:layout_marginTop="@dimen/sc_large"
+                android:text="@string/info_partecipation"
+                android:textColor="@color/jpappcolor" />
+
+            <ImageView
+                android:id="@+id/cct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/empty"
+                android:src="@drawable/consorzio_comuni_trentini" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sc_large"
+                android:autoLink="email"
+                android:gravity="center"
+                android:text="@string/info_mail"
+                android:textColor="@color/jpappcolor"
+                android:textColorLink="@android:color/black" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/close_credits"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_text_ct"
-        android:textColor="@color/sc_gray" 
-        android:paddingBottom="20dp"/>
-    
-    <TextView
-        android:id="@+id/tv_about_cdc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/about_text_cdc"
-        android:textColor="@color/sc_gray" 
-        android:paddingBottom="20dp"/>
-    
-</LinearLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/empty"
+        android:src="@drawable/ic_action_remove" />
+
+</RelativeLayout>

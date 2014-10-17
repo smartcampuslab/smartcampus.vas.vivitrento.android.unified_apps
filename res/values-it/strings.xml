@@ -15,9 +15,8 @@
 -->
 <resources>
 
-<!--     <string name="app_name">ViaggiaTrento</string> -->
+    <!-- <string name="app_name">ViaggiaTrento</string> -->
     <string name="jp_name">Viaggia Trento</string>
-        
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="title_activity_main">MainActivity</string>
@@ -28,7 +27,6 @@
     <string name="error_occurs">OOPS! Questa app non è ancora disponibile.</string>
     <string name="not_secure_app">Not secure app!</string> <!-- ?! -->
     <string name="enable_connection">Connessione non disponibile. Verifica le impostazioni dello smartphone e riprova.</string>
-
     <string name="token_required">Si prega di effettuare il login prima di proseguire con l\'utilizzo delle app.</string>
     <string name="auth_failed">Errore nell\'inizializzazione dell\'app. Riprova a breve.</string>
     <string name="update_application_question">E\' disponibile una nuova versione. Desideri aggiornare l\'applicazione adesso?</string>
@@ -38,34 +36,33 @@
     <string name="list_of_applications">Lista delle app</string>
     <string name="list_empty">Nessun aggiornamento disponibile.</string>
     <string name="empty" />
-   
     <string name="update_host">www.smartcampuslab.it</string>
     <string name="check_updates">Verifica aggiornamenti</string>
     <string name="settings">Impostazioni</string>
     <string name="about">Info</string>
-    <string name="to_be_updated">Da aggiornare</string> <!--  ?! -->
-    
+    <string name="to_be_updated">Da aggiornare</string> <!-- ?! -->
+
     <string name="update_dev">Versione delle app</string>
     <string name="update_dev_sum">Verifica la presenza di aggiornamenti di test</string>
-	<string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
-	<string name="update_application_notification">E\' disponibile una nuova versione di ViaggiaTrento.</string>
+    <string name="smartcampus_url_credits">http://www.smartcampuslab.it/swabout</string>
+    <string name="update_application_notification">E\' disponibile una nuova versione di ViaggiaTrento.</string>
     <string name="upgrade_user_menu">Registrati</string>
-	<string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate.</string>
-
+    <string name="auth_required">Vuoi registrarti con il tuo Google account? La registrazione é facoltativa ma ti permette di accedere alle funzionalità avanzate.</string>
     <string name="notification_text">%s nuova notifica</string>
     <string name="notification_text_multi">%s nuove notifiche</string>
     <string name="not_now">Non adesso</string>
-
     <string name="about_text_app"><b>Informazione sulla mobilità integrata di Trento e dei comuni trentini</b></string>
-	<string name="about_text_sc">L\'applicazione è sviluppata dal progetto SmartCampus\n\n<br/>
-	    <a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a>
-	</string>
-	<string name="about_text_cdc">Con la partecipazione del Consorzio dei Comuni Trentini\n\n<br/>
-	    <a href="http://www.innovazione.comunitrentini.tn.it">www.innovazione.comunitrentini.tn.it</a>
-	</string>
-	<string name="about_text_ct">In collaborazione con il Comune di Trento\n\n<br/>
-	    <a href="http://www.comune.trento.it">www.comune.trento.it</a>
-	</string>
-	
-	
+    <string name="about_text_sc">L\'applicazione è sviluppata dal progetto SmartCampus\n\n<br /> <a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a></string>
+    <string name="about_text_cdc">Con la partecipazione del Consorzio dei Comuni Trentini\n\n<br /> <a href="http://www.innovazione.comunitrentini.tn.it">www.innovazione.comunitrentini.tn.it</a></string>
+    <string name="about_text_ct">In collaborazione con il Comune di Trento\n\n<br /> <a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
+
+    <!-- About -->
+    <string name="info_credits">Credits</string>
+    <string name="info_intro">Viaggia Trento</string>
+    <string name="info_subtitle">Informazioni sulla mobilità integrata di Trento e dei Comuni Trentini</string>
+    <string name="info_project">Un progetto di:</string>
+    <string name="info_collab">In collaborazione con:</string>
+    <string name="info_partecipation">Con la partecipazione di:</string>
+    <string name="info_mail">Per informazioni:\nviaggiatrento@smartcampuslab.it</string>
+
 </resources>

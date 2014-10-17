@@ -22,8 +22,8 @@ public class AboutFragment extends SherlockDialogFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent,	Bundle args) {
 		View v = inflater.inflate(R.layout.about, null);
-		((TextView)v.findViewById(R.id.tv_about_sc)).setMovementMethod(LinkMovementMethod.getInstance());
-		((TextView)v.findViewById(R.id.tv_about_cdc)).setMovementMethod(LinkMovementMethod.getInstance());
+//		((TextView)v.findViewById(R.id.tv_about_sc)).setMovementMethod(LinkMovementMethod.getInstance());
+//		((TextView)v.findViewById(R.id.tv_about_cdc)).setMovementMethod(LinkMovementMethod.getInstance());
 		return v;
 	}
 	

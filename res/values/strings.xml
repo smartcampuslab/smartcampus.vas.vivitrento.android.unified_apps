@@ -62,5 +62,13 @@
     <string name="about_text_ct">In collaboration with the Municipality of Trento\n\n<br /><a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
     <string name="btn_cit">App \'Il Comune in tasca\'</string>
     
+    <!-- About -->
+    <string name="info_credits">Credits</string>
+    <string name="info_intro">Viaggia Trento</string>
+    <string name="info_subtitle">Informazioni sulla mobilità integrata di Trento e dei Comuni Trentini</string>
+    <string name="info_project">Project by:</string>
+    <string name="info_collab">Featuring:</string>
+    <string name="info_partecipation">With the partecipation of:</string>
+    <string name="info_mail">For more information:\nviaggiatrento@smartcampuslab.it</string>
         
 </resources>

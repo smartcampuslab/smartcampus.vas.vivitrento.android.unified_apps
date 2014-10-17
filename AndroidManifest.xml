@@ -152,6 +152,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.viaggiatrento.AboutActivity"
+            android:configChanges="screenSize|keyboardHidden|keyboard"
+            android:label="@string/jp_name"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Journeyplanner" >
+        </activity>
 
         <service
             android:name="eu.trentorise.smartcampus.ac.account.AuthenticationService"
