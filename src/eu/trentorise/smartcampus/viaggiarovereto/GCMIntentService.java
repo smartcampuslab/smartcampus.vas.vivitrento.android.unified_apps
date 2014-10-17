@@ -8,6 +8,7 @@ import com.google.android.gcm.GCMBaseIntentService;
 
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.pushservice.NotificationCenter;
+import eu.trentorise.smartcampus.jp.notifications.JPPushNotificationBuilder;
 
 public class GCMIntentService extends GCMBaseIntentService {
 
@@ -29,7 +30,8 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 		Log.d(TAG, "Message Received");
 
-		new NotificationCenter(ctx).publishNotification(intent,
+		new NotificationCenter(ctx).publishNotification(ctx, intent,
+				new JPPushNotificationBuilder(),
 				NOTIFICATION_ID, NotificationsFragmentActivityJP.class);
 
 	}
