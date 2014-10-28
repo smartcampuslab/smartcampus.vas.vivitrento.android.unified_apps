@@ -56,7 +56,7 @@
     <string name="not_now">Not now</string>
     <string name="notification_type_discovertrento">ViviTrento</string>
     <string name="notification_type_journeyplanner">ViaggiaRovereto</string>
-    <string name="about_text_app"><b>Integrated mobility information for the city and of Rovereto</b></string>
+    <string name="about_text_app"><b>Integrated mobility information for the city of Rovereto</b></string>
     <string name="about_text_sc">The application is developed by the SmartCampus project\n\n<br /><a href="http://www.smartcampuslab.it/swabout">www.smartcampuslab.it</a></string>
     <string name="about_text_cdc">In collaboration with the municipality of Rovereto\n\n<br /><a href="http://www.comune.rovereto.tn.it">www.comune.rovereto.tn.it</a></string>
     <string name="about_text_ct">In collaboration with the Municipality of Trento\n\n<br /><a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
