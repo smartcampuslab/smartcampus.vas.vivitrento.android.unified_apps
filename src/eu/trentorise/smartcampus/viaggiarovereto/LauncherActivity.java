@@ -16,7 +16,6 @@
 package eu.trentorise.smartcampus.viaggiarovereto;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import android.accounts.AccountManager;
@@ -28,6 +27,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources.NotFoundException;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -44,6 +44,7 @@ import com.actionbarsherlock.view.SubMenu;
 
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
+import eu.trentorise.smartcampus.android.common.navigation.NavigationHelper;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
 import eu.trentorise.smartcampus.jp.Config;
 import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
@@ -113,7 +114,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			if (ll == null) {
 				ll = new LinearLayout(this);
 				ll.setOrientation(LinearLayout.HORIZONTAL);
-				ll.setGravity(Gravity.TOP | Gravity.CENTER);
+				ll.setGravity(Gravity.TOP | Gravity.LEFT);
 				ll.setWeightSum(3);
 				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
 						LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -244,6 +245,9 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
+		}  else if (viewId == R.id.btn_bikesharing) {
+			startBikeSharing();
+			return;
 		} else {
 			String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
 			TypedArray smartIds = getResources().obtainTypedArray(R.array.smart_check_list_ids);
@@ -261,6 +265,19 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			return;
 		}
 	}
+
+	private void startBikeSharing() {
+		Intent intent = getPackageManager().getLaunchIntentForPackage("eu.trentorise.smartcampus.bikerovereto.app");
+		if (intent == null) {
+			intent= new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=eu.trentorise.smartcampus.bikerovereto.app"));
+			startActivity(intent);
+		} else
+			 startActivity(intent);
+//			NavigationHelper.bringMeThere(activity, from, to);
+
+	}
+		
+//	}
 
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
