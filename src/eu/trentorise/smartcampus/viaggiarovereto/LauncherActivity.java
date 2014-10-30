@@ -263,9 +263,9 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 	}
 
 	private void startBikeSharing() {
-		Intent intent = getPackageManager().getLaunchIntentForPackage("eu.trentorise.smartcampus.bikerovereto.app");
+		Intent intent = getPackageManager().getLaunchIntentForPackage("it.smartcommunitylab.bikesharing.rovereto");
 		if (intent == null) {
-			intent= new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=eu.trentorise.smartcampus.bikerovereto.app"));
+			intent= new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=it.smartcommunitylab.bikesharing.rovereto"));
 			startActivity(intent);
 		} else
 			 startActivity(intent);
