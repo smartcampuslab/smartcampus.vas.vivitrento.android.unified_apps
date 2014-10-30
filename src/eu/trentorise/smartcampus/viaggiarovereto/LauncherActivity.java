@@ -110,7 +110,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			if (ll == null) {
 				ll = new LinearLayout(this);
 				ll.setOrientation(LinearLayout.HORIZONTAL);
-				ll.setGravity(Gravity.TOP | Gravity.LEFT);
+				ll.setGravity(Gravity.TOP | Gravity.CENTER);
 				ll.setWeightSum(3);
 				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
 						LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -430,9 +430,9 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		submenu.setIcon(R.drawable.ic_action_overflow);
 
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_tutorial, Menu.NONE, R.string.menu_tutorial);
-		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
-																					// page
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_pref, Menu.NONE, R.string.btn_myprofile);
+		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);// about
+		// page
 
 		if (JPHelper.isUserAnonymous(this)) {
 			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
