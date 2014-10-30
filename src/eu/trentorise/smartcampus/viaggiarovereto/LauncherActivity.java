@@ -29,8 +29,6 @@ import android.content.res.Resources.NotFoundException;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -44,9 +42,7 @@ import com.actionbarsherlock.view.SubMenu;
 
 import eu.trentorise.smartcampus.ac.SCAccessProvider;
 import eu.trentorise.smartcampus.android.common.GlobalConfig;
-import eu.trentorise.smartcampus.android.common.navigation.NavigationHelper;
 import eu.trentorise.smartcampus.common.ViviTrentoHelper;
-import eu.trentorise.smartcampus.jp.Config;
 import eu.trentorise.smartcampus.jp.MonitorJourneyActivity;
 import eu.trentorise.smartcampus.jp.PlanJourneyActivity;
 import eu.trentorise.smartcampus.jp.ProfileActivity;
@@ -404,13 +400,17 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			UserRegistration.upgradeuser(this);
 
 		} else if (item.getItemId() == R.id.about) {
-
-			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-			Fragment fragment = new AboutFragment();
-			fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-			fragmentTransaction.replace(Config.mainlayout, fragment, "about");
-			fragmentTransaction.addToBackStack(fragment.getTag());
-			fragmentTransaction.commit();
+			Intent intent = new Intent(getBaseContext(),
+					About.class);
+			startActivity(intent);
+			overridePendingTransition(R.anim.alpha_in,
+					R.anim.alpha_out);
+//			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//			Fragment fragment = new AboutFragment();
+//			fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//			fragmentTransaction.replace(Config.mainlayout, fragment, "about");
+//			fragmentTransaction.addToBackStack(fragment.getTag());
+//			fragmentTransaction.commit();
 
 		} else if (item.getItemId() == R.id.menu_item_pref) {
 			Intent intent = new Intent(this, ProfileActivity.class);

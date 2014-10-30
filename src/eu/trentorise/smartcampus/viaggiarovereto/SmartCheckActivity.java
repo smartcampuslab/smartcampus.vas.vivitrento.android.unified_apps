@@ -11,7 +11,6 @@ import com.actionbarsherlock.view.Window;
 
 import eu.trentorise.smartcampus.jp.BaseActivity;
 import eu.trentorise.smartcampus.jp.Config;
-import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
 
 public class SmartCheckActivity extends BaseActivity {

@@ -61,5 +61,11 @@
     <string name="about_text_cdc">In collaboration with the municipality of Rovereto\n\n<br /><a href="http://www.comune.rovereto.tn.it">www.comune.rovereto.tn.it</a></string>
     <string name="about_text_ct">In collaboration with the Municipality of Trento\n\n<br /><a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
     <string name="btn_cit">App \'Il Comune in tasca\'</string>
+    <string name="credits">Credits</string>
+    <string name="project_by">A project by:</string>
+    <string name="collaboration_with">In collaboration with:</string>
+    <string name="for_info">Informations:</string>
+    <string name="email"><a href="mailto:viaggiarovereto@smartcampuslab.it">viaggiarovereto@smartcampuslab.it</a></string>
+
 
 </resources>

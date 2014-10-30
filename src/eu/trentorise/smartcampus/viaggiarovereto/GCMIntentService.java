@@ -6,9 +6,9 @@ import android.util.Log;
 
 import com.google.android.gcm.GCMBaseIntentService;
 
+import eu.trentorise.smartcampus.jp.notifications.JPPushNotificationBuilder;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.pushservice.NotificationCenter;
-import eu.trentorise.smartcampus.jp.notifications.JPPushNotificationBuilder;
 
 public class GCMIntentService extends GCMBaseIntentService {
 
