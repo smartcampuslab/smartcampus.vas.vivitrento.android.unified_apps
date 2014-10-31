@@ -110,7 +110,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			if (ll == null) {
 				ll = new LinearLayout(this);
 				ll.setOrientation(LinearLayout.HORIZONTAL);
-				ll.setGravity(Gravity.TOP | Gravity.CENTER);
+				ll.setGravity(Gravity.TOP | Gravity.LEFT);
 				ll.setWeightSum(3);
 				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
 						LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
