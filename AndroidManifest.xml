@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.viaggiarovereto"
     android:installLocation="internalOnly"
-    android:versionCode="21"
-    android:versionName="0.10.3" >
+    android:versionCode="16"
+    android:versionName="0.10.0RC1" >
 
     <uses-sdk
         android:minSdkVersion="8"
