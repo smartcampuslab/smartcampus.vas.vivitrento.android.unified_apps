@@ -81,7 +81,7 @@
             android:value="eu.trentorise.smartcampus.viaggiarovereto" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.AUTH_URL"
-            android:value="https://vas-dev.smartcampuslab.it/aac" />
+            android:value="https://rovereto.smartcampuslab.it/aac" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.ACCOUNT_TYPE"
             android:value="eu.trentorise.smartcampus.viaggiarovereto" />
@@ -300,6 +300,12 @@
         </activity>
         <activity
             android:name="eu.trentorise.smartcampus.viaggiarovereto.About"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:theme="@style/Theme.Journeyplanner"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.XmasMarketsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >

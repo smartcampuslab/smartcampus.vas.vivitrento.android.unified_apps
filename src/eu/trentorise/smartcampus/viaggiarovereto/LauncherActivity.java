@@ -54,6 +54,7 @@ import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
 import eu.trentorise.smartcampus.jp.helper.OnTaskCompleted;
 import eu.trentorise.smartcampus.jp.helper.UserRegistration;
+import eu.trentorise.smartcampus.jp.helper.XmasMarketsHelper;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.mobilityservice.MobilityUserService;
@@ -68,7 +69,6 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 
 	@Override
 	protected void initDataManagement(Bundle savedInstanceState) {
-
 	}
 
 	@Override
@@ -89,18 +89,16 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 				prepareView();
 
 			}
-		}
-
-		catch (Exception e) {
+		} catch (Exception e) {
 			Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 			finish();
 		}
-
 	}
 
 	private void prepareView() {
-		if (getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD)
+		if (getSupportActionBar().getNavigationMode() != ActionBar.NAVIGATION_MODE_STANDARD) {
 			getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		}
 
 		List<View> list = createButtons();
 		LinearLayout ll = null;
@@ -112,13 +110,12 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 				ll.setOrientation(LinearLayout.HORIZONTAL);
 				ll.setGravity(Gravity.TOP | Gravity.LEFT);
 				ll.setWeightSum(3);
-				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-						LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+						LinearLayout.LayoutParams.WRAP_CONTENT);
 				layoutParams.setMargins(0, 32, 0, 0);
 				parent.addView(ll, layoutParams);
 			}
-			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0,
-					LinearLayout.LayoutParams.WRAP_CONTENT);
+			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
 			layoutParams.weight = 1;
 			ll.addView(list.get(i), layoutParams);
 			if ((i + 1) % 3 == 0) {
@@ -241,8 +238,16 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 			startActivity(intent);
 			return;
-		}  else if (viewId == R.id.btn_bikesharing) {
+		} else if (viewId == R.id.btn_bikesharing) {
 			startBikeSharing();
+			return;
+		} else if (viewId == R.id.btn_xmasmarkets) {
+			// TODO
+			// Toast.makeText(getApplicationContext(), "TO DO",
+			// Toast.LENGTH_SHORT).show();
+			intent = new Intent(this, XmasMarketsActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
 			return;
 		} else {
 			String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
@@ -265,15 +270,13 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 	private void startBikeSharing() {
 		Intent intent = getPackageManager().getLaunchIntentForPackage("it.smartcommunitylab.bikesharing.rovereto");
 		if (intent == null) {
-			intent= new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=it.smartcommunitylab.bikesharing.rovereto"));
+			intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=it.smartcommunitylab.bikesharing.rovereto"));
 			startActivity(intent);
-		} else
-			 startActivity(intent);
-//			NavigationHelper.bringMeThere(activity, from, to);
-
+		} else {
+			startActivity(intent);
+		}
+		// NavigationHelper.bringMeThere(activity, from, to);
 	}
-		
-//	}
 
 	private void initGlobalConstants() throws NameNotFoundException, NotFoundException {
 		GlobalConfig.setAppUrl(this, getResources().getString(R.string.smartcampus_app_url));
@@ -285,7 +288,6 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		// SharedPreferences settings =
 		// LauncherActivity.this.getSharedPreferences(PREFS_NAME, 0);
 		// settings.edit().putBoolean(FIRSTTIME, true).commit();
-
 	}
 
 	@Override
@@ -293,7 +295,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		super.onNewIntent(arg0);
 		if (getResources().getString(R.string.smartcampus_action_start).equals(arg0.getAction())) {
 			try {
-				SCAccessProvider provider = SCAccessProvider.getInstance(LauncherActivity.this);
+				SCAccessProvider.getInstance(LauncherActivity.this);
 			} catch (Exception e) {
 				Toast.makeText(this, getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
 				finish();
@@ -336,8 +338,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 
 			try {
 				SharedPreferences sharedPref = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
-				MobilityUserService userService = new MobilityUserService(GlobalConfig.getAppUrl(this)
-						+ JPHelper.MOBILITY_URL);
+				MobilityUserService userService = new MobilityUserService(GlobalConfig.getAppUrl(this) + JPHelper.MOBILITY_URL);
 				if (sharedPref.contains(JPHelper.MY_ITINERARIES)) {
 					mToken = data.getExtras().getString(AccountManager.KEY_AUTHTOKEN);
 					if (mToken == null) {
@@ -400,17 +401,17 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			UserRegistration.upgradeuser(this);
 
 		} else if (item.getItemId() == R.id.about) {
-			Intent intent = new Intent(getBaseContext(),
-					About.class);
+			Intent intent = new Intent(getBaseContext(), About.class);
 			startActivity(intent);
-			overridePendingTransition(R.anim.alpha_in,
-					R.anim.alpha_out);
-//			FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//			Fragment fragment = new AboutFragment();
-//			fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-//			fragmentTransaction.replace(Config.mainlayout, fragment, "about");
-//			fragmentTransaction.addToBackStack(fragment.getTag());
-//			fragmentTransaction.commit();
+			overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+			// FragmentTransaction fragmentTransaction =
+			// getSupportFragmentManager().beginTransaction();
+			// Fragment fragment = new AboutFragment();
+			// fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+			// fragmentTransaction.replace(Config.mainlayout, fragment,
+			// "about");
+			// fragmentTransaction.addToBackStack(fragment.getTag());
+			// fragmentTransaction.commit();
 
 		} else if (item.getItemId() == R.id.menu_item_pref) {
 			Intent intent = new Intent(this, ProfileActivity.class);
@@ -448,31 +449,45 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 	private List<View> createButtons() {
 		List<View> list = new ArrayList<View>();
 		// First, set the smart check options
-//		String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
-//		List<String> smartNamesFiltered = Arrays.asList(JPParamsHelper.getSmartCheckOptions());
-//		TypedArray smartIds = getResources().obtainTypedArray(R.array.smart_check_list_ids);
-//		TypedArray smartIcons = getResources().obtainTypedArray(R.array.smart_check_list_icons);
-//		for (int i = 0; i < smartNames.length; i++) {
-//			if (smartNamesFiltered.contains(smartNames[i])) {
-//				Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
-//				b.setText(smartNames[i]);
-//				b.setId(smartIds.getResourceId(i, 0));
-//				b.setCompoundDrawablesWithIntrinsicBounds(null, smartIcons.getDrawable(i), null, null);
-//				list.add(b);
-//			}
-//		}
-//		smartIcons.recycle();
-//		smartIds.recycle();
+		// String[] smartNames =
+		// getResources().getStringArray(R.array.smart_checks_list);
+		// List<String> smartNamesFiltered =
+		// Arrays.asList(JPParamsHelper.getSmartCheckOptions());
+		// TypedArray smartIds =
+		// getResources().obtainTypedArray(R.array.smart_check_list_ids);
+		// TypedArray smartIcons =
+		// getResources().obtainTypedArray(R.array.smart_check_list_icons);
+		// for (int i = 0; i < smartNames.length; i++) {
+		// if (smartNamesFiltered.contains(smartNames[i])) {
+		// Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn,
+		// null);
+		// b.setText(smartNames[i]);
+		// b.setId(smartIds.getResourceId(i, 0));
+		// b.setCompoundDrawablesWithIntrinsicBounds(null,
+		// smartIcons.getDrawable(i), null, null);
+		// list.add(b);
+		// }
+		// }
+		// smartIcons.recycle();
+		// smartIds.recycle();
+
 		String[] allNames = getResources().getStringArray(R.array.main_list);
 		TypedArray allIds = getResources().obtainTypedArray(R.array.main_list_ids);
 		TypedArray allIcons = getResources().obtainTypedArray(R.array.main_list_icons);
 		for (int i = 0; i < allNames.length; i++) {
-			Button b = (Button) getLayoutInflater().inflate(R.layout.home_btn, null);
+			// check time for Christmas Markets button
+			if (allNames[i].equals(getString(R.string.btn_xmasmarkets)) && !XmasMarketsHelper.isXmasMarketsTime()) {
+				continue;
+			}
+
+			Button b = (Button) getLayoutInflater()
+					.inflate(R.layout.home_btn, new LinearLayout(getApplicationContext()), false);
 			b.setText(allNames[i]);
 			b.setId(allIds.getResourceId(i, 0));
 			b.setCompoundDrawablesWithIntrinsicBounds(null, allIcons.getDrawable(i), null, null);
 			list.add(b);
 		}
+
 		allIcons.recycle();
 		allIds.recycle();
 		return list;

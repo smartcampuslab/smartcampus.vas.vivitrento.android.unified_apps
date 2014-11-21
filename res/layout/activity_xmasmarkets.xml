@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/margin_small" >
+
+        <TextView
+            android:id="@+id/xmasmarkets_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:gravity="center_horizontal"
+            android:text="@string/xmasmarkets_title"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textColor="@color/app_color_blue" />
+
+        <TextView
+            android:id="@+id/xmasmarkets_tv_par1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/xmasmarkets_par1" />
+
+        <TextView
+            android:id="@+id/xmasmarkets_tv_link1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            android:autoLink="all"
+            android:gravity="center_horizontal"
+            android:text="@string/xmasmarkets_link1" />
+
+        <TextView
+            android:id="@+id/xmasmarkets_tv_link2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:autoLink="all"
+            android:gravity="center_horizontal"
+            android:text="@string/xmasmarkets_link2" />
+
+        <TextView
+            android:id="@+id/xmasmarkets_tv_par2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/xmasmarkets_par2" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/mercatini_logo" />
+    </LinearLayout>
+
+</ScrollView>
