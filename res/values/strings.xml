@@ -66,6 +66,8 @@
     <string name="collaboration_with">In collaboration with:</string>
     <string name="for_info">Informations:</string>
     <string name="email"><a href="mailto:viaggiarovereto@smartcampuslab.it">viaggiarovereto@smartcampuslab.it</a></string>
+    <string name="credits_comune_rovereto">Comune di Rovereto</string>
+    <string name="credits_swabout">http://www.smartcampuslab.it/swabout</string>
 
 
 </resources>

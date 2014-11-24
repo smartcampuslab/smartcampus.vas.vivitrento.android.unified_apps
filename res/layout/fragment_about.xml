@@ -10,7 +10,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="@dimen/margin_small" >
@@ -48,11 +48,12 @@
                 android:orientation="horizontal" >
 
                 <ImageView
-                    android:id="@+id/ladurner"
+                    android:id="@+id/fbk"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:contentDescription="@null"
+                    android:onClick="onClickFBK"
                     android:src="@drawable/logo_fbk" />
 
                 <ImageView
@@ -61,7 +62,29 @@
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:contentDescription="@null"
+                    android:onClick="onClickSC"
                     android:src="@drawable/logo_smart_campus" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:gravity="center"
+                android:onClick="onClickComuneRovereto"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/rovereto"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/rovereto_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/credits_comune_rovereto" />
             </LinearLayout>
 
             <TextView
@@ -79,19 +102,21 @@
                 android:weightSum="1" >
 
                 <ImageView
-                    android:id="@+id/fbk"
+                    android:id="@+id/streetlife"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:contentDescription="@null"
+                    android:onClick="onClickStreetlife"
                     android:src="@drawable/logo_street_life" />
 
                 <ImageView
-                    android:id="@+id/cct"
+                    android:id="@+id/iecities"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5"
                     android:contentDescription="@null"
+                    android:onClick="onClickIEC"
                     android:src="@drawable/logo_ies_cities" />
             </LinearLayout>
 
@@ -112,6 +137,15 @@
                 android:autoLink="email"
                 android:gravity="center"
                 android:text="@string/email"
+                android:textColor="@color/app_color_blue"
+                android:textColorLink="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:gravity="center"
+                android:text="@string/credits_swabout"
                 android:textColor="@color/app_color_blue"
                 android:textColorLink="@android:color/black" />
         </LinearLayout>
