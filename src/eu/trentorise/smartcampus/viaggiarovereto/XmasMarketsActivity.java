@@ -15,6 +15,8 @@
  ******************************************************************************/
 package eu.trentorise.smartcampus.viaggiarovereto;
 
+import it.sayservice.platform.smartplanner.data.message.RType;
+import it.sayservice.platform.smartplanner.data.message.TType;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -26,6 +28,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import eu.trentorise.smartcampus.jp.BaseActivity;
 import eu.trentorise.smartcampus.jp.PlanJourneyActivity;
+import eu.trentorise.smartcampus.jp.custom.UserPrefsHolder;
 import eu.trentorise.smartcampus.jp.helper.XmasMarketsHelper;
 
 public class XmasMarketsActivity extends BaseActivity {
@@ -57,6 +60,7 @@ public class XmasMarketsActivity extends BaseActivity {
 				Intent intent = new Intent(getApplicationContext(), PlanJourneyActivity.class);
 				intent.putExtra(getString(R.string.navigate_arg_to),
 						XmasMarketsHelper.getXmasMarketAddress(getApplicationContext()));
+				intent.putExtra(getString(R.string.userprefsholder), new UserPrefsHolder(null, RType.fastest, TType.CAR));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivity(intent);
 			}
@@ -71,6 +75,7 @@ public class XmasMarketsActivity extends BaseActivity {
 				Intent intent = new Intent(getApplicationContext(), PlanJourneyActivity.class);
 				intent.putExtra(getString(R.string.navigate_arg_to),
 						XmasMarketsHelper.getXmasMarketParkingAddress(getApplicationContext()));
+				intent.putExtra(getString(R.string.userprefsholder), new UserPrefsHolder(null, RType.fastest, TType.TRANSIT));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivity(intent);
 			}
