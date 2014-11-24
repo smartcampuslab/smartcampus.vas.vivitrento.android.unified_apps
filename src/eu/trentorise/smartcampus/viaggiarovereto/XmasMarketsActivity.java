@@ -60,7 +60,8 @@ public class XmasMarketsActivity extends BaseActivity {
 				Intent intent = new Intent(getApplicationContext(), PlanJourneyActivity.class);
 				intent.putExtra(getString(R.string.navigate_arg_to),
 						XmasMarketsHelper.getXmasMarketAddress(getApplicationContext()));
-				intent.putExtra(getString(R.string.userprefsholder), new UserPrefsHolder(null, RType.fastest, TType.CAR));
+				intent.putExtra(getString(R.string.userprefsholder), new UserPrefsHolder(null, RType.fastest, TType.CAR,
+						TType.CARWITHPARKING));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 				startActivity(intent);
 			}
