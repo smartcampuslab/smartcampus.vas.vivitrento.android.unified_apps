@@ -79,6 +79,9 @@
         <meta-data
             android:name="SHARED_PACKAGE"
             android:value="eu.trentorise.smartcampus.viaggiarovereto" />
+        <!-- <meta-data -->
+        <!-- android:name="eu.trentorise.smartcampus.account.AUTH_URL" -->
+        <!-- android:value="https://vas-dev.smartcampuslab.it/aac" /> -->
         <meta-data
             android:name="eu.trentorise.smartcampus.account.AUTH_URL"
             android:value="https://rovereto.smartcampuslab.it/aac" />

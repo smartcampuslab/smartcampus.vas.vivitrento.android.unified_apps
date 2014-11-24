@@ -25,16 +25,19 @@
 
     <string name="smartcampus_action_start">eu.trentorise.smartcampus.START</string>
 
+    <!-- Auth URL -->
     <!-- <string name="smartcampus_auth_url">https://ac.smartcampuslab.it/ac-service-provider-web/ac/</string> -->
-    <!-- <string name="smartcampus_app_url">https://vas.smartcampuslab.it</string> -->
     <!-- <string name="smartcampus_auth_url"> https://tn.smartcampuslab.it/accesstoken-provider/ac</string> -->
     <!-- <string name="smartcampus_auth_url"> https://rovereto.smartcampuslab.it/accesstoken-provider/ac</string> -->
+
+
+    <!-- App URL -->
+    <!-- <string name="smartcampus_app_url">https://vas.smartcampuslab.it</string> -->
     <!-- <string name="smartcampus_app_url">https://vas-dev.smartcampuslab.it</string> -->
     <!-- <string name="smartcampus_app_url">https://tn.smartcampuslab.it</string> -->
     <string name="smartcampus_app_url">https://rovereto.smartcampuslab.it</string>
 
-    <!-- <string name="smartcampus_app_url">https://rovereto.smartcampuslab.it</string> -->
-
+    <!-- apk URL -->
     <string name="smartcampus_url_apk">https://www.smartcampuslab.it/download/VAS/apk/</string>
 
     <string-array name="apk_filename">
