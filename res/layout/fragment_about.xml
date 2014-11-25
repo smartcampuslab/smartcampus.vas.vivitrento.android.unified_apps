@@ -43,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/credits_version"
+                android:layout_marginTop="@dimen/margin_small"
                 android:textColor="@android:color/darker_gray" />
 
             <TextView
@@ -131,7 +132,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_large"
                 android:gravity="center"
                 android:text="@string/credits_details"
@@ -150,7 +150,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_large"
                 android:gravity="center"
                 android:text="@string/credits_info"
