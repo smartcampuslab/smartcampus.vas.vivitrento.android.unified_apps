@@ -55,6 +55,8 @@
     <string name="about_text_cdc">Con la partecipazione del Consorzio dei Comuni Trentini\n\n<br /> <a href="http://www.innovazione.comunitrentini.tn.it">www.innovazione.comunitrentini.tn.it</a></string>
     <string name="about_text_ct">In collaborazione con il Comune di Trento\n\n<br /> <a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
     <string name="credits">Credits</string>
+    <string name="credits_appname">Viaggia Rovereto</string>
+    <string name="credits_subtitle">Muoversi a Rovereto in modo sostenibile</string>
     <string name="project_by">Un progetto di:</string>
     <string name="collaboration_with">In collaborazione con:</string>
     <string name="credits_info">Per informazioni, segnalazioni o suggerimenti:</string>

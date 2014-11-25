@@ -62,6 +62,8 @@
     <string name="about_text_ct">In collaboration with the Municipality of Trento\n\n<br /><a href="http://www.comune.trento.it">www.comune.trento.it</a></string>
     <string name="btn_cit">App \'Il Comune in tasca\'</string>
     <string name="credits">Credits</string>
+    <string name="credits_appname">Viaggia Rovereto</string>
+    <string name="credits_subtitle">Move around Rovereto sustainably</string>
     <string name="project_by">A project by:</string>
     <string name="collaboration_with">In collaboration with:</string>
     <string name="credits_info">For information, reports and suggestions:</string>
