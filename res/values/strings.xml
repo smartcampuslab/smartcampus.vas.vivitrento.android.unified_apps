@@ -64,10 +64,11 @@
     <string name="credits">Credits</string>
     <string name="project_by">A project by:</string>
     <string name="collaboration_with">In collaboration with:</string>
-    <string name="for_info">Informations:</string>
+    <string name="credits_info">For information, reports and suggestions:</string>
+    <string name="credits_details">More details:</string>
     <string name="email"><a href="mailto:viaggiarovereto@smartcampuslab.it">viaggiarovereto@smartcampuslab.it</a></string>
-    <string name="credits_comune_rovereto">Comune di Rovereto</string>
-    <string name="credits_swabout">http://www.smartcampuslab.it/swabout</string>
+    <string name="credits_swabout">www.smartcampuslab.it</string>
+    <string name="credits_version">v. %s</string>
 
 
 </resources>

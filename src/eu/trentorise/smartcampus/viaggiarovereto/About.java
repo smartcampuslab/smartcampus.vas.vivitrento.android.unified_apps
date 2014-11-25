@@ -1,12 +1,15 @@
 package eu.trentorise.smartcampus.viaggiarovereto;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import eu.trentorise.smartcampus.jp.BaseActivity;
 
 public class About extends BaseActivity {
@@ -18,8 +21,17 @@ public class About extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_about);
 		getSupportActionBar().hide();
+
 		close = (ImageButton) findViewById(R.id.close_credits);
 		setBtClose();
+
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+			TextView creditsVersion = (TextView) findViewById(R.id.credits_version);
+			creditsVersion.setText(getString(R.string.credits_version, info.versionName));
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void setBtClose() {
@@ -42,29 +54,35 @@ public class About extends BaseActivity {
 		i.setData(Uri.parse("http://www.fbk.eu"));
 		startActivity(i);
 	}
-	
+
 	public void onClickSC(View v) {
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse("http://www.smartcampuslab.it"));
 		startActivity(i);
 	}
-	
+
 	public void onClickComuneRovereto(View v) {
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse("http://www.comune.rovereto.tn.it"));
 		startActivity(i);
 	}
-	
+
 	public void onClickIEC(View v) {
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse("http://www.iescities.eu/"));
 		startActivity(i);
 	}
-	
+
 	public void onClickStreetlife(View v) {
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse("http://www.streetlife-project.eu/index.html"));
 		startActivity(i);
 	}
-	
+
+	public void onClickSwAbout(View v) {
+		Intent i = new Intent(Intent.ACTION_VIEW);
+		i.setData(Uri.parse("http://www.smartcampuslab.it/swabout"));
+		startActivity(i);
+	}
+
 }
