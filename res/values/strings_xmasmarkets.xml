@@ -15,11 +15,11 @@
 -->
 <resources>
 
-    <string name="xmasmarkets_actionbar_title">Mercatini di Natale</string>
-    <string name="xmasmarkets_title">Parcheggia fuori, entra nel Natale!</string>
-    <string name="xmasmarkets_par1"><![CDATA[Vivi il Natale con uno sguardo eco-sostenibile, riducendo le emissioni di CO2 e il traffico: pianifica i tuoi spostamenti con ViaggiaRovereto e scopri gli itinerari più smart.]]></string>
-    <string name="xmasmarkets_link1"><![CDATA[<a href="#">Portami ai Mercatini di Natale</a>]]></string>
-    <string name="xmasmarkets_link2"><![CDATA[<a href="#">Riportami al Parcheggio Stadio Quercia</a>]]></string>
-    <string name="xmasmarkets_par2"><![CDATA[<p>Il servizio navetta è disponibile dallo Stadio Quercia a Piazza Rosmini e viceversa tutti i sabati dal 6 al 27 dicembre e tutti i giorni dal 20 al 24. La partenza è prevista ogni 15 minuti dalle 10 alle 19.</p><p>Per chi usufruirà del servizio navetta e compilerà un questionario da consegnare presso la casettainfo del mercatino è previsto un omaggio a scelta tra un gadget, un ingresso al Grande Presepe o un biglietto per il Trenino di Natale.</p><p>Questa iniziativa, promossa dal Consorzio Rovereto in Centro, dal Comune di Rovereto, dall’APT di Rovereto e Vallagarina, dalla Fondazione Bruno Kessler e da CAIRE Urbanistica, fa parte del progetto di ricerca europeo STREETLIFE che ha come obiettivo la mobilità sostenibile.</p>]]></string>
+    <string name="xmasmarkets_actionbar_title">Christmas Markets</string>
+    <string name="xmasmarkets_title">Park and Ride to Christmas!</string>
+    <string name="xmasmarkets_par1"><![CDATA[Experience Christmas in an ecologic and sustainable way, reduce carbon emissions, and ease traffic; use the ViaggiaRovereto App to plan your trips and explore some new and smart itineraries.]]></string>
+    <string name="xmasmarkets_link1"><![CDATA[<a href="#">Take me to the Christmas Markets</a>]]></string>
+    <string name="xmasmarkets_link2"><![CDATA[<a href="#">Take me back to the \"Stadio Quercia\" Parking</a>]]></string>
+    <string name="xmasmarkets_par2"><![CDATA[<p>A shuttle bus is available from the \"Stadio Quercia\" Parking to Piazza Rosmini (and vice versa) every Saturday between the 6th and the 27th of December, plus every day between the 20th and 24th of December.</p><p>If you ride the shuttle bus and compile a survey that you can drop by the info box of the Christmas Markets, you will earn a reward, to be chosen among a gadget, a free entry to to Great Nativity (Grande Presepe) or a ticket to the Christmas train.</p><p>This initiative, which is promoted by the \"Rovereto in Centro\" consortium, the municipality of Rovereto, the Rovereto and Vallagarina APT, Fondazione Bruno Kessler, CAIRE Urbanistic, is part of the EU Research Project STREETLIFE, which supports sustainable urban mobility through advances in Information and Communication Technologies.</p>]]></string>
 
 </resources>
