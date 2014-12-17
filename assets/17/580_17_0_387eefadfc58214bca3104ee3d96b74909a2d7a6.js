@@ -1,1 +1,0 @@
-{"stopsId":["3869_17","3946_17","4730_17","4788_17","4724_17","4725_17","4729_17","4786_17","4726_17","5013_17"],"stops":["Ala Scuole","Ala-Stazione Fs","Ala-Via Perlè","Ala Via Fornace","Brustolotti","Muravalle","Calieri","Loc. Ferri","Ronchi di Ala","Ponzolotti"],"tripIds":null,"compressedTimes":"1308131013121313131413221326132713281329"}

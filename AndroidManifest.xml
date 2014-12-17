@@ -2,7 +2,7 @@
     package="eu.trentorise.smartcampus.viaggiarovereto"
     android:installLocation="internalOnly"
     android:versionCode="16"
-    android:versionName="0.10.0" >
+    android:versionName="1.0.0" >
 
     <uses-sdk
         android:minSdkVersion="8"

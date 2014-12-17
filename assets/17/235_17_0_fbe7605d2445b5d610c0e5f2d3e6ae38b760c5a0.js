@@ -1,1 +1,1 @@
-{"stopsId":["2107_17","2334_17","5385_17","2106_17","2105_17"],"stops":["Valle S.Felice","Valle S.Felice-Cimitero","Manzano-Bivio","Manzano","Nomesino"],"tripIds":null,"compressedTimes":"13101311131413151318|1401140414051408"}
+{"stopsId":["2107_17","2334_17","5385_17","2106_17","2105_17"],"stops":["Valle S.Felice","Valle S.Felice-Cimitero","Manzano-Bivio","Manzano","Nomesino"],"tripIds":null,"compressedTimes":"1310131113141315131814001401140414051408"}
