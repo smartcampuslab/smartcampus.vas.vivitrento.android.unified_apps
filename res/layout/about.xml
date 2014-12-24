@@ -39,6 +39,14 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/credits_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="v"
+                android:layout_marginTop="@dimen/sc_small"
+                android:textColor="@android:color/darker_gray" />
+            
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/sc_small"
@@ -46,14 +54,31 @@
                 android:text="@string/info_project"
                 android:textColor="@color/jpappcolor" />
 
-            <ImageView
-                android:id="@+id/smartcampus"
-                android:layout_width="wrap_content"
+          <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/sc_small"
-                android:contentDescription="@string/empty"
-                android:src="@drawable/smart_campus_credits" />
+                android:gravity="center"
+                android:orientation="horizontal" >
 
+                <ImageView
+                    android:id="@+id/fbk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@null"
+                    android:onClick="onClickFBK"
+                    android:src="@drawable/logo_fbk" />
+
+                <ImageView
+                    android:id="@+id/smartcampus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:contentDescription="@null"
+                    android:onClick="onClickSC"
+                    android:src="@drawable/logo_smart_campus" />
+            </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/empty"
+                android:onClick="onClickComune"
                 android:src="@drawable/comune_tn" />
 
             <TextView
@@ -82,6 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/empty"
+                android:onClick="onClickCCT"
                 android:src="@drawable/consorzio_comuni_trentini" />
 
             <TextView
