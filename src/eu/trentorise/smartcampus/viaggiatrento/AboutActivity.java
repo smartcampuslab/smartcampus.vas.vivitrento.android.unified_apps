@@ -86,7 +86,7 @@ public class AboutActivity extends SherlockActivity {
 
 	public void onClickCCT(View v) {
 		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setData(Uri.parse("http://http://www.comunitrentini.it/"));
+		i.setData(Uri.parse("http://www.comunitrentini.it/"));
 		startActivity(i);
 	}
 
