@@ -156,6 +156,10 @@
             android:theme="@style/Theme.Journeyplanner" >
         </activity>
 
+        <activity
+            android:name="eu.trentorise.smartcampus.ac.embedded.EmbeddedAuthActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/Theme.Journeyplanner" />
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
         <!-- android:configChanges="orientation|screenSize" -->
@@ -306,7 +310,6 @@
         <service android:name=".GCMIntentService" >
         </service>
 
-        <uses-library android:name="com.google.android.maps" />
     </application>
 
 </manifest>
