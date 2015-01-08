@@ -66,7 +66,6 @@
         <item>@string/btn_broadcast</item>
         <item>@string/btn_smartcheck</item>
         <item>@string/btn_bikesharing</item>
-        <item>@string/btn_xmasmarkets</item>
         <!-- <item>@string/btn_myprofile</item> -->
     </string-array>
     <string-array name="main_list_tut">
@@ -77,7 +76,6 @@
         <item>@string/jp_send_tut</item>
         <item>@string/jp_info_tut</item>
         <item>@string/jp_bike_tut</item>
-        <item>@null</item>
         <!-- <item>@string/jp_prefs_tut</item> -->
     </string-array>
 
@@ -89,7 +87,6 @@
         <item>@drawable/ic_menu_broadcast</item>
         <item>@drawable/ic_menu_realtimeinfo</item>
         <item>@drawable/ic_menu_bikesharing</item>
-        <item>@drawable/mercatini_icona</item>
         <!-- <item>@drawable/ic_menu_preferences</item> -->
     </array>
     <array name="main_list_ids">
@@ -100,7 +97,6 @@
         <item>@id/btn_broadcast</item>
         <item>@id/btn_smartcheck</item>
         <item>@id/btn_bikesharing</item>
-        <item>@id/btn_xmasmarkets</item>
         <!-- <item>@id/btn_myprofile</item> -->
     </array>
 

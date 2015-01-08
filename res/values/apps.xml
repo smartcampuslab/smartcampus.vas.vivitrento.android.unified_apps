@@ -35,7 +35,7 @@
     <!-- <string name="smartcampus_app_url">https://vas.smartcampuslab.it</string> -->
     <!-- <string name="smartcampus_app_url">https://vas-dev.smartcampuslab.it</string> -->
     <!-- <string name="smartcampus_app_url">https://tn.smartcampuslab.it</string> -->
-    <string name="smartcampus_app_url">https://rovereto.smartcampuslab.it</string>
+    <string name="smartcampus_app_url">https://rovereto.smartcommunitylab.it</string>
 
     <!-- apk URL -->
     <string name="smartcampus_url_apk">https://www.smartcampuslab.it/download/VAS/apk/</string>
