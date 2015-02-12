@@ -70,5 +70,7 @@
     <string name="info_collab">Featuring:</string>
     <string name="info_partecipation">With the partecipation of:</string>
     <string name="info_mail">For more information:\nviaggiatrento@smartcampuslab.it</string>
-        
+
+    <string name="version">v %s</string>
+    
 </resources>

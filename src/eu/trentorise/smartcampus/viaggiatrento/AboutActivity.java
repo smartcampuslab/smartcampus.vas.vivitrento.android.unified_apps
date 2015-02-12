@@ -29,7 +29,7 @@ public class AboutActivity extends SherlockActivity {
 		try {
 			PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
 			TextView creditsVersion = (TextView) findViewById(R.id.credits_version);
-			creditsVersion.setText(info.versionName);
+			creditsVersion.setText(getString(R.string.version,info.versionName));
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
