@@ -10,35 +10,25 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<!--     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" /> -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<!--     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" /> -->
-<!--     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" /> -->
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-        <!-- receives GCM messages -->
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <!-- GCM requires a Google account -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+
+    <!-- receives GCM messages -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <!-- wake the processor if a GCM message is received -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    
+
     <permission
         android:name=".permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
-    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <permission
@@ -71,19 +61,19 @@
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.AUTH_URL"
-            android:value="https://tn.smartcommunitylab.it/aac" />
-<!--         <meta-data -->
-<!--             android:name="eu.trentorise.smartcampus.account.ACCOUNT_TYPE" -->
-<!--             android:value="eu.trentorise.smartcampus.viaggiatrento" /> -->
-<!--         <meta-data -->
-<!--             android:name="eu.trentorise.smartcampus.account.ACCOUNT_NAME" -->
-<!--             android:value="@string/jp_name" /> -->
-<!--         <meta-data -->
-<!--             android:name="eu.trentorise.smartcampus.account.ACCOUNT_LABEL" -->
-<!--             android:value="@string/jp_name" /> -->
-<!--         <meta-data -->
-<!--             android:name="eu.trentorise.smartcampus.account.ACCOUNT_BASED_ACCESS" -->
-<!--             android:value="true" /> -->
+            android:value="https://dev.smartcommunitylab.it/aac" />
+        <!-- <meta-data -->
+        <!-- android:name="eu.trentorise.smartcampus.account.ACCOUNT_TYPE" -->
+        <!-- android:value="eu.trentorise.smartcampus.viaggiatrento" /> -->
+        <!-- <meta-data -->
+        <!-- android:name="eu.trentorise.smartcampus.account.ACCOUNT_NAME" -->
+        <!-- android:value="@string/jp_name" /> -->
+        <!-- <meta-data -->
+        <!-- android:name="eu.trentorise.smartcampus.account.ACCOUNT_LABEL" -->
+        <!-- android:value="@string/jp_name" /> -->
+        <!-- <meta-data -->
+        <!-- android:name="eu.trentorise.smartcampus.account.ACCOUNT_BASED_ACCESS" -->
+        <!-- android:value="true" /> -->
         <meta-data
             android:name="eu.trentorise.smartcampus.account.AUTHORITY_ARRAY"
             android:value="googlelocal" />
@@ -150,27 +140,28 @@
             android:theme="@style/Theme.Journeyplanner" >
         </activity>
 
-<!--         <service -->
-<!--             android:name="eu.trentorise.smartcampus.ac.account.AuthenticationService" -->
-<!--             android:exported="true" -->
-<!--             android:permission="eu.trentorise.smartcampus.ac.AUTHENTICATE" > -->
-<!--             <intent-filter> -->
-<!--                 <action android:name="android.accounts.AccountAuthenticator" /> -->
-<!--             </intent-filter> -->
+        <!-- <service -->
+        <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticationService" -->
+        <!-- android:exported="true" -->
+        <!-- android:permission="eu.trentorise.smartcampus.ac.AUTHENTICATE" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.accounts.AccountAuthenticator" /> -->
+        <!-- </intent-filter> -->
 
-<!--             <meta-data -->
-<!--                 android:name="android.accounts.AccountAuthenticator" -->
-<!--                 android:resource="@xml/authenticator" /> -->
-<!--         </service> -->
+
+        <!-- <meta-data -->
+        <!-- android:name="android.accounts.AccountAuthenticator" -->
+        <!-- android:resource="@xml/authenticator" /> -->
+        <!-- </service> -->
 
         <activity
             android:name="eu.trentorise.smartcampus.ac.embedded.EmbeddedAuthActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.Journeyplanner" />
-<!--         <activity -->
-<!--             android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
-<!--             android:configChanges="orientation|screenSize" -->
-<!--             android:theme="@style/Theme.Journeyplanner" /> -->
+        <!-- <activity -->
+        <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
+        <!-- android:configChanges="orientation|screenSize" -->
+        <!-- android:theme="@style/Theme.Journeyplanner" /> -->
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
         <!-- android:configChanges="orientation|screenSize" -->
@@ -302,19 +293,26 @@
             </intent-filter>
         </activity>
 
+        <!-- <receiver -->
+        <!-- android:name="com.google.android.gcm.GCMBroadcastReceiver" -->
+        <!-- android:permission="com.google.android.c2dm.permission.SEND" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="com.google.android.c2dm.intent.RECEIVE" /> -->
+        <!-- <action android:name="com.google.android.c2dm.intent.REGISTRATION" /> -->
+        <!-- <category android:name="eu.trentorise.smartcampus.viaggiatrento" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+
         <receiver
-            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:name="eu.trentorise.smartcampus.viaggiatrento.GCMBroadcastReceiver"
+            android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
                 <category android:name="eu.trentorise.smartcampus.viaggiatrento" />
             </intent-filter>
         </receiver>
-
-        <service android:name=".GCMIntentService" >
-        </service>
     </application>
 
 </manifest>
