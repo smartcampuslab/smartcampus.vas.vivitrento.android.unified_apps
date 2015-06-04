@@ -64,7 +64,7 @@
             android:value="eu.trentorise.smartcampus.viaggiatrento" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.AUTH_URL"
-            android:value="https://dev.smartcommunitylab.it/aac" />
+            android:value="https://tn.smartcommunitylab.it/aac" />
         <!-- <meta-data -->
         <!-- android:name="eu.trentorise.smartcampus.account.ACCOUNT_TYPE" -->
         <!-- android:value="eu.trentorise.smartcampus.viaggiatrento" /> -->
