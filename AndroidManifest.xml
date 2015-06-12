@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.viaggiarovereto"
     android:installLocation="internalOnly"
-    android:versionCode="20"
-    android:versionName="1.0.4" >
+    android:versionCode="21"
+    android:versionName="1.0.5" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -47,9 +47,6 @@
         android:launchMode="singleTask"
         android:logo="@drawable/launcher"
         android:theme="@style/Theme.Journeyplanner" >
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>  
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/maps_api" />
