@@ -21,7 +21,7 @@ public class ViviTrentoHelper {
 
 
 	public ViviTrentoHelper(Context ctx) {
-		this.mContext = ctx;
+		mContext = ctx;
 	}
 
 	public static void init(Context ctx) {
