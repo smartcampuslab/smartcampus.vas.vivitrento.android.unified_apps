@@ -1,1 +1,0 @@
-{"stopsId":["5278_17","1993_17","1994_17","1995_17","4684_17","1997_17","4302_17","2825_17"],"stops":["Serrada Via Pasubio","Serrada","Serrada-Bivio Fondogrande","Mezzaselva","Folgaria-Via Filzi 41","Folgaria-Rotatoria","Folgaria-Palasport","Folgaria-P.Le N.Unite"],"tripIds":null,"compressedTimes":"09300930093209350938093909390940"}
