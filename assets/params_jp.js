@@ -80,6 +80,6 @@
       11.040184
    ],
    "zoom_map" : 15,
-   "db_version": 25,
+   "db_version": 27,
    "app_id": "rovereto"
 }
