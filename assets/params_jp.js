@@ -72,7 +72,6 @@
                 ],
     "broadcast_notifications_options" : [
         2,
-        3,
         4
     ],
    "center_map" : [
@@ -80,6 +79,6 @@
       11.040184
    ],
    "zoom_map" : 15,
-   "db_version": 32,
+   "db_version": 34,
    "app_id": "rovereto"
 }
