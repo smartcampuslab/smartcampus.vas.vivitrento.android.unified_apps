@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.trentorise.smartcampus.viaggiatrento"
     android:installLocation="internalOnly"
-    android:versionCode="32"
-    android:versionName="0.10.14" >
+    android:versionCode="33"
+    android:versionName="0.10.15" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -32,8 +32,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <permission
-        android:name=".permission.MAPS_RECEIVE"
-        android:protectionLevel="signature" />
+        android:name=".permission.MAPS_RECEIVE" android:protectionLevel="signature" />
 
     <uses-permission android:name=".permission.MAPS_RECEIVE" />
 
