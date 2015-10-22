@@ -44,6 +44,6 @@
       11.121270
    ],
    "zoom_map":15,
-   "db_version": 25,
+   "db_version": 29,
    "app_id": "trento"
 }
