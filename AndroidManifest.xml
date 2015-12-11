@@ -293,6 +293,13 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="eu.trentorise.smartcampus.viaggiarovereto.XmasMarketsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:theme="@style/Theme.Journeyplanner"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        
         <!-- <receiver -->
         <!-- android:name="com.google.android.gcm.GCMBroadcastReceiver" -->
         <!-- android:permission="com.google.android.c2dm.permission.SEND" > -->

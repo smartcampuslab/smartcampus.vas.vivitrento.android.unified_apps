@@ -54,6 +54,7 @@ import eu.trentorise.smartcampus.jp.helper.JPHelper;
 import eu.trentorise.smartcampus.jp.helper.JPParamsHelper;
 import eu.trentorise.smartcampus.jp.helper.OnTaskCompleted;
 import eu.trentorise.smartcampus.jp.helper.UserRegistration;
+import eu.trentorise.smartcampus.jp.helper.XmasMarketsHelper;
 import eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity;
 import eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP;
 import eu.trentorise.smartcampus.mobilityservice.MobilityUserService;
@@ -239,6 +240,14 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			return;
 		} else if (viewId == R.id.btn_bikesharing) {
 			startBikeSharing();
+			return;
+		} else if (viewId == R.id.btn_xmasmarkets) {
+			// TODO
+			// Toast.makeText(getApplicationContext(), "TO DO",
+			// Toast.LENGTH_SHORT).show();
+			intent = new Intent(this, XmasMarketsActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			startActivity(intent);
 			return;
 		} else {
 			String[] smartNames = getResources().getStringArray(R.array.smart_checks_list);
@@ -466,6 +475,11 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		TypedArray allIds = getResources().obtainTypedArray(R.array.main_list_ids);
 		TypedArray allIcons = getResources().obtainTypedArray(R.array.main_list_icons);
 		for (int i = 0; i < allNames.length; i++) {
+			// check time for Christmas Markets button
+			if (allNames[i].equals(getString(R.string.btn_xmasmarkets)) && !XmasMarketsHelper.isXmasMarketsTime()) {
+				continue;
+			}
+
 			Button b = (Button) getLayoutInflater()
 					.inflate(R.layout.home_btn, new LinearLayout(getApplicationContext()), false);
 			b.setText(allNames[i]);
