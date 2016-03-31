@@ -16,7 +16,7 @@
 <resources>
 
     <!-- <string name="app_name">ViaggiaTrento</string> -->
-    <string name="jp_name">Viaggia Trento</string>
+    <string name="jp_name">Viaggia Trento MINI</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Impostazioni</string>
     <string name="title_activity_main">MainActivity</string>

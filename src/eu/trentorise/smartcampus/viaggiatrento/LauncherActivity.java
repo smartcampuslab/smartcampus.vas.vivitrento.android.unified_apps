@@ -15,6 +15,8 @@
  ******************************************************************************/
 package eu.trentorise.smartcampus.viaggiatrento;
 
+import it.smartcommunitylab.viaggiatrento.mini.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,6 +70,8 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 
 	@Override
 	protected void initDataManagement(Bundle savedInstanceState) {
+		if (!JPHelper.isInitialized())
+			JPHelper.init(getApplicationContext());
 	}
 
 	@Override
@@ -77,16 +81,20 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 
 		try {
 			initGlobalConstants();
-			SCAccessProvider accessprovider = SCAccessProvider.getInstance(LauncherActivity.this);
-			if (!accessprovider.isLoggedIn(this)) {
-				showLoginDialog(accessprovider);
-			} else {
-				JPParamsHelper.init(getApplicationContext());
-				ViviTrentoHelper.init(getApplicationContext());
-				super.initDataManagement(savedInstanceState);
-				// JPHelper.init(getApplicationContext());
-				prepareView();
-			}
+			JPParamsHelper.init(getApplicationContext());
+			ViviTrentoHelper.init(getApplicationContext());
+			initDataManagement(savedInstanceState);
+			prepareView();
+//			SCAccessProvider accessprovider = SCAccessProvider.getInstance(LauncherActivity.this);
+//			if (!accessprovider.isLoggedIn(this)) {
+//				showLoginDialog(accessprovider);
+//			} else {
+//				JPParamsHelper.init(getApplicationContext());
+//				ViviTrentoHelper.init(getApplicationContext());
+//				super.initDataManagement(savedInstanceState);
+//				// JPHelper.init(getApplicationContext());
+//				prepareView();
+//			}
 		}
 
 		catch (Exception e) {
@@ -120,16 +128,16 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 		submenu.clear();
 		submenu.setIcon(R.drawable.ic_action_overflow);
 
-		// tutorial
-		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_tutorial, Menu.NONE, R.string.menu_tutorial);
+//		// tutorial
+//		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_tutorial, Menu.NONE, R.string.menu_tutorial);
 		// preferences
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.menu_item_pref, Menu.NONE, R.string.btn_myprofile);
 		// about pages
 		submenu.add(Menu.CATEGORY_SYSTEM, R.id.about, Menu.NONE, R.string.about);
 
-		if (JPHelper.isUserAnonymous(this)) {
-			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
-		}
+//		if (JPHelper.isUserAnonymous(this)) {
+//			submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE, R.string.upgrade_user_menu);
+//		}
 		// if (SCAccessProvider.isUserAnonymous(this)) {
 		// submenu.add(Menu.CATEGORY_SYSTEM, R.id.upgrade_user_menu, Menu.NONE,
 		// R.string.upgrade_user_menu);
@@ -257,7 +265,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 				ll = new LinearLayout(this);
 				ll.setOrientation(LinearLayout.HORIZONTAL);
 				ll.setGravity(Gravity.TOP | Gravity.CENTER);
-				ll.setWeightSum(3);
+				ll.setWeightSum(2);
 				LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
 						LinearLayout.LayoutParams.WRAP_CONTENT);
 				layoutParams.setMargins(0, 32, 0, 0);
@@ -266,7 +274,7 @@ public class LauncherActivity extends TutorialManagerActivity implements OnTaskC
 			LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT);
 			layoutParams.weight = 1;
 			ll.addView(list.get(i), layoutParams);
-			if ((i + 1) % 3 == 0) {
+			if ((i + 1) % 2 == 0) {
 				ll = null;
 			}
 		}

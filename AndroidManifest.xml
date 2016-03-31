@@ -1,14 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="eu.trentorise.smartcampus.viaggiatrento"
+    package="it.smartcommunitylab.viaggiatrento.mini"
     android:installLocation="internalOnly"
-    android:versionCode="33"
-    android:versionName="0.10.15" >
+    android:versionCode="1"
+    android:versionName="1.0.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="22" />
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,18 +16,18 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-
+<!--     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+ -->
     <!-- receives GCM messages -->
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
+<!--     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+ -->
     <!-- wake the processor if a GCM message is received -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <permission
+<!--     <uses-permission android:name="android.permission.WAKE_LOCK" />
+ -->
+<!--     <permission
         android:name=".permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-
+ -->
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <permission
@@ -59,7 +58,7 @@
             android:value="@string/client_secret" />
         <meta-data
             android:name="SHARED_PACKAGE"
-            android:value="eu.trentorise.smartcampus.viaggiatrento" />
+            android:value="it.smartcommunitylab.viaggiatrento.mini" />
         <meta-data
             android:name="eu.trentorise.smartcampus.account.AUTH_URL"
             android:value="https://tn.smartcommunitylab.it/aac" />
@@ -203,7 +202,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner"
             android:windowSoftInputMode="stateHidden" >
-            <intent-filter>
+<!--             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
@@ -216,7 +215,7 @@
                     android:host="maps.google.com"
                     android:scheme="https" />
             </intent-filter>
-            <intent-filter>
+ -->            <intent-filter>
                 <action android:name="eu.trentorise.smartcampus.jp.NAVIGATE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -304,7 +303,7 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
 
-        <receiver
+<!--         <receiver
             android:name="eu.trentorise.smartcampus.viaggiatrento.GCMBroadcastReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
@@ -314,6 +313,6 @@
                 <category android:name="eu.trentorise.smartcampus.viaggiatrento" />
             </intent-filter>
         </receiver>
-    </application>
+ -->    </application>
 
 </manifest>

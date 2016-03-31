@@ -16,7 +16,7 @@
 <resources>
 
     <!-- <string name="app_name">ViaggiaTrento</string> -->
-    <string name="jp_name">Viaggia Trento</string>
+    <string name="jp_name">Viaggia Trento MINI</string>
     <string name="notifications_name">Notifications</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -64,7 +64,6 @@
     
     <!-- About -->
     <string name="info_credits">Credits</string>
-    <string name="info_intro">Viaggia Trento</string>
     <string name="info_subtitle">Informazioni sulla mobilità integrata di Trento e dei Comuni Trentini</string>
     <string name="info_project">Project by:</string>
     <string name="info_collab">Featuring:</string>

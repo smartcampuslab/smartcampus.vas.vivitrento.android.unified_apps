@@ -1,5 +1,6 @@
 package eu.trentorise.smartcampus.viaggiatrento;
 
+import it.smartcommunitylab.viaggiatrento.mini.R;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -50,7 +51,7 @@ public class AboutActivity extends SherlockActivity {
 
 	public void onClickFBK(View v) {
 		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setData(Uri.parse("http://www.fbk.eu"));
+		i.setData(Uri.parse("http://www.smartcommunitylab.it"));
 		startActivity(i);
 	}
 
