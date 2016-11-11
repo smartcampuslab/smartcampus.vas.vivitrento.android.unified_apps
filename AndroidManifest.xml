@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.smartcommunitylab.viaggiatrento.mini"
     android:installLocation="internalOnly"
-    android:versionCode="1"
-    android:versionName="1.0.0" >
+    android:versionCode="2"
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -154,10 +154,10 @@
         <!-- android:resource="@xml/authenticator" /> -->
         <!-- </service> -->
 
-        <activity
-            android:name="eu.trentorise.smartcampus.ac.embedded.EmbeddedAuthActivity"
-            android:configChanges="orientation|screenSize"
-            android:theme="@style/Theme.Journeyplanner" />
+<!--         <activity -->
+<!--             android:name="eu.trentorise.smartcampus.ac.embedded.EmbeddedAuthActivity" -->
+<!--             android:configChanges="orientation|screenSize" -->
+<!--             android:theme="@style/Theme.Journeyplanner" /> -->
         <!-- <activity -->
         <!-- android:name="eu.trentorise.smartcampus.ac.account.AuthenticatorActivity" -->
         <!-- android:configChanges="orientation|screenSize" -->
@@ -168,12 +168,12 @@
 
 
         <!-- android:theme="@style/Theme.Journeyplanner" /> -->
-        <activity
-            android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:theme="@style/Theme.Journeyplanner"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+<!--         <activity -->
+<!--             android:name="eu.trentorise.smartcampus.jp.MonitorJourneyActivity" -->
+<!--             android:configChanges="orientation|screenSize|keyboardHidden|keyboard" -->
+<!--             android:theme="@style/Theme.Journeyplanner" -->
+<!--             android:windowSoftInputMode="stateHidden" > -->
+<!--         </activity> -->
         <activity
             android:name="eu.trentorise.smartcampus.viaggiatrento.settings.SettingsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
@@ -221,18 +221,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="eu.trentorise.smartcampus.jp.PlanRecurJourneyActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:theme="@style/Theme.Journeyplanner"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
-        <activity
-            android:name="eu.trentorise.smartcampus.jp.SavedJourneyActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:theme="@style/Theme.Journeyplanner"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
+<!--         <activity -->
+<!--             android:name="eu.trentorise.smartcampus.jp.PlanRecurJourneyActivity" -->
+<!--             android:configChanges="orientation|screenSize|keyboardHidden|keyboard" -->
+<!--             android:theme="@style/Theme.Journeyplanner" -->
+<!--             android:windowSoftInputMode="stateHidden" > -->
+<!--         </activity> -->
+<!--         <activity -->
+<!--             android:name="eu.trentorise.smartcampus.jp.SavedJourneyActivity" -->
+<!--             android:configChanges="orientation|screenSize|keyboardHidden|keyboard" -->
+<!--             android:theme="@style/Theme.Journeyplanner" -->
+<!--             android:windowSoftInputMode="stateHidden" > -->
+<!--         </activity> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.ViewActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
@@ -246,28 +246,28 @@
                 <data android:scheme="eu.trentorise.smartcampus.journey" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:label="@string/jp_name"
-            android:launchMode="singleTask"
-            android:theme="@style/Theme.Journeyplanner" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
+<!--         <activity -->
+<!--             android:name="eu.trentorise.smartcampus.jp.notifications.NotificationsFragmentActivityJP" -->
+<!--             android:configChanges="orientation|screenSize|keyboardHidden|keyboard" -->
+<!--             android:label="@string/jp_name" -->
+<!--             android:launchMode="singleTask" -->
+<!--             android:theme="@style/Theme.Journeyplanner" > -->
+<!--             <intent-filter> -->
+<!--                 <category android:name="android.intent.category.DEFAULT" /> -->
 
-                <action android:name="android.intent.action.VIEW" />
+<!--                 <action android:name="android.intent.action.VIEW" /> -->
 
-                <data android:mimeType="@string/notificationsprovider_mimetype_jp" />
-            </intent-filter>
-        </activity>
+<!--                 <data android:mimeType="@string/notificationsprovider_mimetype_jp" /> -->
+<!--             </intent-filter> -->
+<!--         </activity> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.ProfileActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
             android:theme="@style/Theme.Journeyplanner" />
-        <activity
-            android:name="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
-            android:theme="@style/Theme.Journeyplanner" />
+<!--         <activity -->
+<!--             android:name="eu.trentorise.smartcampus.jp.notifications.BroadcastNotificationsActivity" -->
+<!--             android:configChanges="orientation|screenSize|keyboardHidden|keyboard" -->
+<!--             android:theme="@style/Theme.Journeyplanner" /> -->
         <activity
             android:name="eu.trentorise.smartcampus.jp.SmartCheckDirectActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
